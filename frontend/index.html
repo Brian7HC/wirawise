@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kikuyu Voice Chatbot - AI-powered conversational assistant for the Gĩgĩkũyũ language">
+    <title>🇰🇪 Kikuyu Voice Chatbot | Gĩgĩkũyũ AI Assistant</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <span>🇰🇪</span>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Kikuyu Chatbot</h1>
+                        <p class="tagline">Gĩgĩkũyũ AI Assistant</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn-icon" id="infoBtn" title="About">
+                        <i class="fas fa-info-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Chat Container -->
+        <div class="chat-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Conversation</h3>
+                    <button class="btn-icon" id="newChatBtn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                
+                <div class="sidebar-content">
+                    <!-- Session Info -->
+                    <div class="session-info">
+                        <div class="session-status">
+                            <span class="status-dot"></span>
+                            <span class="status-text">Active Session</span>
+                        </div>
+                        <div class="session-id" id="sessionId">
+                            <small>Session: Loading...</small>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h4>Quick Start</h4>
+                        <button class="quick-btn" data-text="Thayu">
+                            <i class="fas fa-hand-peace"></i>
+                            <span>Thayu (Peace)</span>
+                        </button>
+                        <button class="quick-btn" data-text="Good morning">
+                            <i class="fas fa-sun"></i>
+                            <span>Good Morning</span>
+                        </button>
+                        <button class="quick-btn" data-text="How are you">
+                            <i class="fas fa-smile"></i>
+                            <span>How Are You</span>
+                        </button>
+                        <button class="quick-btn" data-text="Thank you">
+                            <i class="fas fa-heart"></i>
+                            <span>Thank You</span>
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="stats">
+                        <h4>Statistics</h4>
+                        <div class="stat-item">
+                            <span class="stat-label">Messages</span>
+                            <span class="stat-value" id="messageCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Avg. Confidence</span>
+                            <span class="stat-value" id="avgConfidence">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Chat Area -->
+            <main class="chat-main">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h2>Wĩmwega! Welcome! 🇰🇪</h2>
+                        <p>I'm your Kikuyu language assistant. I can help you with:</p>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <i class="fas fa-language"></i>
+                                <h3>Greetings</h3>
+                                <p>Traditional & modern Kikuyu greetings</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-book"></i>
+                                <h3>Vocabulary</h3>
+                                <p>Word meanings & pronunciations</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-users"></i>
+                                <h3>Culture</h3>
+                                <p>Culturally appropriate responses</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-clock"></i>
+                                <h3>Context-Aware</h3>
+                                <p>Time and situation-specific greetings</p>
+                            </div>
+                        </div>
+                        <p class="welcome-cta">Start by typing a greeting or click a quick action!</p>
+                    </div>
+                </div>
+
+                <!-- Messages Container -->
+                <div class="messages-container" id="messagesContainer">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+
+                <!-- Typing Indicator -->
+                <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="typing-text">Bot is typing...</span>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-area">
+                    <div class="input-container">
+                        <button class="btn-icon" id="emojiBtn" title="Emojis">
+                            <i class="fas fa-smile"></i>
+                        </button>
+                        
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            class="message-input" 
+                            placeholder="Type your message in Kikuyu or English..."
+                            autocomplete="off"
+                        >
+                        
+                        <button class="btn-icon" id="voiceBtn" title="Voice input (Coming soon)" disabled>
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        
+                        <button class="btn-send" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Suggestions -->
+                    <div class="suggestions" id="suggestions">
+                        <span class="suggestion-label">Try:</span>
+                        <button class="suggestion-chip" data-text="Thayu">Thayu</button>
+                        <button class="suggestion-chip" data-text="Niatia">Niatia</button>
+                        <button class="suggestion-chip" data-text="Ngatho">Ngatho</button>
+                        <button class="suggestion-chip" data-text="Goodbye">Goodbye</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>About Kikuyu Chatbot</h2>
+                <button class="btn-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Version:</strong> 1.0.0</p>
+                <p><strong>Language:</strong> Gĩgĩkũyũ (Kikuyu)</p>
+                <p><strong>Database:</strong> 23 intents, 198 patterns, 77 responses</p>
+                
+                <h3>Features</h3>
+                <ul>
+                    <li>Traditional Kikuyu greetings (Thayu)</li>
+                    <li>Time-specific greetings (morning, afternoon, evening)</li>
+                    <li>Context-aware responses</li>
+                    <li>Culturally appropriate etiquette</li>
+                    <li>Session tracking & analytics</li>
+                </ul>
+
+                <h3>Research Based</h3>
+                <p>Built on academic research by Nancy I. Karia-Maina (2014) on pragmatic and linguistic etiquette of greeting in Gikuyu language speakers.</p>
+
+                <h3>Keyboard Shortcuts</h3>
+                <ul>
+                    <li><kbd>Enter</kbd> - Send message</li>
+                    <li><kbd>Esc</kbd> - Close modals</li>
+                    <li><kbd>Ctrl</kbd> + <kbd>N</kbd> - New chat</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/app.js?v=20260303"></script>
+</body>
+</html>

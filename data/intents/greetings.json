@@ -3,191 +3,412 @@
     "metadata": {
       "language": "Kikuyu (Gĩgĩkũyũ)",
       "language_code": "kik",
+      "iso_639_3": "kik",
       "category": "greetings",
       "version": "2.0.0",
       "created_at": "2024",
-      "research_source": "Enhanced with data from 'Pragmatic and Linguistic Etiquette of Greeting in Gikuyu Language Speakers in Kenya' by Nancy I. Karia-Maina (2014)",
-      "data_collection_regions": ["Kiambu", "Nyeri"],
+      "last_updated": "2024",
+      "research_sources": [
+        "Pragmatic and Linguistic Etiquette of Greeting in Gikuyu Language Speakers in Kenya - Nancy I. Karia-Maina (2014)",
+        "Common Kikuyu phrases - dgachanja (2023)",
+        "Field data from Kiambu and Nyeri regions"
+      ],
+      "data_collection": {
+        "regions": ["Kiambu", "Nyeri"],
+        "sample_size": "100+ spontaneous conversations",
+        "methodology": "Naturalistic observation, native speaker intuition"
+      },
+      "cultural_context": {
+        "primary_principle": "Greetings are essential oil for peaceful social relations",
+        "greeting_obligation": "Expected to greet everyone met, whether known or unknown (traditional)",
+        "modern_changes": "Urban youth influenced by Western culture may only greet close acquaintances",
+        "social_function": "Establish interpersonal relationships, introduce business/social topics, maintain harmony"
+      },
       "notes": [
         "Kikuyu does not have gender-defining pronouns (he/she)",
         "Ní is used for emphasis and often omitted in spoken form",
-        "Vowel sounds: a(arm), e(egg), i(in), o(opposite), u(ululation), í(it), ú(own)",
+        "Vowel sounds: a(arm), e(egg), i(in), o(opposite), u(ululation), í(it), ú(own/oak)",
         "Greetings are essential for establishing interpersonal relationships",
         "Deference to age, sex, context and time are important factors",
-        "Younger should greet older; smaller group should greet larger; walking should greet sitting"
+        "Longer greetings = more polite and courteous",
+        "Response should be equal or more courteous than offered greeting"
       ],
-      "cultural_principles": {
-        "greeting_hierarchy": [
+      "greeting_hierarchy": {
+        "initiation_rules": [
           "Younger greets older first",
           "Smaller group greets larger group first",
           "Walking person greets sitting person first",
           "Inferiors greet superiors first"
         ],
-        "response_etiquette": "Greetee should respond with equal or more courteous greeting",
-        "most_polite_greeting": "Thayu (Peace be upon you) - greeting of Gikuyu founder",
-        "traditional_obligation": "Expected to greet everyone met, whether known or unknown"
+        "response_rule": "Greetee should respond with equal or more courteous greeting",
+        "politeness_principle": "The longer the greeting term, the more polite and courteous it is"
       },
       "person_identifiers": {
-        "first_singular": "ndí (I)",
-        "first_plural": "tú (we)",
-        "second_singular": "ú (you)",
-        "second_plural": "mú (you all)",
-        "third_singular": "a (he/she)",
-        "third_plural": "ma (they)"
+        "first_singular": "ndí (I am)",
+        "first_plural": "tú/tũrĩ (we are)",
+        "second_singular": "ú/wĩ (you are)",
+        "second_plural": "mú/mũrĩ (you all are)",
+        "third_singular": "a/arĩ (he/she is)",
+        "third_plural": "ma/marĩ (they are)"
       }
     },
     "intents": [
       {
         "intent_id": "greeting_thayu",
-        "intent_name": "Most Polite Traditional Greeting",
+        "intent_name": "Most Polite Traditional Greeting (Thayu)",
         "category": "greetings",
-        "context": "formal_traditional",
-        "formality_level": "highest",
-        "cultural_significance": "Greeting of Gikuyu (founder of tribe) and his offspring. Most common and most polite greeting term.",
-        "usage_notes": "Independent of time and context; can be used any time of day and any social occasion. Signals respect, cultural loyalty, and adherence to tradition.",
-        "gender_usage": "Used more by males than females",
+        "subcategory": "traditional",
+        "context": "formal_traditional_passing",
+        "formality_level": 10,
+        "politeness_score": 10,
+        "cultural_significance": "Greeting of Gikuyu (founder of tribe) and offspring. Forefathers ordered Gikuyus to spread this greeting. Most polite and commonly used on any social occasion.",
+        "usage_notes": "Independent of time and context. Can be used any time of day, any social occasion. Shows respect, cultural loyalty, adherence to tradition.",
+        "appropriate_contexts": [
+          "Passing someone on the street",
+          "Formal occasions",
+          "Greeting strangers",
+          "Traditional ceremonies",
+          "Any time of day",
+          "Any social situation"
+        ],
+        "gender_usage": {
+          "male": "high_frequency",
+          "female": "medium_frequency",
+          "notes": "Males use 'Thayu' more than females"
+        },
+        "age_usage": {
+          "elderly": "very_high_frequency",
+          "middle_aged": "high_frequency",
+          "youth": "medium_frequency",
+          "children": "taught_from_childhood"
+        },
         "patterns": [
           "Thayu",
           "Thayũ",
-          "Peace be upon you",
-          "Peace",
           "Thaai",
-          "Thaayu"
+          "Thaayu",
+          "Peace be upon you",
+          "Peace"
         ],
+        "pattern_variations": {
+          "with_diacritics": ["Thayũ"],
+          "without_diacritics": ["Thayu", "Thaai"],
+          "english": ["Peace be upon you", "Peace"]
+        },
         "responses": [
           {
+            "response_id": "thayu_r1",
             "text": "Thayu! Thayu thayu!",
             "translation": "Peace be upon you! Peace, peace!",
-            "audio_file": "greetings/thayu_thayu_response.wav",
+            "literal_meaning": "Peace! Peace peace!",
+            "audio_file": "audio/responses/greetings/thayu_thayu_response.wav",
             "formality": "very_formal",
-            "notes": "Complete version - most courteous response conforming to tradition"
+            "politeness_score": 10,
+            "priority": 1,
+            "notes": "Complete courteous version - conforms to tradition of responding with more courteous greeting",
+            "usage_context": "Most respectful response, used with equals or superiors"
           },
           {
+            "response_id": "thayu_r2",
             "text": "Thayu! Ndí mwega mũno.",
             "translation": "Peace! I am very well.",
-            "audio_file": "greetings/thayu_ndi_mwega.wav",
-            "formality": "formal"
+            "literal_meaning": "Peace! I am good very.",
+            "audio_file": "audio/responses/greetings/thayu_ndi_mwega.wav",
+            "formality": "formal",
+            "politeness_score": 9,
+            "priority": 2,
+            "notes": "Adds personal well-being statement",
+            "usage_context": "Warm, respectful response"
           },
           {
+            "response_id": "thayu_r3",
             "text": "Thayu! Úhoro waku nĩ atía?",
             "translation": "Peace! How are you?",
-            "audio_file": "greetings/thayu_uhoro_waku.wav",
-            "formality": "formal"
+            "literal_meaning": "Peace! News yours is what?",
+            "audio_file": "audio/responses/greetings/thayu_uhoro_waku.wav",
+            "formality": "formal",
+            "politeness_score": 9,
+            "priority": 3,
+            "notes": "Invites further conversation",
+            "usage_context": "Engaging greeting, opens dialogue"
+          },
+          {
+            "response_id": "thayu_r4",
+            "text": "Thayu! Wĩ mwega?",
+            "translation": "Peace! Are you well?",
+            "literal_meaning": "Peace! You are good?",
+            "audio_file": "audio/responses/greetings/thayu_wi_mwega.wav",
+            "formality": "formal",
+            "politeness_score": 8,
+            "priority": 4,
+            "notes": "Shows concern for the other person",
+            "usage_context": "Caring, respectful"
           }
         ],
         "etiquette_rules": [
           "Longer greeting is more polite and courteous",
           "Response should be at least equal in courtesy to offered greeting",
-          "Shows speaker's knowledge of traditions and culture"
+          "Shows speaker's knowledge of traditions and culture",
+          "Syntactically, males use same term for individuals or groups, males or females",
+          "Using this greeting shows loyalty to Gikuyu culture"
         ],
         "examples": [
-          "User: Thayu → Bot: Thayu! Thayu thayu!",
-          "User: Peace be upon you → Bot: Thayu! Ndí mwega mũno."
-        ]
+          {
+            "user_input": "Thayu",
+            "bot_response": "Thayu! Thayu thayu!",
+            "context": "Passing greeting"
+          },
+          {
+            "user_input": "Peace be upon you",
+            "bot_response": "Thayu! Ndí mwega mũno.",
+            "context": "Formal greeting"
+          },
+          {
+            "user_input": "Thayu",
+            "bot_response": "Thayu! Úhoro waku nĩ atía?",
+            "context": "Opening conversation"
+          }
+        ],
+        "contraindications": [],
+        "teaching_notes": "This is the first greeting children learn. Instilled from childhood as socio-religious greeting."
       },
       {
         "intent_id": "greeting_niatia",
-        "intent_name": "General How Are You",
+        "intent_name": "General How Are You (Niatia)",
         "category": "greetings",
-        "context": "neutral",
-        "formality_level": "medium",
-        "cultural_significance": "Less polite than Thayu but more intimate. Neutral term not time-specific.",
-        "usage_notes": "Can be used during day or night, on any social occasion. Signals intimacy and solidarity.",
+        "subcategory": "general",
+        "context": "neutral_inquiry",
+        "formality_level": 6,
+        "politeness_score": 7,
+        "cultural_significance": "Less polite than Thayu but signals more intimacy and solidarity. Neutral term, not time-specific.",
+        "usage_notes": "Can be used during day or night, on any social occasion. More intimate and less formal than Thayu.",
+        "appropriate_contexts": [
+          "Greeting friends",
+          "Casual encounters",
+          "Any time of day",
+          "Social gatherings",
+          "Acquaintances"
+        ],
+        "gender_usage": {
+          "male": "medium_frequency",
+          "female": "high_frequency",
+          "notes": "Women seem to use this more than men"
+        },
+        "age_usage": {
+          "elderly": "low_frequency",
+          "middle_aged": "medium_frequency",
+          "youth": "high_frequency",
+          "children": "medium_frequency"
+        },
         "patterns": [
           "Niatia",
           "Ní atía",
           "Ni atia",
           "How are you",
           "Úhana atía",
-          "Uhana atia"
+          "Uhana atia",
+          "How do you do"
         ],
         "responses": [
           {
+            "response_id": "niatia_r1",
             "text": "Ndí mwega! Nawe úhana atía?",
             "translation": "I am fine! And you, how are you?",
-            "audio_file": "greetings/ndi_mwega_nawe.wav",
-            "formality": "neutral"
+            "literal_meaning": "I am good! And you, you are how?",
+            "audio_file": "audio/responses/greetings/ndi_mwega_nawe.wav",
+            "formality": "neutral",
+            "politeness_score": 7,
+            "priority": 1,
+            "notes": "Standard reciprocal response"
           },
           {
+            "response_id": "niatia_r2",
             "text": "Ndí mwega mũno, ngatho!",
             "translation": "I am very well, thank you!",
-            "audio_file": "greetings/ndi_mwega_muno_ngatho.wav",
-            "formality": "polite"
+            "literal_meaning": "I am good very, thanks!",
+            "audio_file": "audio/responses/greetings/ndi_mwega_muno_ngatho.wav",
+            "formality": "polite",
+            "politeness_score": 8,
+            "priority": 2,
+            "notes": "Adds gratitude"
           },
           {
+            "response_id": "niatia_r3",
             "text": "Nikwega nikwega! Nawe?",
             "translation": "Fine, fine! And you?",
-            "audio_file": "greetings/nikwega_nikwega_nawe.wav",
+            "literal_meaning": "Hello hello! And you?",
+            "audio_file": "audio/responses/greetings/nikwega_nikwega_nawe.wav",
             "formality": "warm",
+            "politeness_score": 8,
+            "priority": 3,
             "notes": "Adding 'nikwega nikwega' shows respect and warmth of welcome"
-          }
-        ],
-        "examples": [
-          "User: Niatia → Bot: Ndí mwega! Nawe úhana atía?",
-          "User: How are you → Bot: Nikwega nikwega! Nawe?"
-        ]
-      },
-      {
-        "intent_id": "greeting_nikwega",
-        "intent_name": "Hello/General Greeting",
-        "category": "greetings",
-        "context": "informal",
-        "formality_level": "medium",
-        "cultural_significance": "Originally meant 'are you fine' but now used only to mean 'hello'. More intimate and less formal than Thayu.",
-        "usage_notes": "Neutral and context-free. Used any time and any social occasion.",
-        "patterns": [
-          "Nikwega",
-          "Ní kwega",
-          "Ni kwega",
-          "Hello",
-          "Hi",
-          "Wímwega",
-          "Wimwega"
-        ],
-        "responses": [
-          {
-            "text": "Nikwega! Nikwega nikwega!",
-            "translation": "Hello! You have come to people who are like your folk and to a place that is smooth.",
-            "audio_file": "greetings/nikwega_full_response.wav",
-            "formality": "warm",
-            "notes": "Complete courteous version"
           },
           {
-            "text": "Nikwega! Úhoro waku?",
-            "translation": "Hello! How are you?",
-            "audio_file": "greetings/nikwega_uhoro.wav",
-            "formality": "friendly"
-          },
-          {
-            "text": "Nikwega! Ndí mwega.",
-            "translation": "Hello! I am fine.",
-            "audio_file": "greetings/nikwega_ndi_mwega.wav",
-            "formality": "neutral"
+            "response_id": "niatia_r4",
+            "text": "Ndímwega! Wĩ mwega?",
+            "translation": "I'm fine! Are you well?",
+            "literal_meaning": "I am good! You are good?",
+            "audio_file": "audio/responses/greetings/ndimwega_wi_mwega.wav",
+            "formality": "friendly",
+            "politeness_score": 7,
+            "priority": 4,
+            "notes": "Casual, shows concern"
           }
         ],
         "inappropriate_responses": [
           {
             "response": "Ĩĩ",
             "translation": "Yes",
-            "notes": "Sometimes used by females but violates rules of etiquette - less courteous than proper greeting"
+            "notes": "Sometimes used by females but violates etiquette rules - too brief and less courteous",
+            "why_inappropriate": "Does not reciprocate with equal courtesy greeting"
           }
         ],
         "examples": [
-          "User: Nikwega → Bot: Nikwega! Nikwega nikwega!",
-          "User: Hello → Bot: Nikwega! Úhoro waku?"
+          {
+            "user_input": "Niatia",
+            "bot_response": "Ndí mwega! Nawe úhana atía?",
+            "context": "Casual greeting"
+          },
+          {
+            "user_input": "How are you",
+            "bot_response": "Nikwega nikwega! Nawe?",
+            "context": "Warm greeting"
+          }
         ]
       },
       {
-        "intent_id": "greeting_morning",
-        "intent_name": "Morning Greeting",
+        "intent_id": "greeting_nikwega",
+        "intent_name": "Hello/Welcome (Nikwega)",
         "category": "greetings",
-        "context": "time_specific",
+        "subcategory": "general",
+        "context": "informal_welcome",
+        "formality_level": 5,
+        "politeness_score": 6,
+        "cultural_significance": "Originally meant 'are you fine' but now used only to mean 'hello'. More intimate and less formal than Thayu.",
+        "usage_notes": "Neutral and context-free. Used any time and any social occasion. Semantic shift from question to greeting.",
+        "appropriate_contexts": [
+          "Welcoming visitors",
+          "Casual greetings",
+          "Friends and family",
+          "Any time of day",
+          "Normal or happy social occasions"
+        ],
+        "semantic_evolution": {
+          "original_meaning": "are you fine?",
+          "current_meaning": "hello / welcome",
+          "notes": "Semantic point: although originally a question, now only used as greeting"
+        },
+        "gender_usage": {
+          "male": "medium_frequency",
+          "female": "high_frequency"
+        },
+        "age_usage": {
+          "youth": "high_frequency - may overgeneralize usage",
+          "middle_aged": "medium_frequency",
+          "elderly": "low_frequency"
+        },
+        "patterns": [
+          "Nikwega",
+          "Ní kwega",
+          "Ni kwega",
+          "Hello",
+          "Hi",
+          "Welcome",
+          "Wímwega",
+          "Wimwega"
+        ],
+        "responses": [
+          {
+            "response_id": "nikwega_r1",
+            "text": "Nikwega! Nikwega nikwega!",
+            "translation": "Hello! You have come to people who are like your folk and to a place that is smooth.",
+            "literal_meaning": "Welcome! Welcome welcome! (full traditional meaning)",
+            "audio_file": "audio/responses/greetings/nikwega_full_response.wav",
+            "formality": "warm",
+            "politeness_score": 8,
+            "priority": 1,
+            "notes": "Complete courteous version - shows respect and warmth of welcome"
+          },
+          {
+            "response_id": "nikwega_r2",
+            "text": "Nikwega! Úhoro waku?",
+            "translation": "Hello! How are you? / What's your news?",
+            "literal_meaning": "Welcome! News yours?",
+            "audio_file": "audio/responses/greetings/nikwega_uhoro.wav",
+            "formality": "friendly",
+            "politeness_score": 7,
+            "priority": 2,
+            "notes": "Invites conversation"
+          },
+          {
+            "response_id": "nikwega_r3",
+            "text": "Nikwega! Ndí mwega.",
+            "translation": "Hello! I am fine.",
+            "literal_meaning": "Welcome! I am good.",
+            "audio_file": "audio/responses/greetings/nikwega_ndi_mwega.wav",
+            "formality": "neutral",
+            "politeness_score": 6,
+            "priority": 3,
+            "notes": "Simple, adequate response"
+          },
+          {
+            "response_id": "nikwega_r4",
+            "text": "Nikwega! Karibũ!",
+            "translation": "Hello! Welcome!",
+            "literal_meaning": "Welcome! Welcome! (using Swahili loanword)",
+            "audio_file": "audio/responses/greetings/nikwega_karibu.wav",
+            "formality": "hospitable",
+            "politeness_score": 7,
+            "priority": 4,
+            "notes": "Modern, warm welcome"
+          }
+        ],
+        "non_verbal_requirement": {
+          "facial_expression": "Greeting without smile or appropriate mode may reveal hostility or lack of intimacy",
+          "importance": "Non-verbal mode conveys pragmatic and sociocultural aspects of meaning"
+        },
+        "examples": [
+          {
+            "user_input": "Nikwega",
+            "bot_response": "Nikwega! Nikwega nikwega!",
+            "context": "Welcoming visitor"
+          },
+          {
+            "user_input": "Hello",
+            "bot_response": "Nikwega! Úhoro waku?",
+            "context": "Casual greeting"
+          }
+        ],
+        "youth_overgeneralization": "Young people may use 'nikwega' inappropriately on all occasions, criticized by adults for social mistakes"
+      },
+      {
+        "intent_id": "greeting_morning",
+        "intent_name": "Morning Greeting (Úhoro wa rúciní)",
+        "category": "greetings",
+        "subcategory": "time_specific",
+        "context": "morning",
         "time_range": "05:00-12:00",
-        "formality_level": "medium",
-        "cultural_significance": "Time-dependent greeting. May be age and sex marker - used more by females and old people.",
-        "usage_notes": "Old females tend to use more courteous variants more than others.",
-        "gender_usage": "Used more by females than males",
-        "age_usage": "Used more by older people",
+        "formality_level": 6,
+        "politeness_score": 7,
+        "cultural_significance": "Time-dependent greeting. Age and sex marker - used more by females and elderly.",
+        "usage_notes": "Less common than Thayu or Nikwega. Old females use more courteous variants most frequently.",
+        "appropriate_contexts": [
+          "Morning encounters (5am-12pm)",
+          "Formal morning meetings",
+          "Polite morning greetings"
+        ],
+        "gender_usage": {
+          "male": "low_frequency",
+          "female": "high_frequency",
+          "notes": "Females tend to use time-specific greetings more than males"
+        },
+        "age_usage": {
+          "elderly_female": "very_high_frequency - often use most courteous variants",
+          "elderly_male": "medium_frequency",
+          "middle_aged": "medium_frequency",
+          "youth": "low_frequency"
+        },
+        "social_marker": "Time-specific greetings may be age and sex markers",
         "patterns": [
           "Niatia rúciní",
           "Niatia rucini",
@@ -201,38 +422,89 @@
         ],
         "responses": [
           {
+            "response_id": "morning_r1",
             "text": "Niatia rúciní! Úhana atía úmuthí?",
             "translation": "Good morning! How are you today?",
-            "audio_file": "greetings/niatia_rucini_umuthi.wav",
-            "formality": "polite"
+            "literal_meaning": "How are you morning! You are how today?",
+            "audio_file": "audio/responses/greetings/niatia_rucini_umuthi.wav",
+            "formality": "polite",
+            "politeness_score": 8,
+            "priority": 1,
+            "notes": "Courteous variant, inquires about today specifically"
           },
           {
+            "response_id": "morning_r2",
             "text": "Úhoro wa rúciní! Ndí mwega.",
             "translation": "Good morning! I am fine.",
-            "audio_file": "greetings/uhoro_rucini_ndi_mwega.wav",
-            "formality": "neutral"
+            "literal_meaning": "News of morning! I am good.",
+            "audio_file": "audio/responses/greetings/uhoro_rucini_ndi_mwega.wav",
+            "formality": "neutral",
+            "politeness_score": 7,
+            "priority": 2,
+            "notes": "Standard morning response"
           },
           {
+            "response_id": "morning_r3",
             "text": "Úhoro wa rúciní! Gía na múthenya mwega.",
             "translation": "Good morning! Have a good day.",
-            "audio_file": "greetings/uhoro_rucini_muthenya.wav",
-            "formality": "warm"
+            "literal_meaning": "News of morning! Go with day good.",
+            "audio_file": "audio/responses/greetings/uhoro_rucini_muthenya.wav",
+            "formality": "warm",
+            "politeness_score": 8,
+            "priority": 3,
+            "notes": "Adds well-wishing for the day"
+          },
+          {
+            "response_id": "morning_r4",
+            "text": "Niatia rúciní! Wĩ mwega?",
+            "translation": "Good morning! Are you well?",
+            "literal_meaning": "How are you morning! You are good?",
+            "audio_file": "audio/responses/greetings/niatia_rucini_wi_mwega.wav",
+            "formality": "friendly",
+            "politeness_score": 7,
+            "priority": 4,
+            "notes": "Shows concern"
           }
         ],
+        "typical_responses_from_paper": [
+          "Niatia rúciní (Good morning)",
+          "Úhoro wa rúciní (Good morning - literally 'news of morning')"
+        ],
         "examples": [
-          "User: Niatia rúciní → Bot: Niatia rúciní! Úhana atía úmuthí?",
-          "User: Good morning → Bot: Úhoro wa rúciní! Gía na múthenya mwega."
+          {
+            "user_input": "Niatia rúciní",
+            "bot_response": "Niatia rúciní! Úhana atía úmuthí?",
+            "context": "Morning greeting",
+            "time": "08:00"
+          },
+          {
+            "user_input": "Good morning",
+            "bot_response": "Úhoro wa rúciní! Gía na múthenya mwega.",
+            "context": "Polite morning greeting",
+            "time": "09:30"
+          }
         ]
       },
       {
         "intent_id": "greeting_afternoon_evening",
-        "intent_name": "Afternoon/Evening Greeting",
+        "intent_name": "Afternoon/Evening Greeting (Úhoro wa húainí)",
         "category": "greetings",
-        "context": "time_specific",
+        "subcategory": "time_specific",
+        "context": "afternoon_evening",
         "time_range": "12:00-21:00",
-        "formality_level": "medium",
-        "cultural_significance": "Time-dependent greeting for afternoon and evening. Less common than Thayu or Nikwega.",
-        "gender_usage": "Used more by females than males",
+        "formality_level": 6,
+        "politeness_score": 7,
+        "cultural_significance": "Time-dependent greeting. Less common than Thayu or Nikwega.",
+        "usage_notes": "Used for both afternoon (míaraho) and evening (húainí). More used by females.",
+        "appropriate_contexts": [
+          "Afternoon encounters (12pm-5pm)",
+          "Evening encounters (5pm-9pm)",
+          "Time-appropriate formal greetings"
+        ],
+        "gender_usage": {
+          "male": "low_frequency",
+          "female": "high_frequency"
+        },
         "patterns": [
           "Úhoro wa húainí",
           "Uhoro wa huaini",
@@ -243,42 +515,90 @@
           "Huaini",
           "Hwai-ini",
           "Úhoro wa míaraho",
-          "Uhoro wa miaraho"
+          "Uhoro wa miaraho",
+          "Míaraho"
         ],
         "responses": [
           {
+            "response_id": "evening_r1",
             "text": "Úhoro wa húainí! Úhana atía?",
             "translation": "Good afternoon/evening! How are you?",
-            "audio_file": "greetings/uhoro_huaini_uhana.wav",
-            "formality": "polite"
+            "literal_meaning": "News of evening! You are how?",
+            "audio_file": "audio/responses/greetings/uhoro_huaini_uhana.wav",
+            "formality": "polite",
+            "politeness_score": 7,
+            "priority": 1
           },
           {
+            "response_id": "evening_r2",
             "text": "Úhoro wa húainí! Ndí mwega mũno.",
             "translation": "Good afternoon/evening! I am very well.",
-            "audio_file": "greetings/uhoro_huaini_mwega.wav",
-            "formality": "warm"
+            "literal_meaning": "News of evening! I am good very.",
+            "audio_file": "audio/responses/greetings/uhoro_huaini_mwega.wav",
+            "formality": "warm",
+            "politeness_score": 8,
+            "priority": 2
           },
           {
+            "response_id": "evening_r3",
             "text": "Úhoro wa húainí! Gúa na húainí hega.",
             "translation": "Good evening! Have a good evening.",
-            "audio_file": "greetings/uhoro_huaini_hega.wav",
-            "formality": "polite"
+            "literal_meaning": "News of evening! Pass with evening good.",
+            "audio_file": "audio/responses/greetings/uhoro_huaini_hega.wav",
+            "formality": "polite",
+            "politeness_score": 8,
+            "priority": 3
           }
         ],
         "examples": [
-          "User: Úhoro wa húainí → Bot: Úhoro wa húainí! Úhana atía?",
-          "User: Good evening → Bot: Úhoro wa húainí! Gúa na húainí hega."
+          {
+            "user_input": "Úhoro wa húainí",
+            "bot_response": "Úhoro wa húainí! Úhana atía?",
+            "context": "Evening greeting",
+            "time": "18:00"
+          },
+          {
+            "user_input": "Good evening",
+            "bot_response": "Úhoro wa húainí! Gúa na húainí hega.",
+            "context": "Polite evening greeting",
+            "time": "19:30"
+          }
         ]
       },
       {
         "intent_id": "greeting_muriega",
-        "intent_name": "Group Greeting (You Are in Good Health)",
+        "intent_name": "Group Greeting (Muriega - You Are Well)",
         "category": "greetings",
-        "context": "group_situation",
-        "formality_level": "medium",
-        "cultural_significance": "Used when there is a large number of sitting people and no need to shake everyone's hand. Age and sex-marked.",
-        "usage_notes": "Used mostly by adults greeting younger people, not vice versa. Becoming widespread beyond original context.",
-        "age_restriction": "Used by elders to younger people",
+        "subcategory": "context_specific",
+        "context": "group_sitting",
+        "formality_level": 6,
+        "politeness_score": 7,
+        "cultural_significance": "Context-specific: used when large number of sitting people and no need to shake everyone's hand. Age and sex-marked.",
+        "usage_notes": "Used mostly by adults greeting younger people, NOT vice versa. Originally for physical laborers, now widespread.",
+        "appropriate_contexts": [
+          "Greeting large sitting group",
+          "When handshaking is not practical",
+          "Elder to younger people",
+          "Formal group situations"
+        ],
+        "inappropriate_contexts": [
+          "When handshaking is expected (may signal relationship no longer close)",
+          "Young person to elder",
+          "One-on-one intimate greetings"
+        ],
+        "gender_usage": {
+          "male": "medium_frequency",
+          "female": "medium_frequency"
+        },
+        "age_restriction": {
+          "direction": "elder_to_younger",
+          "notes": "Used mostly by adults greeting younger people, not vice versa"
+        },
+        "semantic_evolution": {
+          "original_context": "Greeting someone performing physical job",
+          "current_usage": "Used to greet anyone, even sitting people",
+          "expansion": "Becoming widespread beyond original context"
+        },
         "patterns": [
           "Muriega",
           "Muri ega",
@@ -286,46 +606,88 @@
           "You are in good health",
           "How are you all",
           "Mwaigua atía",
-          "Mwaigua atia"
+          "Mwaigua atia",
+          "Are you well"
         ],
         "responses": [
           {
+            "response_id": "muriega_r1",
             "text": "Tũrĩ ega! Nawe úhana atía?",
             "translation": "We are well! And you, how are you?",
-            "audio_file": "greetings/turi_ega_nawe.wav",
-            "formality": "respectful"
+            "literal_meaning": "We are good! And you, you are how?",
+            "audio_file": "audio/responses/greetings/turi_ega_nawe.wav",
+            "formality": "respectful",
+            "politeness_score": 8,
+            "priority": 1,
+            "notes": "Proper respectful response to elder"
           },
           {
+            "response_id": "muriega_r2",
             "text": "Tũrĩ ega mũno! Nikwega!",
             "translation": "We are very well! Welcome!",
-            "audio_file": "greetings/turi_ega_nikwega.wav",
-            "formality": "warm"
+            "literal_meaning": "We are good very! Welcome!",
+            "audio_file": "audio/responses/greetings/turi_ega_nikwega.wav",
+            "formality": "warm",
+            "politeness_score": 8,
+            "priority": 2,
+            "notes": "Warm group response"
           },
           {
+            "response_id": "muriega_r3",
             "text": "Tũrĩ ega! Wĩ mwega?",
             "translation": "We are well! Are you well?",
-            "audio_file": "greetings/turi_ega_wi_mwega.wav",
-            "formality": "polite"
+            "literal_meaning": "We are good! You are good?",
+            "audio_file": "audio/responses/greetings/turi_ega_wi_mwega.wav",
+            "formality": "polite",
+            "politeness_score": 7,
+            "priority": 3,
+            "notes": "Shows concern for greeter"
           }
         ],
         "etiquette_rules": [
           "Inappropriate if handshaking is necessary",
           "Not using handshake with this greeting may indicate relationship is no longer close",
-          "Originally for someone performing physical job, now used for anyone"
+          "Should determine verbal and non-verbal rules before use",
+          "Culturally used when large number of sitting greetees"
         ],
+        "youth_mistakes": "Young people may use it and shake hands as well - usually criticized by adults for committing social mistake",
         "examples": [
-          "User: Muriega → Bot: Tũrĩ ega! Nawe úhana atía?",
-          "User: Mwaigua atía → Bot: Tũrĩ ega mũno! Nikwega!"
+          {
+            "user_input": "Muriega",
+            "bot_response": "Tũrĩ ega! Nawe úhana atía?",
+            "context": "Elder greeting group of youth",
+            "scenario": "Large sitting group"
+          },
+          {
+            "user_input": "Mwaigua atía",
+            "bot_response": "Tũrĩ ega mũno! Nikwega!",
+            "context": "Greeting multiple people",
+            "scenario": "No handshaking needed"
+          }
         ]
       },
       {
-        "intent_id": "greeting_uhoro",
-        "intent_name": "Say Something (Work Greeting)",
+        "intent_id": "greeting_uhoro_work",
+        "intent_name": "Work/Activity Greeting (Úhoro)",
         "category": "greetings",
-        "context": "work_situation",
-        "formality_level": "casual",
-        "cultural_significance": "Originally used to greet someone performing physical job. Now becoming widespread for general use.",
+        "subcategory": "context_specific",
+        "context": "work_activity",
+        "formality_level": 4,
+        "politeness_score": 5,
+        "cultural_significance": "Originally for greeting someone performing physical job. Now becoming widespread for general use.",
         "usage_notes": "Can be used to greet anyone now, even sitting people. Casual and friendly.",
+        "appropriate_contexts": [
+          "Greeting someone working",
+          "Casual encounters",
+          "Physical labor contexts",
+          "Informal situations"
+        ],
+        "semantic_evolution": {
+          "original_meaning": "say something / what's the news (to worker)",
+          "original_context": "Greeting someone performing physical job requiring effort",
+          "current_usage": "Used to greet anyone, even sitting people",
+          "status": "Becoming widespread"
+        },
         "patterns": [
           "Úhoro",
           "Uhoro",
@@ -337,78 +699,143 @@
         ],
         "responses": [
           {
+            "response_id": "uhoro_work_r1",
             "text": "Úhoro mwega! Ndí mwega.",
             "translation": "Good news! I am fine.",
-            "audio_file": "greetings/uhoro_mwega.wav",
-            "formality": "casual"
+            "literal_meaning": "News good! I am good.",
+            "audio_file": "audio/responses/greetings/uhoro_mwega.wav",
+            "formality": "casual",
+            "politeness_score": 5,
+            "priority": 1
           },
           {
+            "response_id": "uhoro_work_r2",
             "text": "Ndí mwega! Wĩ mwega?",
             "translation": "I am fine! Are you well?",
-            "audio_file": "greetings/ndi_mwega_wi.wav",
-            "formality": "friendly"
+            "literal_meaning": "I am good! You are good?",
+            "audio_file": "audio/responses/greetings/ndi_mwega_wi.wav",
+            "formality": "friendly",
+            "politeness_score": 6,
+            "priority": 2
           },
           {
+            "response_id": "uhoro_work_r3",
             "text": "Nikwega! Úhoro waku?",
             "translation": "Hello! What's your news?",
-            "audio_file": "greetings/nikwega_uhoro_waku.wav",
-            "formality": "casual"
+            "literal_meaning": "Welcome! News yours?",
+            "audio_file": "audio/responses/greetings/nikwega_uhoro_waku.wav",
+            "formality": "casual",
+            "politeness_score": 5,
+            "priority": 3
           }
         ],
         "examples": [
-          "User: Úhoro → Bot: Úhoro mwega! Ndí mwega.",
-          "User: Waigua atía → Bot: Ndí mwega! Wĩ mwega?"
+          {
+            "user_input": "Úhoro",
+            "bot_response": "Úhoro mwega! Ndí mwega.",
+            "context": "Greeting someone working"
+          },
+          {
+            "user_input": "Waigua atía",
+            "bot_response": "Ndí mwega! Wĩ mwega?",
+            "context": "Casual greeting"
+          }
         ]
       },
       {
         "intent_id": "health_inquiry_formal",
-        "intent_name": "Formal Health Inquiry",
+        "intent_name": "Formal Health Inquiry (Ukuuga atía)",
         "category": "health_inquiries",
-        "context": "follow_up",
-        "formality_level": "formal",
-        "cultural_significance": "Greetings normally followed by inquiries about interlocutors' health. Shows social contact and adherence to etiquette.",
-        "usage_notes": "More formal and courteous than 'Uga'. Conversants may inquire about each other's health and relatives' health to establish social contact.",
+        "subcategory": "follow_up",
+        "context": "post_greeting",
+        "formality_level": 7,
+        "politeness_score": 8,
+        "cultural_significance": "Greetings normally followed by inquiries about interlocutors' health. More formal and courteous.",
+        "usage_notes": "Used to establish social contact. Greeter may not really wish to know details, but does so in compliance with etiquette rules.",
+        "appropriate_contexts": [
+          "After initial greeting",
+          "Formal conversations",
+          "Showing genuine concern",
+          "Establishing social contact"
+        ],
         "patterns": [
           "Ukuuga atía",
           "Ukuuga atia",
           "How is everything",
           "How are things",
-          "Maũndũ mothe nĩ matia",
-          "Tell me everything"
+          "Tell me everything",
+          "Maũndũ mothe nĩ matía",
+          "Maundo mothe ni matia"
         ],
         "responses": [
           {
+            "response_id": "health_formal_r1",
             "text": "Maũndũ mothe nĩ mega. Ngatho!",
             "translation": "Everything is fine. Thank you!",
-            "audio_file": "health/maundo_mothe_mega.wav",
-            "formality": "polite"
+            "literal_meaning": "Things all are good. Thanks!",
+            "audio_file": "audio/responses/health/maundo_mothe_mega.wav",
+            "formality": "polite",
+            "politeness_score": 8,
+            "priority": 1
           },
           {
+            "response_id": "health_formal_r2",
             "text": "Nĩ mwega mũno! Ciana cĩaku ithii atía?",
             "translation": "Very well! How are your children?",
-            "audio_file": "health/ni_mwega_ciana.wav",
-            "formality": "caring"
+            "literal_meaning": "Is good very! Children yours go how?",
+            "audio_file": "audio/responses/health/ni_mwega_ciana.wav",
+            "formality": "caring",
+            "politeness_score": 9,
+            "priority": 2,
+            "notes": "Reciprocates by inquiring about family - establishing social contact"
           },
           {
+            "response_id": "health_formal_r3",
             "text": "Tũrĩ ega ithuothe. Nawe nacio cianyu?",
             "translation": "We are all well. And yours too?",
-            "audio_file": "health/turi_ega_ithuothe.wav",
-            "formality": "reciprocal"
+            "literal_meaning": "We are good all. And you and children yours?",
+            "audio_file": "audio/responses/health/turi_ega_ithuothe.wav",
+            "formality": "reciprocal",
+            "politeness_score": 9,
+            "priority": 3,
+            "notes": "Inquires about each other's children and relatives to establish social contact"
           }
         ],
+        "combined_usage": "Some people may use both 'ukuuga atía' and 'uga', beginning with the former then the latter",
         "examples": [
-          "User: Ukuuga atía → Bot: Maũndũ mothe nĩ mega. Ngatho!",
-          "User: How is everything → Bot: Nĩ mwega mũno! Ciana cĩaku ithii atía?"
+          {
+            "user_input": "Ukuuga atía",
+            "bot_response": "Maũndũ mothe nĩ mega. Ngatho!",
+            "context": "Formal inquiry after greeting"
+          },
+          {
+            "user_input": "How is everything",
+            "bot_response": "Nĩ mwega mũno! Ciana cĩaku ithii atía?",
+            "context": "Establishing social contact"
+          }
         ]
       },
       {
         "intent_id": "health_inquiry_casual",
-        "intent_name": "Casual Health Inquiry",
+        "intent_name": "Casual Health Inquiry (Uga)",
         "category": "health_inquiries",
-        "context": "follow_up",
-        "formality_level": "casual",
+        "subcategory": "follow_up",
+        "context": "post_greeting_intimate",
+        "formality_level": 3,
+        "politeness_score": 4,
         "cultural_significance": "Less formal than 'Ukuuga atía'. Used between intimate conversants or by superiors to subordinates.",
-        "usage_notes": "Some people use both, beginning with formal then casual.",
+        "usage_notes": "Signals intimacy. Sometimes used by superiors to ask about subordinates' health.",
+        "appropriate_contexts": [
+          "Between close friends",
+          "Family members",
+          "Superior to subordinate",
+          "Intimate relationships"
+        ],
+        "social_hierarchy": {
+          "superior_to_subordinate": "appropriate",
+          "intimate_friends": "appropriate",
+          "formal_situations": "inappropriate"
+        },
         "patterns": [
           "Uga",
           "Úga",
@@ -419,37 +846,66 @@
         ],
         "responses": [
           {
+            "response_id": "health_casual_r1",
             "text": "Nĩ mwega! Hatirĩ ũndũ.",
             "translation": "It's fine! Nothing much.",
-            "audio_file": "health/ni_mwega_hatiri.wav",
-            "formality": "casual"
+            "literal_meaning": "Is good! There isn't thing.",
+            "audio_file": "audio/responses/health/ni_mwega_hatiri.wav",
+            "formality": "casual",
+            "politeness_score": 4,
+            "priority": 1
           },
           {
+            "response_id": "health_casual_r2",
             "text": "Tũrĩ ega! Nawe?",
             "translation": "We are fine! And you?",
-            "audio_file": "health/turi_ega_nawe_casual.wav",
-            "formality": "intimate"
+            "literal_meaning": "We are good! And you?",
+            "audio_file": "audio/responses/health/turi_ega_nawe_casual.wav",
+            "formality": "intimate",
+            "politeness_score": 5,
+            "priority": 2
           },
           {
+            "response_id": "health_casual_r3",
             "text": "Nikwega! Ũrĩ mwega?",
             "translation": "Hello! Are you well?",
-            "audio_file": "health/nikwega_uri_mwega.wav",
-            "formality": "friendly"
+            "literal_meaning": "Welcome! You are good?",
+            "audio_file": "audio/responses/health/nikwega_uri_mwega.wav",
+            "formality": "friendly",
+            "politeness_score": 5,
+            "priority": 3
           }
         ],
         "examples": [
-          "User: Uga → Bot: Nĩ mwega! Hatirĩ ũndũ.",
-          "User: Tell me something → Bot: Tũrĩ ega! Nawe?"
+          {
+            "user_input": "Uga",
+            "bot_response": "Nĩ mwega! Hatirĩ ũndũ.",
+            "context": "Between close friends"
+          },
+          {
+            "user_input": "Tell me something",
+            "bot_response": "Tũrĩ ega! Nawe?",
+            "context": "Casual intimate greeting"
+          }
         ]
       },
       {
-        "intent_id": "greeting_with_title",
+        "intent_id": "greeting_with_professional_title",
         "intent_name": "Greeting with Professional Title",
         "category": "greetings_with_address",
+        "subcategory": "professional",
         "context": "formal_professional",
-        "formality_level": "very_formal",
-        "cultural_significance": "Shows respect and urbanity. Used when level of intimacy is low or to show speaker is cultured and polite.",
-        "usage_notes": "Greetings associated with proper term of address are more polite than those without.",
+        "formality_level": 9,
+        "politeness_score": 9,
+        "cultural_significance": "Shows respect, urbanity, and that speaker is cultured and polite. Used when level of intimacy is low.",
+        "usage_notes": "Greetings associated with proper term of address are more polite than those without. Signals respect and formality.",
+        "appropriate_contexts": [
+          "Greeting professionals",
+          "Formal business settings",
+          "Showing respect to educated people",
+          "Low intimacy, high respect situations"
+        ],
+        "social_function": "Shows speaker is knowledgeable of linguistic and social norms - seen as educated and civilized",
         "patterns": [
           "Niatia dagitari",
           "Niatia daktari",
@@ -457,47 +913,105 @@
           "Hello doctor",
           "Hello teacher",
           "Úhoro mwalimu",
-          "Úhoro daktari"
+          "Úhoro daktari",
+          "How are you doctor",
+          "How are you teacher"
         ],
         "responses": [
           {
+            "response_id": "title_r1",
             "text": "Nikwega! Ndí mwega mũno. Wĩtwa atía?",
             "translation": "Hello! I am very well. What is your name?",
-            "audio_file": "titles/nikwega_witwa.wav",
-            "formality": "professional"
+            "literal_meaning": "Welcome! I am good very. You are called what?",
+            "audio_file": "audio/responses/titles/nikwega_witwa.wav",
+            "formality": "professional",
+            "politeness_score": 9,
+            "priority": 1,
+            "notes": "Professional, inquires about name to personalize"
           },
           {
+            "response_id": "title_r2",
             "text": "Niatia! Ndí mwega. Nĩ kĩĩ kĩngĩkũteithia?",
             "translation": "Hello! I am fine. How can I help you?",
-            "audio_file": "titles/niatia_teithia.wav",
-            "formality": "professional_helpful"
+            "literal_meaning": "How are you! I am good. Is what can-I-help-you?",
+            "audio_file": "audio/responses/titles/niatia_teithia.wav",
+            "formality": "professional_helpful",
+            "politeness_score": 9,
+            "priority": 2,
+            "notes": "Service-oriented, professional"
           },
           {
+            "response_id": "title_r3",
             "text": "Úhoro! Nĩ niĩ ndakena gũkuona.",
             "translation": "Hello! I am pleased to see you.",
-            "audio_file": "titles/uhoro_ndakena.wav",
-            "formality": "warm_professional"
+            "literal_meaning": "News! Is me I-am-happy to-see-you.",
+            "audio_file": "audio/responses/titles/uhoro_ndakena.wav",
+            "formality": "warm_professional",
+            "politeness_score": 8,
+            "priority": 3,
+            "notes": "Warm but maintains professional respect"
           }
         ],
         "etiquette_rules": [
           "Shows speaker is knowledgeable of linguistic and social norms",
           "Signals respect and formality between interactants",
-          "Considered more polite than greetings without titles"
+          "Considered more polite than greetings without titles",
+          "Used among equal, unintimate people to show respect",
+          "Absolute forms of address used when level of intimacy is low"
         ],
+        "professional_titles": {
+          "dagitari/daktari": "doctor",
+          "mwalimu": "teacher",
+          "madaam": "madam (borrowed, used by educated people)",
+          "miss": "miss (borrowed, used by educated people to avoid discourteous 'kairitu')"
+        },
         "examples": [
-          "User: Niatia mwalimu → Bot: Nikwega! Ndí mwega mũno. Wĩtwa atía?",
-          "User: Hello doctor → Bot: Niatia! Ndí mwega. Nĩ kĩĩ kĩngĩkũteithia?"
+          {
+            "user_input": "Niatia mwalimu",
+            "bot_response": "Nikwega! Ndí mwega mũno. Wĩtwa atía?",
+            "context": "Student greeting teacher"
+          },
+          {
+            "user_input": "Hello doctor",
+            "bot_response": "Niatia! Ndí mwega. Nĩ kĩĩ kĩngĩkũteithia?",
+            "context": "Patient greeting doctor"
+          }
         ]
       },
       {
         "intent_id": "greeting_with_kinship",
         "intent_name": "Greeting with Kinship Term",
         "category": "greetings_with_address",
-        "context": "family_intimate",
-        "formality_level": "variable",
-        "cultural_significance": "Used to show solidarity and increase intimacy. Gikuyus often extend social titles beyond actual family.",
-        "usage_notes": "When level of rapport and intimacy are high. Can be used by elders to younger people to show solidarity.",
-        "age_variation": "Usage appropriate varies by age relationship",
+        "subcategory": "relational",
+        "context": "family_intimate_solidarity",
+        "formality_level": 5,
+        "politeness_score": 7,
+        "cultural_significance": "Used to show solidarity and increase intimacy. Gikuyus extend social titles beyond actual family to display courtesy or solidarity.",
+        "usage_notes": "When level of rapport and intimacy are relatively high. Can be used by elders to younger people to show solidarity.",
+        "appropriate_contexts": [
+          "Family greetings",
+          "Close relationships",
+          "Elder to younger (solidarity)",
+          "Showing warmth and intimacy"
+        ],
+        "generalization_for_solidarity": {
+          "description": "Gikuyus often extend social titles beyond actual family",
+          "purpose": "Display courtesy to or solidarity with recipient",
+          "examples": [
+            "Old people use 'wakia iyu/awa' (mother/father) to younger people to show solidarity and increase intimacy",
+            "Younger use 'wakia maitu/baba' to old people of parents' age",
+            "Use 'wakia cucu/guka' to greet grandparents or elderly"
+          ]
+        },
+        "age_variation": {
+          "elder_to_younger": "Shows solidarity, warmth, affection",
+          "younger_to_elder": "Shows respect, proper upbringing",
+          "peers": "Shows intimacy, family-like bond"
+        },
+        "gender_usage": {
+          "middle_aged_women": "Use kinship greetings much more than middle-aged men",
+          "notes": "To increase solidarity, middle-aged women use greetings associated with kinship terms more frequently"
+        },
         "patterns": [
           "Wakia maitu",
           "Wakia awa",
@@ -510,61 +1024,139 @@
           "Hello grandmother",
           "Hello grandfather",
           "Niatia wanyua",
-          "Hello uncle"
+          "Hello uncle",
+          "Wakwa maitu",
+          "Wakwa awa",
+          "Niatia ruciini cucu",
+          "Good morning grandmother",
+          "Niatia gacucu",
+          "Hello grandson"
         ],
         "responses": [
           {
+            "response_id": "kinship_r1",
             "text": "Nikwega mwana wakwa! Wĩ mwega?",
             "translation": "Hello my child! Are you well?",
-            "audio_file": "kinship/nikwega_mwana.wav",
+            "literal_meaning": "Welcome child mine! You are good?",
+            "audio_file": "audio/responses/kinship/nikwega_mwana.wav",
             "formality": "affectionate",
-            "notes": "Elder to younger response"
+            "politeness_score": 8,
+            "priority": 1,
+            "notes": "Elder to younger response - affectionate, paternal",
+            "usage": "Elder responding to younger person"
           },
           {
+            "response_id": "kinship_r2",
             "text": "Niatia! Ndí mwega mũno.",
             "translation": "Hello! I am very well.",
-            "audio_file": "kinship/niatia_ndi_mwega.wav",
+            "literal_meaning": "How are you! I am good very.",
+            "audio_file": "audio/responses/kinship/niatia_ndi_mwega.wav",
             "formality": "respectful",
-            "notes": "Younger to elder response"
+            "politeness_score": 7,
+            "priority": 2,
+            "notes": "Younger to elder response - respectful",
+            "usage": "Younger person responding to elder"
           },
           {
+            "response_id": "kinship_r3",
             "text": "Wakia! Tũrĩ ega ithuothe.",
             "translation": "Hello! We are all well.",
-            "audio_file": "kinship/wakia_turi_ega.wav",
-            "formality": "warm"
+            "literal_meaning": "Hello-you! We are good all.",
+            "audio_file": "audio/responses/kinship/wakia_turi_ega.wav",
+            "formality": "warm",
+            "politeness_score": 7,
+            "priority": 3,
+            "notes": "Family greeting, inclusive of household"
+          },
+          {
+            "response_id": "kinship_r4",
+            "text": "Niatia mwana wa maitũ! Ũkũ wa kũ?",
+            "translation": "Hello child of my mother! Where are you coming from?",
+            "literal_meaning": "How are you child of mother-our! You-come from where?",
+            "audio_file": "audio/responses/kinship/niatia_mwana_uku.wav",
+            "formality": "intimate",
+            "politeness_score": 7,
+            "priority": 4,
+            "notes": "Sibling-like warmth, shows genuine interest"
           }
         ],
         "kinship_terms": {
-          "maitu": "mother / respected woman of mother's age",
-          "awa": "father / respected man of father's age",
-          "cucu": "grandmother / elderly woman",
-          "guka": "grandfather / elderly man",
-          "wanyua": "paternal uncle / respected man",
-          "mwana": "child / younger person (term of endearment)",
-          "mũrũ wa maitũ": "brother / son of my mother",
-          "mwarĩ wa maitũ": "sister / daughter of my mother"
+          "immediate_family": {
+            "maitu": "mother / respected woman of mother's age",
+            "awa/baba": "father / respected man of father's age",
+            "mwana wakwa": "my child (endearment, elder to younger)",
+            "mũrũ wa maitũ": "brother / son of our mother",
+            "mwarĩ wa maitũ": "sister / daughter of our mother"
+          },
+          "extended_family": {
+            "cucu/gacucu": "grandmother/grandson (inverse term - both can use)",
+            "guka": "grandfather",
+            "wanyua": "paternal uncle / respected man (used even when greetee is superior in age)",
+            "iyu": "mother (alternative form)",
+            "gacucu": "grandson (inverse - grandmother can also be called this by grandchild)"
+          },
+          "general_kinship": {
+            "mũthuuri": "elder man / respected elder man",
+            "mũtumia mũkũrũ": "respected elder woman",
+            "mukuru": "old person / elder (can signal intimacy if used appropriately)"
+          }
+        },
+        "inverse_terms": {
+          "cucu/gacucu": "Can be used by both grandmother and grandchild to greet each other - inverse term of address",
+          "usage_note": "Shows reciprocal respect and affection across generations"
         },
         "etiquette_rules": [
           "Shows solidarity and intimacy",
           "Can be used beyond actual family relationships",
           "Middle-aged women use kinship greetings more than middle-aged men",
-          "Increases warmth and social bonding"
+          "Increases warmth and social bonding",
+          "Relational forms used when level of rapport and intimacy are relatively high",
+          "Extended social titles display courtesy to or solidarity with recipient"
         ],
         "examples": [
-          "User: Wakia maitu → Bot: Nikwega mwana wakwa! Wĩ mwega?",
-          "User: Hello father → Bot: Niatia! Ndí mwega mũno.",
-          "User: Wakia cucu → Bot: Wakia! Tũrĩ ega ithuothe."
+          {
+            "user_input": "Wakia maitu",
+            "bot_response": "Nikwega mwana wakwa! Wĩ mwega?",
+            "context": "Young person greeting elder woman",
+            "relationship": "Respectful, warm"
+          },
+          {
+            "user_input": "Hello father",
+            "bot_response": "Niatia! Ndí mwega mũno.",
+            "context": "Child greeting father or respected elder",
+            "relationship": "Filial respect"
+          },
+          {
+            "user_input": "Wakia cucu",
+            "bot_response": "Wakia! Tũrĩ ega ithuothe.",
+            "context": "Grandchild greeting grandmother or vice versa",
+            "relationship": "Intergenerational affection"
+          },
+          {
+            "user_input": "Niatia wanyua",
+            "bot_response": "Niatia mwana wa maitũ! Ũkũ wa kũ?",
+            "context": "Greeting uncle or respected elder man",
+            "relationship": "Respect, family bond"
+          }
         ]
       },
       {
         "intent_id": "greeting_to_elders",
         "intent_name": "Respectful Greeting to Elders",
         "category": "greetings",
-        "context": "intergenerational_respect",
-        "formality_level": "high",
-        "cultural_significance": "Shows proper respect to elders. Critical for social harmony and displaying good upbringing.",
+        "subcategory": "intergenerational",
+        "context": "youth_to_elder",
+        "formality_level": 8,
+        "politeness_score": 9,
+        "cultural_significance": "Critical for social harmony and displaying good upbringing. Shows proper respect to elders.",
         "usage_notes": "Always use respectful terms and honorifics with elders. May include kinship terms even with non-relatives.",
-        "age_usage": "Young to old",
+        "appropriate_contexts": [
+          "Young person greeting elder",
+          "Showing respect and proper upbringing",
+          "Traditional settings",
+          "Maintaining social harmony"
+        ],
+        "age_direction": "young_to_old",
         "patterns": [
           "Niatia mũthuuri",
           "Niatia muthuuri",
@@ -574,294 +1166,857 @@
           "Wakia cucu",
           "Wakia guka",
           "Hello grandmother",
-          "Hello grandfather"
+          "Hello grandfather",
+          "Thayu mũthuuri",
+          "Peace elder"
         ],
         "responses": [
           {
+            "response_id": "elder_r1",
             "text": "Niatia mwana wakwa! Wĩ mwega?",
             "translation": "Hello my child! Are you well?",
-            "audio_file": "elders/niatia_mwana_wakwa.wav",
+            "literal_meaning": "How are you child mine! You are good?",
+            "audio_file": "audio/responses/elders/niatia_mwana_wakwa.wav",
             "formality": "paternal",
-            "tone": "high_pitched",
-            "notes": "Elders often use high-pitched voice with equals or superiors"
+            "politeness_score": 8,
+            "priority": 1,
+            "voice_characteristics": "high_pitched_to_peers, low_pitched_to_young",
+            "notes": "Elders often use high-pitched voice with equals or superiors, low-pitched with younger"
           },
           {
+            "response_id": "elder_r2",
             "text": "Nikwega! Úkũ wa kũ?",
             "translation": "Hello! Where are you coming from?",
-            "audio_file": "elders/nikwega_uku_wa_ku.wav",
-            "formality": "caring"
+            "literal_meaning": "Welcome! You-come from where?",
+            "audio_file": "audio/responses/elders/nikwega_uku_wa_ku.wav",
+            "formality": "caring",
+            "politeness_score": 7,
+            "priority": 2,
+            "notes": "Shows genuine interest in younger person's activities"
           },
           {
+            "response_id": "elder_r3",
             "text": "Wĩ mwega mwana wakwa! Thiĩ na wega.",
             "translation": "You are well my child! Go well.",
-            "audio_file": "elders/wi_mwega_thii.wav",
-            "formality": "blessing"
+            "literal_meaning": "You are good child mine! Go with goodness.",
+            "audio_file": "audio/responses/elders/wi_mwega_thii.wav",
+            "formality": "blessing",
+            "politeness_score": 9,
+            "priority": 3,
+            "notes": "Blessing-like farewell, shows elder's affection and care"
+          },
+          {
+            "response_id": "elder_r4",
+            "text": "Wakwa maitu! Ndí mwega. Nawe?",
+            "translation": "My daughter/son! I am fine. And you?",
+            "literal_meaning": "Mine mother! I am good. And you?",
+            "audio_file": "audio/responses/elders/wakwa_maitu.wav",
+            "formality": "affectionate",
+            "politeness_score": 8,
+            "priority": 4,
+            "notes": "Old males often use 'wakwa maitu or wanyua' more than others"
           }
         ],
-        "non_verbal_etiquette": [
-          "Elders hold both hands when greeting equals or superiors",
-          "Elders use high-pitched voice with peers",
-          "Elders use low-pitched voice when greeting younger people",
-          "Prolonged greetings show deeper respect"
-        ],
+        "non_verbal_etiquette": {
+          "handshaking": {
+            "old_males_to_equals": "Hold both hands, prolong greeting",
+            "old_males_to_young": "May use one hand, shorter duration",
+            "general": "Prolonged greetings show deeper respect"
+          },
+          "voice_characteristics": {
+            "old_to_old": "High-pitched voice",
+            "old_to_young": "Low-pitched voice",
+            "importance": "Paralinguistic components reveal age and knowledge about cultural greetings"
+          },
+          "body_language": {
+            "importance": "Extralinguistic components are essential",
+            "greeting_duration": "Old males prolong greetings when greeting equals or superiors"
+          }
+        },
+        "elder_greeting_patterns": {
+          "preferred_terms": [
+            "Thayu (used more by old males)",
+            "Wakwa maitu/wanyua (how are you my daughter/son)"
+          ],
+          "characteristics": [
+            "Use more courteous, longer greeting terms",
+            "Have broader communicative competence",
+            "More experience in social interactions",
+            "Use high-pitched voice with peers",
+            "Use low-pitched voice with younger people"
+          ]
+        },
         "examples": [
-          "User: Wakia cucu → Bot: Niatia mwana wakwa! Wĩ mwega?",
-          "User: Hello grandfather → Bot: Nikwega! Úkũ wa kũ?"
+          {
+            "user_input": "Wakia cucu",
+            "bot_response": "Niatia mwana wakwa! Wĩ mwega?",
+            "context": "Grandchild greeting grandmother",
+            "tone": "low_pitched_from_elder"
+          },
+          {
+            "user_input": "Hello grandfather",
+            "bot_response": "Nikwega! Úkũ wa kũ?",
+            "context": "Young person greeting grandfather",
+            "shows": "Elder's genuine interest"
+          },
+          {
+            "user_input": "Niatia mũthuuri",
+            "bot_response": "Wĩ mwega mwana wakwa! Thiĩ na wega.",
+            "context": "Respectful greeting to elder man",
+            "includes": "blessing"
+          }
         ]
       },
       {
-        "intent_id": "greeting_intimacy_warmth",
-        "intent_name": "Greeting with Added Warmth",
+        "intent_id": "greeting_first_name",
+        "intent_name": "Greeting with First Name",
+        "category": "greetings_with_address",
+        "subcategory": "informal_familiar",
+        "context": "casual_familiar",
+        "formality_level": 2,
+        "politeness_score": 3,
+        "cultural_significance": "Can be discourteous depending on age/status relationship. Generally used by superiors or among equals.",
+        "usage_notes": "Rarely directed from inferiors to superiors. May be considered impolite in many contexts.",
+        "appropriate_contexts": [
+          "Superior to subordinate",
+          "Among equals (peers)",
+          "Close friends of same age",
+          "Family members of similar age"
+        ],
+        "inappropriate_contexts": [
+          "Younger person to older person (without permission)",
+          "Subordinate to superior",
+          "First meeting",
+          "Formal situations"
+        ],
+        "social_restrictions": {
+          "direction": "Used by superiors or among equals, rarely from inferiors to superiors",
+          "age_factor": "It is effrontery for younger person to call older by first name without being asked to do so",
+          "character_judgment": "Only a very underbred, thick-skinned person would attempt it (Post, 1992:54)"
+        },
+        "patterns": [
+          "Niatia [Name]",
+          "Niatia Wanjiru",
+          "Niatia Kamau",
+          "Hello [Name]",
+          "Hi [Name]"
+        ],
+        "responses": [
+          {
+            "response_id": "firstname_r1",
+            "text": "Niatia! Ndí mwega.",
+            "translation": "Hello! I am fine.",
+            "literal_meaning": "How are you! I am good.",
+            "audio_file": "audio/responses/names/niatia_ndi_mwega.wav",
+            "formality": "casual",
+            "politeness_score": 5,
+            "priority": 1,
+            "usage": "Among equals or subordinate to superior"
+          },
+          {
+            "response_id": "firstname_r2",
+            "text": "Nikwega! Wĩ mwega?",
+            "translation": "Hello! Are you well?",
+            "literal_meaning": "Welcome! You are good?",
+            "audio_file": "audio/responses/names/nikwega_wi_mwega.wav",
+            "formality": "friendly",
+            "politeness_score": 5,
+            "priority": 2,
+            "usage": "Close friends, peers"
+          }
+        ],
+        "etiquette_warnings": [
+          "Considered impolite in many contexts",
+          "Shows lack of proper upbringing if used inappropriately",
+          "May damage social relationships if used by younger to older",
+          "Should only be used when invited or among close equals"
+        ],
+        "examples": [
+          {
+            "user_input": "Niatia Wanjiru",
+            "bot_response": "Niatia! Ndí mwega.",
+            "context": "Superior greeting subordinate or peers greeting",
+            "appropriate": "If speaker is elder or peer"
+          },
+          {
+            "user_input": "Hello Kamau",
+            "bot_response": "Nikwega! Wĩ mwega?",
+            "context": "Among friends of same age",
+            "appropriate": "Among equals"
+          }
+        ],
+        "related_discourteous_terms": [
+          {
+            "term": "Niatia kairitu",
+            "translation": "Hello girl",
+            "issue": "Discourteous to adult women",
+            "usage": "Sometimes used by old men to 30-year-old females whose names they don't know",
+            "problem": "Lack of suitable terms for unacquainted adult females"
+          },
+          {
+            "term": "Niatia kahii",
+            "translation": "Hello boy",
+            "issue": "Discourteous to adult men",
+            "usage": "Used by elders to young people",
+            "acceptability": "Low - shows disrespect"
+          },
+          {
+            "term": "Niatia mukuru",
+            "translation": "Hello old woman/man",
+            "issue": "Can be discourteous with unacquainted female",
+            "acceptable_usage": "Signals intimacy between conversants if used appropriately",
+            "problem": "If used with unacquainted person, considered discourteous"
+          }
+        ],
+        "alternatives_for_adult_females": [
+          "madaam (madam) - borrowed term used by educated people",
+          "miss - borrowed term",
+          "lady - borrowed term",
+          "Professional title if known (mwalimu, daktari)"
+        ],
+        "cultural_note": "The normal terms for addressing females are 'kairitu' (girl - discourteous) and 'mutumia' (woman - husband-specific, used only by some uncivilized husbands). Educated people avoid both and use borrowed English terms."
+      },
+      {
+        "intent_id": "greeting_warmth_nikwega_nikwega",
+        "intent_name": "Greeting with Added Warmth (Nikwega nikwega)",
         "category": "greetings",
-        "context": "intimate_warm",
-        "formality_level": "warm",
+        "subcategory": "warm_welcome",
+        "context": "intimate_hospitable",
+        "formality_level": 5,
+        "politeness_score": 8,
         "cultural_significance": "Adding 'nikwega nikwega' to any greeting shows respect and warmth of welcome.",
-        "usage_notes": "Can be added to any greeting to increase warmth and show genuine welcome.",
+        "usage_notes": "Can be added to any greeting to increase warmth and show genuine welcome. Shows hospitality.",
+        "appropriate_contexts": [
+          "Welcoming visitors to home",
+          "Greeting close friends",
+          "Showing genuine happiness to see someone",
+          "Hospitable situations"
+        ],
         "patterns": [
           "Nikwega nikwega",
           "Ni kwega ni kwega",
           "Welcome welcome",
           "Fine fine"
         ],
+        "augmentation_function": "Gikuyus often add 'nikwega nikwega' to any greeting in order to show respect and warmth of welcome",
         "responses": [
           {
+            "response_id": "warmth_r1",
             "text": "Nikwega nikwega! Ndí mwega mũno!",
             "translation": "Welcome! I am very well!",
-            "audio_file": "warmth/nikwega_nikwega_response.wav",
-            "formality": "very_warm"
+            "literal_meaning": "Welcome welcome! I am good very!",
+            "audio_file": "audio/responses/warmth/nikwega_nikwega_response.wav",
+            "formality": "very_warm",
+            "politeness_score": 8,
+            "priority": 1
           },
           {
+            "response_id": "warmth_r2",
             "text": "Nĩ niĩ ndakena gũkuona!",
             "translation": "I am happy to see you!",
-            "audio_file": "warmth/ni_nii_ndakena.wav",
-            "formality": "affectionate"
+            "literal_meaning": "Is me I-am-happy to-see-you!",
+            "audio_file": "audio/responses/warmth/ni_nii_ndakena.wav",
+            "formality": "affectionate",
+            "politeness_score": 8,
+            "priority": 2
           },
           {
+            "response_id": "warmth_r3",
             "text": "Wĩ mwega! Karibũ!",
             "translation": "You are well! Welcome!",
-            "audio_file": "warmth/wi_mwega_karibu.wav",
-            "formality": "hospitable"
+            "literal_meaning": "You are good! Welcome! (Swahili loanword)",
+            "audio_file": "audio/responses/warmth/wi_mwega_karibu.wav",
+            "formality": "hospitable",
+            "politeness_score": 7,
+            "priority": 3
           }
         ],
         "examples": [
-          "User: Nikwega nikwega → Bot: Nikwega nikwega! Ndí mwega mũno!",
-          "User: Welcome → Bot: Nĩ niĩ ndakena gũkuona!"
+          {
+            "user_input": "Nikwega nikwega",
+            "bot_response": "Nikwega nikwega! Ndí mwega mũno!",
+            "context": "Warm welcome, visitor arriving"
+          },
+          {
+            "user_input": "Welcome",
+            "bot_response": "Nĩ niĩ ndakena gũkuona!",
+            "context": "Expressing genuine happiness"
+          }
+        ]
+      },
+      {
+        "intent_id": "user_states_fine",
+        "intent_name": "User States They Are Fine",
+        "category": "responses",
+        "subcategory": "health_status",
+        "context": "response_to_inquiry",
+        "formality_level": 5,
+        "politeness_score": 6,
+        "patterns": [
+          "Ndí mwega",
+          "Ndi mwega",
+          "I am fine",
+          "I'm fine",
+          "I'm good",
+          "I am good",
+          "Ndímwega",
+          "Ndímwega mũno",
+          "I am doing great",
+          "Great",
+          "Good",
+          "Fine",
+          "Tũrĩ ega",
+          "We are fine"
+        ],
+        "responses": [
+          {
+            "response_id": "user_fine_r1",
+            "text": "Ní wega! Níndakena kúigua úguo.",
+            "translation": "That's good! I'm glad to hear that.",
+            "literal_meaning": "Is good! I-am-happy to-hear that.",
+            "audio_file": "audio/responses/acknowledgment/ni_wega_glad.wav",
+            "formality": "neutral",
+            "politeness_score": 7,
+            "priority": 1
+          },
+          {
+            "response_id": "user_fine_r2",
+            "text": "Wega mũno! Nĩ kĩĩ kĩngĩkũteithia?",
+            "translation": "Very good! What can I help you with?",
+            "literal_meaning": "Good very! Is what can-I-help-you?",
+            "audio_file": "audio/responses/acknowledgment/wega_muno_help.wav",
+            "formality": "helpful",
+            "politeness_score": 8,
+            "priority": 2
+          },
+          {
+            "response_id": "user_fine_r3",
+            "text": "Ní wega! Gía na múthenya mwega.",
+            "translation": "That's good! Have a good day.",
+            "literal_meaning": "Is good! Go with day good.",
+            "audio_file": "audio/responses/acknowledgment/ni_wega_good_day.wav",
+            "formality": "polite",
+            "politeness_score": 7,
+            "priority": 3
+          },
+          {
+            "response_id": "user_fine_r4",
+            "text": "Nĩ wega mũno! Thiĩ na wega.",
+            "translation": "Very good! Go well.",
+            "literal_meaning": "Is good very! Go with goodness.",
+            "audio_file": "audio/responses/acknowledgment/ni_wega_muno_thii.wav",
+            "formality": "blessing",
+            "politeness_score": 7,
+            "priority": 4
+          }
+        ],
+        "examples": [
+          {
+            "user_input": "Ndí mwega",
+            "bot_response": "Ní wega! Níndakena kúigua úguo.",
+            "context": "Acknowledging user's well-being"
+          },
+          {
+            "user_input": "I am fine",
+            "bot_response": "Wega mũno! Nĩ kĩĩ kĩngĩkũteithia?",
+            "context": "Moving to help"
+          }
+        ]
+      },
+      {
+        "intent_id": "nice_to_meet_you",
+        "intent_name": "Nice to Meet You",
+        "category": "greetings",
+        "subcategory": "introduction",
+        "context": "first_meeting",
+        "formality_level": 7,
+        "politeness_score": 8,
+        "patterns": [
+          "Níndakena ní gúkuona",
+          "Nindakena ni gukuona",
+          "Nice to meet you",
+          "Good to meet you",
+          "Pleased to meet you",
+          "Happy to meet you"
+        ],
+        "responses": [
+          {
+            "response_id": "meet_r1",
+            "text": "Níndakena ní gúkuona o na niĩ!",
+            "translation": "Nice to meet you too!",
+            "literal_meaning": "I-am-happy to-see-you also and me!",
+            "audio_file": "audio/responses/introductions/nice_to_meet_too.wav",
+            "formality": "polite",
+            "politeness_score": 8,
+            "priority": 1
+          },
+          {
+            "response_id": "meet_r2",
+            "text": "Nĩ niĩ ndakena mũno!",
+            "translation": "I am very pleased too!",
+            "literal_meaning": "Is me I-am-happy very!",
+            "audio_file": "audio/responses/introductions/pleased_too.wav",
+            "formality": "polite",
+            "politeness_score": 8,
+            "priority": 2
+          },
+          {
+            "response_id": "meet_r3",
+            "text": "Wĩtwa atía?",
+            "translation": "What is your name?",
+            "literal_meaning": "You-are-called what?",
+            "audio_file": "audio/responses/introductions/witwa_atia.wav",
+            "formality": "friendly",
+            "politeness_score": 7,
+            "priority": 3,
+            "notes": "Moves conversation forward to introductions"
+          }
+        ],
+        "examples": [
+          {
+            "user_input": "Níndakena ní gúkuona",
+            "bot_response": "Níndakena ní gúkuona o na niĩ!",
+            "context": "First meeting"
+          },
+          {
+            "user_input": "Nice to meet you",
+            "bot_response": "Nĩ niĩ ndakena mũno!",
+            "context": "Introduction"
+          }
+        ]
+      },
+      {
+        "intent_id": "thank_you",
+        "intent_name": "Thank You / Gratitude",
+        "category": "gratitude",
+        "subcategory": "appreciation",
+        "context": "expressing_thanks",
+        "formality_level": 5,
+        "politeness_score": 7,
+        "patterns": [
+          "Ní wega",
+          "Ni wega",
+          "Thank you",
+          "Thanks",
+          "Thank you very much",
+          "Thanks a lot",
+          "Ngatho",
+          "Ngathomo",
+          "Nĩ ngatho",
+          "Nĩ ngatho mũno"
+        ],
+        "responses": [
+          {
+            "response_id": "thanks_r1",
+            "text": "Wĩ mwega! Ũrĩ o hau!",
+            "translation": "You're welcome! You are welcome!",
+            "literal_meaning": "You are good! You are there!",
+            "audio_file": "audio/responses/gratitude/wi_mwega_uri_hau.wav",
+            "formality": "warm",
+            "politeness_score": 7,
+            "priority": 1
+          },
+          {
+            "response_id": "thanks_r2",
+            "text": "Nĩ wega! Kaĩ ũngĩenda kĩndũ kĩngĩ?",
+            "translation": "You're welcome! Do you need anything else?",
+            "literal_meaning": "Is good! Question you-want thing other?",
+            "audio_file": "audio/responses/gratitude/ni_wega_kindu_kingi.wav",
+            "formality": "helpful",
+            "politeness_score": 8,
+            "priority": 2
+          },
+          {
+            "response_id": "thanks_r3",
+            "text": "Ní wega mũno!",
+            "translation": "You're very welcome!",
+            "literal_meaning": "Is good very!",
+            "audio_file": "audio/responses/gratitude/ni_wega_muno.wav",
+            "formality": "gracious",
+            "politeness_score": 7,
+            "priority": 3
+          },
+          {
+            "response_id": "thanks_r4",
+            "text": "Nĩ wega! Thiĩ na wega.",
+            "translation": "You're welcome! Go well.",
+            "literal_meaning": "Is good! Go with goodness.",
+            "audio_file": "audio/responses/gratitude/ni_wega_thii.wav",
+            "formality": "polite_farewell",
+            "politeness_score": 7,
+            "priority": 4
+          }
+        ],
+        "examples": [
+          {
+            "user_input": "Ngatho",
+            "bot_response": "Wĩ mwega! Ũrĩ o hau!",
+            "context": "Expressing gratitude"
+          },
+          {
+            "user_input": "Thank you",
+            "bot_response": "Nĩ wega! Kaĩ ũngĩenda kĩndũ kĩngĩ?",
+            "context": "Service context"
+          }
         ]
       },
       {
         "intent_id": "farewell_general",
         "intent_name": "General Farewell",
         "category": "farewells",
-        "context": "departure",
-        "formality_level": "medium",
-        "cultural_significance": "Different farewells for person leaving vs. person staying. Shows understanding of social context.",
+        "subcategory": "departure",
+        "context": "leaving",
+        "formality_level": 5,
+        "politeness_score": 6,
+        "cultural_significance": "Different farewells for person leaving vs person staying. Shows understanding of social context.",
+        "usage_notes": "Use 'Thiĩ na wega' (go well) to person leaving, 'Tigwo na wega' (stay well) to person staying.",
         "patterns": [
           "Goodbye",
           "Bye",
+          "See you",
           "Farewell",
-          "See you"
+          "Take care",
+          "See you later",
+          "Bye bye"
         ],
         "responses": [
           {
+            "response_id": "farewell_r1",
             "text": "Thiĩ na wega!",
-            "translation": "Go well!",
-            "audio_file": "farewells/thii_na_wega.wav",
+            "translation": "Go well! / Goodbye!",
+            "literal_meaning": "Go with goodness!",
+            "audio_file": "audio/responses/farewells/thii_na_wega.wav",
             "formality": "neutral",
-            "usage": "To someone leaving"
+            "politeness_score": 6,
+            "priority": 1,
+            "usage": "To someone leaving",
+            "notes": "Person staying says this to person leaving"
           },
           {
-            "text": "Tigwo na wega!",
-            "translation": "Stay well!",
-            "audio_file": "farewells/tigwo_na_wega.wav",
-            "formality": "neutral",
-            "usage": "To someone staying"
-          },
-          {
+            "response_id": "farewell_r2",
             "text": "Tuonane mahinda mangí!",
             "translation": "See you another time!",
-            "audio_file": "farewells/tuonane_mahinda.wav",
-            "formality": "casual"
+            "literal_meaning": "Let-us-see-each-other times other!",
+            "audio_file": "audio/responses/farewells/tuonane_mahinda.wav",
+            "formality": "casual",
+            "politeness_score": 5,
+            "priority": 2,
+            "usage": "General farewell"
+          },
+          {
+            "response_id": "farewell_r3",
+            "text": "Tigwo na wega!",
+            "translation": "Stay well! / Goodbye!",
+            "literal_meaning": "Stay with goodness!",
+            "audio_file": "audio/responses/farewells/tigwo_na_wega.wav",
+            "formality": "neutral",
+            "politeness_score": 6,
+            "priority": 3,
+            "usage": "To someone staying",
+            "notes": "Person leaving says this to person staying"
+          },
+          {
+            "response_id": "farewell_r4",
+            "text": "Thiĩ na wega! Gía na múthenya mwega.",
+            "translation": "Go well! Have a good day.",
+            "literal_meaning": "Go with goodness! Go with day good.",
+            "audio_file": "audio/responses/farewells/thii_muthenya.wav",
+            "formality": "warm",
+            "politeness_score": 7,
+            "priority": 4,
+            "usage": "To someone leaving during day"
           }
         ],
+        "contextual_usage": {
+          "person_leaving_says": "Tigwo na wega (Stay well)",
+          "person_staying_says": "Thiĩ na wega (Go well)"
+        },
         "examples": [
-          "User: Goodbye → Bot: Thiĩ na wega!",
-          "User: See you → Bot: Tuonane mahinda mangí!"
+          {
+            "user_input": "Goodbye",
+            "bot_response": "Thiĩ na wega!",
+            "context": "User is leaving"
+          },
+          {
+            "user_input": "See you",
+            "bot_response": "Tuonane mahinda mangí!",
+            "context": "Casual departure"
+          }
         ]
       },
       {
         "intent_id": "farewell_see_you_soon",
         "intent_name": "See You Soon",
         "category": "farewells",
-        "context": "departure_near_future",
-        "formality_level": "friendly",
+        "subcategory": "departure_near_future",
+        "context": "temporary_goodbye",
+        "formality_level": 4,
+        "politeness_score": 6,
         "patterns": [
           "Tuonane ica ikuhí",
           "Tuonane ica ikuhi",
           "See you soon",
-          "See you shortly"
+          "See you shortly",
+          "Talk to you soon",
+          "Catch you later",
+          "Until soon"
         ],
         "responses": [
           {
-            "text": "Ĩĩ, tuonane o ica! Thiĩ na wega.",
-            "translation": "Yes, see you soon! Go well.",
-            "audio_file": "farewells/ii_tuonane_ica.wav",
-            "formality": "warm"
+            "response_id": "soon_r1",
+            "text": "Tuonane ica ikuhí! Thiĩ na wega.",
+            "translation": "See you soon! Go well.",
+            "literal_meaning": "Let-us-see-each-other soon near! Go with goodness.",
+            "audio_file": "audio/responses/farewells/tuonane_ica_ikuhi.wav",
+            "formality": "friendly",
+            "politeness_score": 7,
+            "priority": 1
           },
           {
+            "response_id": "soon_r2",
+            "text": "Ĩĩ, tuonane o ica! Tigwo na wega.",
+            "translation": "Yes, see you soon! Stay well.",
+            "literal_meaning": "Yes, let-us-see-each-other just soon! Stay with goodness.",
+            "audio_file": "audio/responses/farewells/ii_tuonane_ica.wav",
+            "formality": "warm",
+            "politeness_score": 7,
+            "priority": 2
+          },
+          {
+            "response_id": "soon_r3",
             "text": "Tuonane! Gía na múthenya mwega.",
             "translation": "See you! Have a good day.",
-            "audio_file": "farewells/tuonane_muthenya.wav",
-            "formality": "polite"
+            "literal_meaning": "Let-us-see-each-other! Go with day good.",
+            "audio_file": "audio/responses/farewells/tuonane_good_day.wav",
+            "formality": "polite",
+            "politeness_score": 7,
+            "priority": 3
           }
         ],
         "examples": [
-          "User: Tuonane ica ikuhí → Bot: Ĩĩ, tuonane o ica! Thiĩ na wega."
-        ]
-      },
-      {
-        "intent_id": "good_night",
-        "intent_name": "Good Night",
-        "category": "farewells",
-        "context": "nighttime",
-        "time_range": "21:00-05:00",
-        "patterns": [
-          "Good night",
-          "Night",
-          "Sleep well",
-          "Úhoro wa ũtukũ",
-          "Komera wega"
-        ],
-        "responses": [
           {
-            "text": "Úhoro wa ũtukũ! Komera wega.",
-            "translation": "Good night! Sleep well.",
-            "audio_file": "farewells/uhoro_utuku_komera.wav",
-            "formality": "neutral"
+            "user_input": "Tuonane ica ikuhí",
+            "bot_response": "Tuonane ica ikuhí! Thiĩ na wega.",
+            "context": "Temporary parting"
           },
           {
-            "text": "Komera wega! Túonane rúciní.",
-            "translation": "Sleep well! See you in the morning.",
-            "audio_file": "farewells/komera_tuonane_rucini.wav",
-            "formality": "warm"
+            "user_input": "See you soon",
+            "bot_response": "Ĩĩ, tuonane o ica! Tigwo na wega.",
+            "context": "Brief farewell"
           }
-        ],
-        "examples": [
-          "User: Good night → Bot: Úhoro wa ũtukũ! Komera wega."
-        ]
-      },
-      {
-        "intent_id": "thank_you",
-        "intent_name": "Thank You",
-        "category": "gratitude",
-        "context": "appreciation",
-        "patterns": [
-          "Ngatho",
-          "Ngathomo",
-          "Thank you",
-          "Thanks",
-          "Ní wega",
-          "Ni wega"
-        ],
-        "responses": [
-          {
-            "text": "Wĩ mwega! Ũrĩ o hau!",
-            "translation": "You're welcome! You are welcome there!",
-            "audio_file": "gratitude/wi_mwega_uri_hau.wav",
-            "formality": "warm"
-          },
-          {
-            "text": "Nĩ wega! Kaĩ ũngĩenda kĩndũ kĩngĩ?",
-            "translation": "You're welcome! Do you need anything else?",
-            "audio_file": "gratitude/ni_wega_kindu_kingi.wav",
-            "formality": "helpful"
-          },
-          {
-            "text": "Ní wega mũno!",
-            "translation": "You're very welcome!",
-            "audio_file": "gratitude/ni_wega_muno.wav",
-            "formality": "gracious"
-          }
-        ],
-        "examples": [
-          "User: Ngatho → Bot: Wĩ mwega! Ũrĩ o hau!",
-          "User: Thank you → Bot: Nĩ wega! Kaĩ ũngĩenda kĩndũ kĩngĩ?"
         ]
       },
       {
         "intent_id": "have_good_day",
         "intent_name": "Have a Good Day",
         "category": "well_wishes",
-        "context": "blessing",
+        "subcategory": "blessing",
+        "context": "day_blessing",
+        "formality_level": 6,
+        "politeness_score": 7,
         "patterns": [
           "Gía na múthenya mwega",
           "Gia na muthenya mwega",
           "Have a good day",
-          "Have a nice day"
+          "Have a nice day",
+          "Have a great day",
+          "Enjoy your day"
         ],
         "responses": [
           {
+            "response_id": "goodday_r1",
             "text": "Ngatho! Nawe gía na múthenya mwega!",
             "translation": "Thank you! You too have a good day!",
-            "audio_file": "wishes/nawe_gia_muthenya.wav",
-            "formality": "reciprocal"
+            "literal_meaning": "Thanks! And you go with day good!",
+            "audio_file": "audio/responses/wishes/nawe_gia_muthenya.wav",
+            "formality": "reciprocal",
+            "politeness_score": 7,
+            "priority": 1
           },
           {
+            "response_id": "goodday_r2",
+            "text": "Nĩ niĩ ndakena! Nawe ũgũo noguo!",
+            "translation": "Thank you! You too likewise!",
+            "literal_meaning": "Is me I-am-happy! And you that so-too!",
+            "audio_file": "audio/responses/wishes/nawe_uguo_noguo.wav",
+            "formality": "warm",
+            "politeness_score": 7,
+            "priority": 2
+          },
+          {
+            "response_id": "goodday_r3",
             "text": "Wĩ mwega! Nawe thiĩ na wega!",
             "translation": "Thank you! You go well too!",
-            "audio_file": "wishes/wi_mwega_thii.wav",
-            "formality": "warm"
+            "literal_meaning": "You are good! And you go with goodness!",
+            "audio_file": "audio/responses/wishes/nawe_thii_wega.wav",
+            "formality": "neutral",
+            "politeness_score": 6,
+            "priority": 3
           }
         ],
         "examples": [
-          "User: Gía na múthenya mwega → Bot: Ngatho! Nawe gía na múthenya mwega!"
+          {
+            "user_input": "Gía na múthenya mwega",
+            "bot_response": "Ngatho! Nawe gía na múthenya mwega!",
+            "context": "Well-wishing"
+          },
+          {
+            "user_input": "Have a good day",
+            "bot_response": "Wĩ mwega! Nawe thiĩ na wega!",
+            "context": "Parting blessing"
+          }
+        ]
+      },
+      {
+        "intent_id": "good_night",
+        "intent_name": "Good Night",
+        "category": "farewells",
+        "subcategory": "nighttime",
+        "context": "night_farewell",
+        "time_range": "21:00-05:00",
+        "formality_level": 5,
+        "politeness_score": 6,
+        "patterns": [
+          "Good night",
+          "Night",
+          "Sleep well",
+          "Sweet dreams",
+          "Nighty night",
+          "Úhoro wa ũtukũ",
+          "Uhoro wa utuku",
+          "Komera wega"
+        ],
+        "responses": [
+          {
+            "response_id": "night_r1",
+            "text": "Úhoro wa ũtukũ! Komera wega.",
+            "translation": "Good night! Sleep well.",
+            "literal_meaning": "News of night! Sleep good.",
+            "audio_file": "audio/responses/farewells/uhoro_utuku.wav",
+            "formality": "neutral",
+            "politeness_score": 6,
+            "priority": 1
+          },
+          {
+            "response_id": "night_r2",
+            "text": "Komera wega! Túonane rúciní.",
+            "translation": "Sleep well! See you in the morning.",
+            "literal_meaning": "Sleep good! Let-us-see-each-other morning.",
+            "audio_file": "audio/responses/farewells/komera_wega_rucini.wav",
+            "formality": "warm",
+            "politeness_score": 7,
+            "priority": 2
+          },
+          {
+            "response_id": "night_r3",
+            "text": "Tigwo na wega! Úhoro wa ũtukũ.",
+            "translation": "Stay well! Good night.",
+            "literal_meaning": "Stay with goodness! News of night.",
+            "audio_file": "audio/responses/farewells/tigwo_uhoro_utuku.wav",
+            "formality": "polite",
+            "politeness_score": 6,
+            "priority": 3
+          }
+        ],
+        "examples": [
+          {
+            "user_input": "Good night",
+            "bot_response": "Úhoro wa ũtukũ! Komera wega.",
+            "context": "Nighttime farewell",
+            "time": "22:00"
+          },
+          {
+            "user_input": "Sleep well",
+            "bot_response": "Komera wega! Túonane rúciní.",
+            "context": "Before bed",
+            "time": "23:00"
+          }
         ]
       },
       {
         "intent_id": "yes_affirmation",
-        "intent_name": "Yes/Affirmation",
+        "intent_name": "Yes / Affirmation",
         "category": "confirmations",
-        "context": "agreement",
+        "subcategory": "agreement",
+        "context": "positive_response",
+        "formality_level": 3,
+        "politeness_score": 5,
         "patterns": [
-          "Ĩĩ",
-          "Ii",
           "Yes",
           "Yeah",
+          "Yep",
+          "Sure",
+          "Okay",
+          "OK",
+          "Alright",
+          "Ĩĩ",
+          "Ii",
           "Nĩguo",
           "Niguo",
-          "Okay",
           "Nĩ ũguo",
           "Ni uguo"
         ],
         "responses": [
           {
-            "text": "Nĩ wega! Nĩ kĩĩ kĩngĩ?",
-            "translation": "Good! What else?",
-            "audio_file": "confirmations/ni_wega_kii_kingi.wav",
-            "formality": "neutral"
+            "response_id": "yes_r1",
+            "text": "Ĩĩ, nĩ wega! Nĩ kĩĩ kĩngĩ?",
+            "translation": "Yes, good! What else?",
+            "literal_meaning": "Yes, is good! Is what other?",
+            "audio_file": "audio/responses/confirmations/ii_ni_wega.wav",
+            "formality": "neutral",
+            "politeness_score": 5,
+            "priority": 1
           },
           {
+            "response_id": "yes_r2",
             "text": "Nĩ wega mũno! Thiiaga na mbere.",
             "translation": "Very good! Continue.",
-            "audio_file": "confirmations/ni_wega_thiia_mbere.wav",
-            "formality": "encouraging"
+            "literal_meaning": "Is good very! Go-continue with front.",
+            "audio_file": "audio/responses/confirmations/ni_wega_continue.wav",
+            "formality": "encouraging",
+            "politeness_score": 6,
+            "priority": 2
+          },
+          {
+            "response_id": "yes_r3",
+            "text": "Ĩĩ, nĩndakúigua.",
+            "translation": "Yes, I understand you.",
+            "literal_meaning": "Yes, I-you-understand.",
+            "audio_file": "audio/responses/confirmations/ii_ndakuigua.wav",
+            "formality": "acknowledging",
+            "politeness_score": 5,
+            "priority": 3
           }
         ],
         "examples": [
-          "User: Ĩĩ → Bot: Nĩ wega! Nĩ kĩĩ kĩngĩ?",
-          "User: Yes → Bot: Nĩ wega mũno! Thiiaga na mbere."
+          {
+            "user_input": "Ĩĩ",
+            "bot_response": "Ĩĩ, nĩ wega! Nĩ kĩĩ kĩngĩ?",
+            "context": "Agreeing"
+          },
+          {
+            "user_input": "Yes",
+            "bot_response": "Nĩ wega mũno! Thiiaga na mbere.",
+            "context": "Encouraging continuation"
+          }
         ]
       },
       {
         "intent_id": "no_negation",
-        "intent_name": "No/Negation",
+        "intent_name": "No / Negation",
         "category": "confirmations",
-        "context": "disagreement",
+        "subcategory": "disagreement",
+        "context": "negative_response",
+        "formality_level": 3,
+        "politeness_score": 4,
         "patterns": [
+          "No",
+          "Nope",
+          "Nah",
+          "Not really",
           "Aca",
           "Hatirí",
           "Hatiri",
-          "No",
-          "Nope",
           "Ũhũ",
           "Uhu",
           "Aca ũguo",
@@ -869,21 +2024,47 @@
         ],
         "responses": [
           {
+            "response_id": "no_r1",
             "text": "Nĩ wega, ndĩkúigua. Nĩ kĩĩ kĩngĩenda?",
             "translation": "Okay, I understand. What do you want?",
-            "audio_file": "confirmations/ni_wega_ndikuigua.wav",
-            "formality": "understanding"
+            "literal_meaning": "Is good, I-you-understand. Is what you-want?",
+            "audio_file": "audio/responses/confirmations/ni_wega_ndikuigua.wav",
+            "formality": "understanding",
+            "politeness_score": 6,
+            "priority": 1
           },
           {
+            "response_id": "no_r2",
             "text": "Ĩĩ, ndagúthaya. Njĩĩra rĩngĩ?",
             "translation": "Yes, I hear you. Another way?",
-            "audio_file": "confirmations/ii_ndaguthaya.wav",
-            "formality": "accommodating"
+            "literal_meaning": "Yes, I-you-hear. Way other?",
+            "audio_file": "audio/responses/confirmations/ii_ndaguthaya.wav",
+            "formality": "accommodating",
+            "politeness_score": 6,
+            "priority": 2
+          },
+          {
+            "response_id": "no_r3",
+            "text": "Nĩ wega. Kaĩ ũngĩenda ũteithio?",
+            "translation": "Okay. Would you like help?",
+            "literal_meaning": "Is good. Question you-want help?",
+            "audio_file": "audio/responses/confirmations/ni_wega_uteithio.wav",
+            "formality": "helpful",
+            "politeness_score": 6,
+            "priority": 3
           }
         ],
         "examples": [
-          "User: Aca → Bot: Nĩ wega, ndĩkúigua. Nĩ kĩĩ kĩngĩenda?",
-          "User: No → Bot: Ĩĩ, ndagúthaya. Njĩĩra rĩngĩ?"
+          {
+            "user_input": "Aca",
+            "bot_response": "Nĩ wega, ndĩkúigua. Nĩ kĩĩ kĩngĩenda?",
+            "context": "Disagreeing"
+          },
+          {
+            "user_input": "No",
+            "bot_response": "Ĩĩ, ndagúthaya. Njĩĩra rĩngĩ?",
+            "context": "Offering alternatives"
+          }
         ]
       }
     ],
@@ -895,7 +2076,7 @@
         "ndí": "I am (first person singular)",
         "tũrĩ": "we are",
         "nawe": "and you / you too",
-        "ngatho": "thank you",
+        "ngatho": "thank you / thanks",
         "ní": "it is / for emphasis",
         "atía": "how / what",
         "úmuthí": "today",
@@ -908,53 +2089,89 @@
         "mũno": "very / very much",
         "gía": "go / have",
         "thiĩ": "go",
-        "tigwo": "stay",
+        "tigwo": "stay / remain",
         "tuonane": "see you / let us see each other",
         "ica": "soon",
         "ikuhí": "near / soon",
         "mahinda": "times",
-        "mangí": "other / again",
+        "mangí": "other / again / more",
         "komera": "sleep",
         "ĩĩ": "yes",
         "aca": "no / not",
         "wĩtwa": "you are called / your name",
         "ndakena": "I am happy / glad",
         "ukuuga": "you tell / you say",
-        "uga": "tell / say (informal)",
+        "uga": "tell / say (informal command)",
         "ciana": "children",
         "mwana": "child",
+        "wakwa": "mine / my",
+        "waku": "yours / your",
         "muriega": "you (plural) are well",
-        "nikwega": "hello / welcome"
+        "nikwega": "hello / welcome / fine",
+        "úkũ": "you come",
+        "kũ": "where / place",
+        "hatirĩ": "there isn't",
+        "ũndũ": "thing",
+        "kĩndũ": "thing (diminutive)",
+        "kĩĩ": "what",
+        "wĩ": "you are",
+        "ũrĩ": "you are (alternative form)"
       },
       "time_periods": {
         "rúciní": "morning (05:00-12:00)",
         "míaraho": "afternoon (12:00-17:00)",
         "húainí": "evening (17:00-21:00)",
+        "hwai-ini": "evening (alternative spelling)",
         "ũtukũ": "night (21:00-05:00)"
       },
       "person_markers": {
         "ndí": "I am",
         "tú/tũrĩ": "we are",
-        "ú/wĩ": "you are (singular)",
-        "mú": "you are (plural)",
-        "a": "he/she is",
-        "ma": "they are"
+        "ú/wĩ/ũrĩ": "you are (singular)",
+        "mú/mũrĩ": "you are (plural)",
+        "a/arĩ": "he/she is",
+        "ma/marĩ": "they are"
       },
       "kinship_address_terms": {
         "maitu": "mother / woman of mother's age",
-        "awa": "father / man of father's age",
+        "awa/baba": "father / man of father's age",
+        "iyu": "mother (alternative)",
         "cucu": "grandmother",
         "guka": "grandfather",
+        "gacucu": "grandson/grandmother (inverse term)",
         "wanyua": "paternal uncle",
         "mwana wakwa": "my child (endearment)",
+        "mũrũ wa maitũ": "brother / son of our mother",
+        "mwarĩ wa maitũ": "sister / daughter of our mother",
         "mũthuuri": "elder man / respected man",
-        "mutumia": "woman (husband-specific, discourteous in general use)"
+        "mũtumia": "woman (husband-specific, generally discourteous)",
+        "mũtumia mũkũrũ": "respected elder woman",
+        "mukuru": "elder / old person"
       },
       "professional_titles": {
         "dagitari/daktari": "doctor",
         "mwalimu": "teacher",
-        "madaam": "madam",
-        "mukuru": "elder / old person"
+        "madaam": "madam (borrowed English)",
+        "miss": "miss (borrowed English, used for adult females)",
+        "lady": "lady (borrowed English)"
+      },
+      "discourteous_terms": {
+        "kairitu": "girl (discourteous to adult women)",
+        "kahii": "boy (discourteous to adult men)",
+        "kamwana": "child (discourteous when used to adults)",
+        "mutumia": "woman (husband-specific, generally discourteous)"
+      },
+      "actions": {
+        "thiĩ": "go",
+        "tigwo": "stay",
+        "komera": "sleep",
+        "gía": "go / have",
+        "uga": "tell / say",
+        "ukuuga": "you tell",
+        "kuona": "to see",
+        "gukuona": "to see you",
+        "kuigua": "to hear / understand",
+        "kũteithia": "to help"
       }
     },
     "pronunciation_guide": {
@@ -964,8 +2181,10 @@
         "i": "like 'i' in 'in'",
         "o": "like 'o' in 'opposite'",
         "u": "like 'u' in 'ululation'",
-        "í": "like 'i' in 'it' (with high tone)",
-        "ú": "like 'oa' in 'oak' (with high tone)"
+        "í": "like 'i' in 'it' (with high tone marker)",
+        "ú": "like 'oa' in 'oak' (with high tone marker)",
+        "ĩ": "nasalized 'i'",
+        "ũ": "nasalized 'u'"
       },
       "common_phrases_ipa": {
         "Thayu": "/θaˈju/",
@@ -982,124 +2201,282 @@
         "Tigwo na wega": "/ˈtiɣwɔ na ˈweɣa/",
         "Tuonane": "/tuɔˈnanɛ/",
         "Wakia maitu": "/waˈkia ˈmaitu/",
-        "Ngatho": "/ˈŋaθɔ/"
-      }
+        "Ngatho": "/ˈŋaθɔ/",
+        "Komera wega": "/kɔˈmɛra ˈweɣa/"
+      },
+      "tonal_note": "Kikuyu is a tonal language. Accent marks (í, ú) indicate high tones which affect meaning."
     },
     "sociolinguistic_factors": {
       "age_markers": {
-        "old_people_characteristics": [
+        "elderly_characteristics": [
           "Use more courteous and longer greeting terms",
-          "Use 'Thayu' more frequently",
+          "Use 'Thayu' more frequently than youth",
+          "Use 'wakwa maitu' and 'wanyua' more often",
           "Use high-pitched voice with equals or superiors",
           "Use low-pitched voice with younger people",
-          "Hold both hands when greeting equals/superiors",
-          "Prolong greetings to show deeper respect",
-          "Broader communicative competence"
+          "Hold both hands when greeting equals/superiors and prolong greeting",
+          "Have broader communicative and social competence",
+          "Use more experience in appropriate greeting selection"
         ],
-        "young_people_characteristics": [
+        "youth_characteristics": [
           "Use shorter, simpler expressions",
-          "Limited social competence",
+          "Limited social competence in greeting usage",
           "May overgeneralize terms like 'muriega' and 'nikwega'",
-          "Often use one hand for handshake",
-          "May use foreign terms like 'hai' (hi), 'halo' (hello)",
-          "Influenced by Western culture in cities"
+          "Often use one hand for handshake, shorter duration",
+          "May use foreign/borrowed terms ('hai', 'halo')",
+          "Influenced by Western culture, especially in cities",
+          "May not know when, how, why, and with whom to use certain terms despite knowing them",
+          "Usually criticized by adults for social mistakes in greeting usage"
+        ],
+        "acquisition_progression": [
+          "Socio-religious greetings like 'Thayu' taught from childhood",
+          "Cultural greetings like 'wakia maitu/awa' acquired in later stage",
+          "Children develop gradually a linguistic repertoire appropriate for all occasions",
+          "Time-specific or context-dependent greetings acquired later than general ones"
         ]
       },
       "gender_markers": {
         "male_characteristics": [
           "Use 'Thayu' more than females",
-          "Use more standard and courteous code",
+          "Use more standard and courteous code of greeting than females (contrast with Western cultures)",
           "Less likely to use time-specific greetings",
-          "Cultural greetings express loyalty to tradition"
+          "Cultural greetings express loyalty to Gikuyu tradition",
+          "Old males often use 'wakwa maitu or wanyua' and 'Thayu'",
+          "Old males hold both hands of equals/superiors and prolong greetings",
+          "Use same term to greet individuals or groups, males or females"
         ],
         "female_characteristics": [
           "Use greetings much more frequently than men",
-          "Sometimes violate etiquette rules (respond with 'ĩĩ')",
-          "Use time-specific greetings more (morning, evening)",
-          "Middle-aged women use kinship terms more",
-          "Educated women may use prestigious urban forms",
-          "Women are more sincere in greetings",
-          "Achieve intimacy through cultural relational terms and low pitch"
-        ]
+          "Sometimes violate etiquette rules by responding with 'ĩĩ' instead of proper greeting",
+          "Use time-specific greetings more ('niatia ruciini', 'uhoro wa hwai-ini')",
+          "Middle-aged women use kinship-term greetings much more than middle-aged men",
+          "Educated young women tend to use foreign features ('hai', 'halo')",
+          "Women who marry men from higher social class use more prestigious/urban forms",
+          "Women achieve higher degree of intimacy through cultural relational terms and low-pitched tone",
+          "Women are more sincere in greetings though may use less formal/polite terms",
+          "Old females often use more courteous variants of greetings",
+          "Women's greetings may be influenced by husband's social status"
+        ],
+        "frequency_differences": "Men and women do not usually use different forms, but the frequency of forms may be different"
       },
-      "status_markers": {
-        "greeting_hierarchy": [
+      "status_and_hierarchy": {
+        "greeting_initiation_rules": [
           "Younger greets older first",
           "Smaller group greets larger group first",
           "Walking person greets sitting person first",
           "Inferiors greet superiors first"
         ],
-        "politeness_levels": [
-          "Thayu - highest (traditional, formal)",
-          "With professional title - very high",
-          "With kinship term - high (when appropriate)",
-          "Niatia - medium",
-          "Nikwega - medium (intimate)",
-          "Time-specific greetings - medium",
-          "First name only - low (can be discourteous)"
+        "politeness_hierarchy": [
+          "Thayu - Highest (traditional, socio-religious, most polite)",
+          "With professional title - Very high (shows respect, urbanity)",
+          "With kinship term - High when appropriate (shows solidarity/respect)",
+          "Formal health inquiry (Ukuuga atía) - High",
+          "Niatia - Medium (neutral, less courteous than Thayu)",
+          "Nikwega - Medium (intimate, less formal)",
+          "Time-specific greetings - Medium",
+          "Casual health inquiry (Uga) - Low-medium (intimate/superior to subordinate)",
+          "First name only - Low (can be discourteous depending on relationship)"
+        ],
+        "greeting_direction_politeness": [
+          "In female-dominant society (Kiambu/Nyeri rural), more polite terms used to greet males",
+          "Females may be greeted with less courteous terms",
+          "Age and social status of greetee affect greeter's choice",
+          "Young people may not be greeted by old people (with greeting term)",
+          "Inferiors may be offered less courteous greeting than superiors"
+        ],
+        "response_etiquette": [
+          "Greeted person should reply with more courteous greeting or at least equal courtesy",
+          "Longer greeting = more polite and courteous",
+          "Response usually longer and more courteous than offered greeting"
         ]
       },
       "context_factors": {
-        "handshaking_situations": "Use greetings that accommodate handshaking; avoid 'muriega' when handshake expected",
-        "group_situations": "Use 'muriega' when greeting large sitting group without individual handshakes",
-        "work_situations": "Use 'úhoro' or 'waigua atía' when greeting someone working",
-        "passing_by": "Use 'Thayu' for passing greetings",
-        "formal_occasions": "Use 'Thayu' or greetings with titles",
-        "intimate_occasions": "Use kinship terms or 'nikwega nikwega'"
+        "handshaking_situations": {
+          "appropriate": "Use greetings that accommodate handshaking (Thayu, Niatia, Nikwega)",
+          "inappropriate": "Avoid 'muriega' when handshake expected - may signal relationship no longer close"
+        },
+        "group_situations": {
+          "appropriate": "Use 'muriega' when greeting large sitting group without individual handshakes",
+          "cultural_rule": "When there is big number of sitting people and no need to shake everyone's hand"
+        },
+        "work_situations": {
+          "original_usage": "'Uhoro' or 'waigua atía' originally for greeting someone performing physical job",
+          "current_usage": "Now becoming widespread, used to greet anyone even sitting people"
+        },
+        "passing_by": {
+          "appropriate": "Use 'Thayu' for passing greetings",
+          "traditional_obligation": "Expected to cast greetings to everyone met in street whether known or not"
+        },
+        "formal_occasions": {
+          "appropriate": "Use 'Thayu' or greetings with professional titles",
+          "shows": "Knowledge of linguistic and social norms - seen as educated and civilized"
+        },
+        "intimate_occasions": {
+          "appropriate": "Use kinship terms or 'nikwega nikwega'",
+          "function": "Increase warmth and solidarity"
+        }
+      },
+      "social_competence": {
+        "definition": "Occurrence of greeting terms depends not on linguistic competence but on social competence",
+        "importance": "Choosing appropriate term shows speaker is knowledgeable of linguistic and social norms",
+        "judgment": "Proper use shows speaker is educated, civilized, and properly brought up",
+        "youth_challenge": "Young people might have acquired terms early but don't know when, how, why, and with whom to use them"
       }
     },
     "non_verbal_etiquette": {
       "handshaking": {
-        "old_males": "Hold both hands with equals/superiors, prolong greeting",
+        "old_males_to_equals_superiors": "Hold both hands, prolong greeting",
+        "old_males_to_young": "May use one hand, shorter duration",
         "females_young_males": "Often use one hand, shorter duration",
-        "inappropriate": "Using 'muriega' while shaking hands may signal distance"
+        "cultural_significance": "Prolonged handshaking shows deeper respect",
+        "inappropriate_combination": "Using 'muriega' while shaking hands may indicate relationship no longer close"
       },
-      "voice_tone": {
+      "voice_characteristics": {
         "old_to_old": "High-pitched voice",
         "old_to_young": "Low-pitched voice",
-        "general": "Appropriate tone conveys warmth and sincerity"
+        "women_for_intimacy": "Low-pitched tone to achieve higher degree of intimacy",
+        "general_importance": "Tone of voice conveys social relationship and intent"
       },
       "facial_expression": {
-        "importance": "Greeting without smile or appropriate mode may reveal hostility",
-        "requirement": "Non-verbal mode must align with verbal greeting"
+        "requirement": "Greeting without smile or appropriate mode may reveal hostility or lack of intimacy",
+        "importance": "Non-verbal mode conveys pragmatic and sociocultural aspects of meaning",
+        "alignment": "Non-verbal behavior must align with verbal greeting or it affects semantic relationship"
+      },
+      "paralinguistic_extralinguistic": {
+        "revelation": "May reveal one's age and knowledge about cultural and social greetings",
+        "importance": "Essential components of proper greeting etiquette"
       }
     },
     "cultural_notes": [
-      "Greetings are essential for peaceful social relations and open communication",
-      "Expected to greet everyone met, whether known or unknown (traditional)",
-      "Modern young people in cities may only greet those close to them (Western influence)",
-      "Thayu is the most polite greeting - greeting of Gikuyu founder and offspring",
+      "Greetings are essential oil for peaceful social relations and open communication",
+      "Gikuyus genuinely tend to oil wheels of social interaction by adhering to long-standing conventions",
+      "Done not merely to make life easy but out of respect, consideration, and affection for fellows",
+      "Expected to greet everyone met in street, whether known or unknown (traditional)",
+      "Modern young people in cities may only greet close acquaintances (Western influence)",
+      "Thayu is most polite greeting - greeting of Gikuyu (founder) and offspring",
+      "Forefathers ordered Gikuyu speakers to spread 'Thayu' greeting among themselves",
       "Longer greetings are more polite and courteous",
       "Response should be at least equal in courtesy to offered greeting",
       "Greetings establish identity and affirm solidarity",
-      "Inquiries about health establish social contact, not necessarily seeking actual information",
+      "Greetings are essential for establishment of interpersonal relationships",
+      "Greetings introduce business or social topic",
+      "Inquiries about health establish social contact - greeter may not really wish to know details",
+      "Conversants may inquire about each other's and relatives' health simply to establish social contact",
+      "Compliance with recognized social rules of etiquette is expected",
       "Proper linguistic etiquette shows speaker is educated and civilized",
       "Violation of greeting etiquette can cause social conflicts",
       "Greetings encompass proper forms of address (relational or absolute)",
+      "Gikuyus often extend social titles beyond actual family to display courtesy or solidarity",
       "Kikuyu is a tonal language - accent marks indicate high tones",
       "Time-specific greetings may indicate age and sex",
       "Cultural greetings express loyalty to Gikuyu traditions",
       "Women tend to be more sincere in greetings though may use less formal terms",
-      "Greeting someone performing physical work originally required specific terms",
-      "Terms like 'kairitu' (girl) and 'mutumia' (woman) can be discourteous in general address"
+      "In parts of Africa whole languages may be evaluated in terms of greeting patterns",
+      "Greetings gain semantic meaning from culture - content is culture-specific",
+      "Face-to-face interaction in Gikuyu heavily dependent on proper greeting phraseology",
+      "Greetings serve to reestablish social relations, acknowledge status, guarantee safe passage",
+      "Greetings are rituals consisting of verbal and non-verbal forms",
+      "Greetings are important strategies for negotiation and control of social identity and relationships"
     ],
     "learning_notes": {
       "for_non_native_speakers": [
-        "Must understand both verbal and non-verbal rules",
+        "Must understand both verbal and non-verbal rules of greeting usage",
         "Semantic meaning comes from culture - content is culture-specific",
-        "Choose appropriate term based on: age, gender, status, intimacy level, context",
+        "Choose appropriate term based on: age, gender, status, intimacy level, context, time",
         "Learning greetings shows social competence, not just linguistic competence",
-        "Children develop greeting repertoire gradually",
-        "Socio-religious greetings like 'Thayu' taught from childhood",
-        "Time-specific and context-dependent greetings acquired later"
+        "Foreigners may face difficulties using certain greeting terms appropriately",
+        "Must determine verbal and non-verbal rules for both greeter and greetee parts",
+        "Understanding context crucial - e.g., 'mwaigua atia' only appropriate for large sitting groups"
+      ],
+      "acquisition_stages": [
+        "Children taught socio-religious greetings like 'Thayu' from childhood",
+        "Cultural greetings like 'wakia maitu/awa' acquired in later stage of life",
+        "Children develop gradually a linguistic repertoire appropriate for all occasions",
+        "Time-specific and context-dependent greetings acquired later than general greetings",
+        "Young people and adolescents might know terms but not know when/how/why/with whom to use them"
       ],
       "common_mistakes": [
-        "Using 'muriega' while shaking hands",
-        "Young people using 'nikwega' inappropriately on all occasions",
+        "Using 'muriega' while shaking hands (youth mistake)",
+        "Young people overgeneralizing 'nikwega' for all occasions regardless of appropriateness",
         "Responding with less courteous greeting than offered",
-        "Using first names with elders without kinship/title",
+        "Females responding with just 'ĩĩ' instead of proper greeting (violates etiquette)",
+        "Young person calling elder by first name without permission",
         "Not adapting greeting to time of day or social context",
-        "Females responding with just 'ĩĩ' instead of proper greeting"
+        "Using 'kairitu' (girl) or 'kahii' (boy) to address adults",
+        "Greeting inappropriately for one's age/status relationship to addressee",
+        "Neglecting non-verbal components (smile, appropriate tone, handshake)",
+        "Using intimate greetings in formal situations or vice versa"
+      ],
+      "success_indicators": [
+        "Choosing greeting appropriate to social status, age, sex, closeness",
+        "Using greeting consonant with social situation",
+        "Reflecting social relationship between interlocutors through greeting choice",
+        "Proper use of verbal and non-verbal components together",
+        "Responding with equal or more courteous greeting",
+        "Showing respect through appropriate terms of address",
+        "Demonstrating cultural knowledge and social competence"
+      ]
+    },
+    "pragmatic_functions": {
+      "greeting_types": [
+        {
+          "type": "Temporal greetings (Time-of-day)",
+          "examples": ["Úhoro wa rúciní", "Úhoro wa húainí"],
+          "function": "Mark time of day, show awareness of context"
+        },
+        {
+          "type": "Health inquiries (How-are-you greetings)",
+          "examples": ["Úhana atía", "Ukuuga atía", "Uga"],
+          "function": "Establish social contact, show concern"
+        },
+        {
+          "type": "Valedictory greetings (Leave-taking)",
+          "examples": ["Thiĩ na wega", "Tigwo na wega", "Tuonane"],
+          "function": "Close encounters, maintain relationships"
+        },
+        {
+          "type": "Passing greetings",
+          "examples": ["Thayu"],
+          "function": "Acknowledge others, maintain social order"
+        },
+        {
+          "type": "Engaging greetings",
+          "examples": ["Niatia + inquiry about health/family"],
+          "function": "Open channels for longer interaction"
+        }
+      ],
+      "social_functions": [
+        "Establish non-threatening contact and rapport",
+        "Preserve face of interlocutors",
+        "Reestablish social relations",
+        "Acknowledge status differences",
+        "Guarantee safe passage between strangers",
+        "Serve as switch that opens or closes relations",
+        "Aid peaceful social relations",
+        "Keep up good open communication",
+        "Establish interpersonal relationships",
+        "Introduce business or social topics",
+        "Negotiate and control social identity",
+        "Confirm human sociability and social order"
+      ]
+    },
+    "recommendations": {
+      "for_youth_and_urban_raised": [
+        "Sensitization programme on importance of linguistic etiquettes in greetings",
+        "Education on greetings unique to various settings and different times",
+        "Learning proper greeting usage as way of solving conflicts from social interactions",
+        "Understanding cultural significance beyond Western influence",
+        "Practicing appropriate greeting selection for different social situations"
+      ],
+      "for_learners": [
+        "Start with 'Thayu' as foundational most-polite greeting",
+        "Learn time-specific greetings early (morning, evening)",
+        "Understand hierarchy rules (who greets whom first)",
+        "Practice both verbal and non-verbal components together",
+        "Learn kinship terms for showing respect and solidarity",
+        "Understand context-specific usage (work, groups, formal, intimate)",
+        "Study examples of appropriate and inappropriate usage",
+        "Develop social competence alongside linguistic competence"
       ]
     }
   }
