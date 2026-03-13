@@ -3,6 +3,16 @@
  * Handles all chat interactions, API calls, and UI updates
  */
 
+// Global function for inline HTML event handlers
+function sendMessageFromInput() {
+    console.log('📤 sendMessageFromInput called');
+    if (typeof ChatController !== 'undefined' && ChatController.handleSendMessage) {
+        ChatController.handleSendMessage();
+    } else {
+        console.error('ChatController not initialized');
+    }
+}
+
 // ============================================
 // CONFIGURATION
 // ============================================
@@ -32,8 +42,8 @@ const DOM = {
     // Main elements
     welcomeScreen: document.getElementById('welcomeScreen'),
     messagesContainer: document.getElementById('messagesContainer'),
-    messageInput: document.getElementById('messageInput'),
-    sendBtn: document.getElementById('sendBtn'),
+    messageInput: document.getElementById('chatTa'),
+    sendBtn: document.getElementById('sndBtn'),
     typingIndicator: document.getElementById('typingIndicator'),
     
     // Sidebar
@@ -81,7 +91,34 @@ class ChatAPI {
         }
     }
     
+    // Keywords that indicate agriculture/crop queries
+    static AGRICULTURE_KEYWORDS = [
+        'crop', 'crops', 'plant', 'plants', 'farm', 'farming', 'agriculture',
+        'harvest', 'soil', 'seed', 'seeds', 'fertilizer', 'pest', 'pests',
+        'disease', 'rain', 'irrigation', 'maize', 'wheat', 'beans', 'coffee',
+        'potato', 'potatoes', 'sweet', 'vegetable', 'vegetables',
+        'waru', 'mboga', 'ira', 'ngima', 'ikinyuga', 'githaka', 'rugo', 'mucere',
+        'kuhamba', 'kurima', 'kuvuna', 'muvuno', 'gutudo', 'gutitira'
+    ];
+    
+    // Kikuyu agriculture-related words
+    static KIKUYU_AGRI_WORDS = [
+        'waru', 'mboga', 'ira', 'ngima', 'ikinyuga', 'githaka', 'rugo', 'mucere',
+        'kuhamba', 'kurima', 'kuvuna', 'muvuno', 'gutudo', 'gutitira', 'kahua'
+    ];
+    
+    static isAgricultureQuery(text) {
+        const lowerText = text.toLowerCase();
+        return this.AGRICULTURE_KEYWORDS.some(keyword => lowerText.includes(keyword)) ||
+               this.KIKUYU_AGRI_WORDS.some(word => lowerText.includes(word));
+    }
+    
     static async sendMessage(text, sessionId) {
+        // Check if this is an agriculture query
+        if (this.isAgricultureQuery(text)) {
+            return this.sendAgricultureMessage(text);
+        }
+        
         try {
             const response = await fetch(`${CONFIG.API_BASE_URL}/chat/text`, {
                 method: 'POST',
@@ -101,6 +138,31 @@ class ChatAPI {
             return await response.json();
         } catch (error) {
             console.error('Error sending message:', error);
+            throw error;
+        }
+    }
+    
+    static async sendAgricultureMessage(text) {
+        try {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/chat/agriculture`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    text: text,
+                    generate_audio: false,  // Disable for faster response
+                    include_sources: false
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            return await response.json();
+        } catch (error) {
+            console.error('Error sending agriculture message:', error);
             throw error;
         }
     }
@@ -349,10 +411,50 @@ class AudioRecorder {
 // TEXT-TO-SPEECH
 // ============================================
 class TextToSpeech {
-    static speak(text, lang = 'sw-KE') {
+    static async speak(text, audioUrl = null) {
         // Cancel any ongoing speech
         window.speechSynthesis.cancel();
         
+        // If we have a server-generated audio URL, play that first
+        if (audioUrl) {
+            try {
+                await this.playAudioFromUrl(audioUrl);
+                console.log('🔊 Playing server TTS audio:', audioUrl);
+                return;
+            } catch (error) {
+                console.warn('Failed to play server audio, falling back to browser TTS:', error);
+            }
+        }
+        
+        // Fall back to browser's SpeechSynthesis
+        this.speakWithBrowser(text);
+    }
+    
+    static playAudioFromUrl(url) {
+        return new Promise((resolve, reject) => {
+            const audio = new Audio();
+            
+            audio.onloadedmetadata = () => {
+                console.log('🔊 Audio duration:', audio.duration, 'seconds');
+                audio.play().catch(reject);
+            };
+            
+            audio.onended = () => {
+                console.log('🔊 Audio playback completed');
+                resolve();
+            };
+            
+            audio.onerror = (error) => {
+                console.error('🔊 Audio error:', error);
+                reject(error);
+            };
+            
+            audio.src = url;
+            audio.load();
+        });
+    }
+    
+    static speakWithBrowser(text, lang = 'sw-KE') {
         const utterance = new SpeechSynthesisUtterance(text);
         
         // Set language for Kikuyu/Swahili
@@ -381,11 +483,42 @@ class TextToSpeech {
         };
         
         window.speechSynthesis.speak(utterance);
-        console.log('🔊 Speaking:', text);
+        console.log('🔊 Speaking (browser TTS):', text);
     }
     
     static stop() {
         window.speechSynthesis.cancel();
+    }
+    
+    // Generate TTS audio from server
+    static async generateFromServer(text, engine = 'openai') {
+        try {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/tts`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    text: text,
+                    engine: engine
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`TTS request failed: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            if (data.success && data.audio_url) {
+                return data.audio_url;
+            }
+            
+            return null;
+        } catch (error) {
+            console.error('Error generating TTS:', error);
+            return null;
+        }
     }
 }
 
@@ -447,6 +580,18 @@ class UI {
             translationDiv.className = 'message-translation';
             translationDiv.textContent = metadata.translation;
             bubbleDiv.appendChild(translationDiv);
+        }
+        
+        // Audio play button (for bot messages with audio)
+        if (sender === 'bot' && metadata.audioUrl) {
+            const playBtn = document.createElement('button');
+            playBtn.className = 'audio-play-btn';
+            playBtn.innerHTML = '🔊';
+            playBtn.title = 'Play audio';
+            playBtn.onclick = () => {
+                TextToSpeech.playAudioFromUrl(metadata.audioUrl);
+            };
+            bubbleDiv.appendChild(playBtn);
         }
         
         contentDiv.appendChild(bubbleDiv);
@@ -625,15 +770,25 @@ class ChatController {
     
     static setupEventListeners() {
         // Send message on button click
-        DOM.sendBtn.addEventListener('click', () => this.handleSendMessage());
+        if (DOM.sendBtn) {
+            DOM.sendBtn.addEventListener('click', () => this.handleSendMessage());
+            console.log('✅ Send button event listener attached');
+        } else {
+            console.error('❌ Send button not found!');
+        }
         
         // Send message on Enter key
-        DOM.messageInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                this.handleSendMessage();
-            }
-        });
+        if (DOM.messageInput) {
+            DOM.messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    this.handleSendMessage();
+                }
+            });
+            console.log('✅ Message input event listener attached');
+        } else {
+            console.error('❌ Message input not found!');
+        }
         
         // Quick action buttons
         document.querySelectorAll('.quick-btn').forEach(btn => {
@@ -644,10 +799,10 @@ class ChatController {
             });
         });
         
-        // Suggestion chips
-        document.querySelectorAll('.suggestion-chip').forEach(chip => {
+        // Suggestion chips / Quick question chips
+        document.querySelectorAll('.q-chip').forEach(chip => {
             chip.addEventListener('click', () => {
-                const text = chip.getAttribute('data-text');
+                const text = chip.getAttribute('data-q');
                 DOM.messageInput.value = text;
                 this.handleSendMessage();
             });
@@ -695,11 +850,15 @@ class ChatController {
     }
     
     static async handleSendMessage() {
+        console.log('📤 handleSendMessage called');
         const text = DOM.messageInput.value.trim();
         
         if (!text) {
+            console.log('⚠️ Empty message, returning');
             return;
         }
+        
+        console.log('📝 Sending message:', text);
         
         // Disable input while processing
         UI.disableInput();
@@ -714,29 +873,51 @@ class ChatController {
         }, 300);
         
         try {
-            // Send to API
+            // Send to API (automatically routes to agriculture endpoint for crop queries)
             const response = await ChatAPI.sendMessage(text, State.sessionId);
             
             // Hide typing indicator
             setTimeout(() => {
                 UI.hideTypingIndicator();
                 
-                // Add bot response
-                UI.addMessage(response.response_text, 'bot', {
-                    translation: response.response_translation,
-                    confidence: response.confidence,
-                    intent_name: response.intent_name
+                // Determine response fields based on endpoint type
+                // Agriculture API returns: response, english_response
+                // Text API returns: response_text, response_translation, confidence
+                const botMessage = response.response || response.response_text || 'Ndĩ na mathina.';
+                const translation = response.english_response || response.response_translation || '';
+                const confidence = response.confidence;
+                const intentName = response.intent_name;
+                
+                // Build audio URL from response
+                let audioUrl = null;
+                if (response.audio_file) {
+                    // Handle both relative and absolute paths
+                    if (response.audio_file.startsWith('http')) {
+                        audioUrl = response.audio_file;
+                    } else {
+                        // Convert relative path to full URL
+                        const baseUrl = CONFIG.API_BASE_URL.replace('/api/v1', '');
+                        audioUrl = `${baseUrl}/${response.audio_file}`;
+                    }
+                }
+                
+                // Add bot response with translation
+                UI.addMessage(botMessage, 'bot', {
+                    translation: translation,
+                    confidence: confidence,
+                    intent_name: intentName,
+                    audioUrl: audioUrl
                 });
                 
-                // Play TTS response
-                if (response.response_text) {
-                    TextToSpeech.speak(response.response_text);
+                // Play TTS response - use server audio if available
+                if (botMessage) {
+                    TextToSpeech.speak(botMessage, audioUrl);
                 }
                 
                 // Update stats
                 State.messageCount++;
-                if (response.confidence) {
-                    State.confidenceScores.push(response.confidence);
+                if (confidence) {
+                    State.confidenceScores.push(confidence);
                 }
                 UI.updateStats();
                 

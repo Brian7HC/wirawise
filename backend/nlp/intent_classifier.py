@@ -5,11 +5,43 @@ Intent classification and NLP utilities
 from typing import Optional, Dict, List
 from sqlalchemy.orm import Session
 import logging
+import re
 
 from backend.database.crud import GreetingCRUD
 from backend.config import settings
 
 logger = logging.getLogger(__name__)
+
+# Agriculture keywords for fallback detection
+AGRICULTURE_KEYWORDS = [
+    # Maize/Crops
+    'mbembe', 'mabembe', 'ĩrĩa', 'mirio', 'mĩrĩo',
+    # Farm/Land
+    'gĩthaka', 'githaka', 'thambi', 'ngwacoka',
+    # Farming activities
+    'ngĩgũra', 'ngituma', 'ngũgũra', 'ngethereka',
+    # Inputs
+    'boro', 'mboro', 'mbura',
+    # Other
+    'mbĩrĩ', 'mĩtĩ', 'ĩcemanio', 'irio', 'mbemebe',
+    # Coffee
+    'kahua', 'kahūa'
+]
+
+# Agriculture patterns (regex)
+AGRICULTURE_PATTERNS = [
+    r'mbembe\s+\w+',  # mbembe + anything
+    r'ĩrĩa\s+\w+',     # planting/crops + anything
+    r'mabembe\s+\w+',  # crops + anything
+    r'gĩthaka\s+\w+', # farm/land + anything
+    r'ngĩgũra',         # I am cultivating
+    r'ngĩtũma',         # I need/want
+    r'ngethereka',      # I am harvesting
+    r'ngwacoka',        # harvesting
+    r'\bmbura\b',      # rain
+    r'\bboro\b',       # fertilizer
+    r'thambi',          # season
+]
 
 
 class IntentClassifier:
@@ -20,6 +52,48 @@ class IntentClassifier:
     
     def __init__(self, confidence_threshold: float = None):
         self.confidence_threshold = confidence_threshold or settings.CONFIDENCE_THRESHOLD
+    
+    def _detect_agriculture_intent(self, user_input: str) -> Optional[Dict]:
+        """
+        Detect agriculture intent using keyword and pattern matching.
+        This is a fallback when database matching doesn't find a greeting intent.
+        
+        Args:
+            user_input: User's text input
+            
+        Returns:
+            Intent dict if agriculture keywords found, None otherwise
+        """
+        normalized_input = user_input.lower().strip()
+        
+        # Check for agriculture keywords
+        keyword_count = sum(1 for kw in AGRICULTURE_KEYWORDS if kw in normalized_input)
+        
+        # Check for agriculture patterns
+        pattern_matches = sum(1 for pattern in AGRICULTURE_PATTERNS 
+                              if re.search(pattern, normalized_input, re.IGNORECASE))
+        
+        # If we have keyword or pattern matches, classify as agriculture
+        if keyword_count >= 1 or pattern_matches >= 1:
+            confidence = min(0.7, 0.3 + (keyword_count * 0.1) + (pattern_matches * 0.1))
+            
+            logger.info(
+                f"Agriculture intent detected: {keyword_count} keywords, "
+                f"{pattern_matches} patterns matched, confidence: {confidence:.2f}"
+            )
+            
+            return {
+                "intent_id": "agriculture_question",
+                "intent_name": "Agriculture Question",
+                "category": "agriculture",
+                "subcategory": None,
+                "formality_level": 5,
+                "politeness_score": 5,
+                "matched_pattern": f"keyword:{keyword_count},pattern:{pattern_matches}",
+                "confidence": confidence
+            }
+        
+        return None
     
     def classify(self, db: Session, user_input: str) -> Optional[Dict]:
         """
@@ -35,7 +109,7 @@ class IntentClassifier:
         if not user_input or not user_input.strip():
             return None
         
-        # Use database similarity matching
+        # Use database similarity matching for greetings
         intent = GreetingCRUD.find_intent(
             db, 
             user_input, 
@@ -48,7 +122,14 @@ class IntentClassifier:
                 f"with confidence {intent['confidence']:.2f}"
             )
         else:
-            logger.warning(f"No intent match found for: '{user_input}'")
+            # Fallback: Check for agriculture keywords when no greeting intent found
+            logger.warning(f"No greeting intent match found for: '{user_input}'")
+            
+            # Try agriculture keyword detection as fallback
+            agriculture_intent = self._detect_agriculture_intent(user_input)
+            if agriculture_intent:
+                logger.info(f"Falling back to agriculture intent for: '{user_input}'")
+                return agriculture_intent
         
         return intent
     

@@ -3,7 +3,7 @@ Pydantic schemas for request/response validation
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 from datetime import datetime
 
 
@@ -34,6 +34,49 @@ class VoiceChatRequest(BaseModel):
     """Request schema for voice-based chat (future use)"""
     session_id: Optional[str] = None
     language: str = "kik"
+
+
+class TTSRequest(BaseModel):
+    """Request schema for Text-to-Speech conversion"""
+    text: str = Field(..., min_length=1, max_length=2000, description="Text to convert to speech")
+    voice: Optional[str] = Field(None, description="Voice to use (engine-specific)")
+    engine: Optional[str] = Field(None, description="TTS engine to use (openai, coqui, khaya)")
+    
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "text": "Thayu! Thayu thayu!",
+                    "voice": "alloy",
+                    "engine": "openai"
+                }
+            ]
+        }
+    }
+
+
+class TTSResponse(BaseModel):
+    """Response schema for TTS endpoint"""
+    success: bool = Field(..., description="Whether the request was successful")
+    text: str = Field(..., description="Original text that was converted")
+    audio_path: Optional[str] = Field(None, description="Path to generated audio file")
+    audio_url: Optional[str] = Field(None, description="URL to access the audio")
+    engine: str = Field(..., description="TTS engine used")
+    error: Optional[str] = Field(None, description="Error message if failed")
+    
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "success": True,
+                    "text": "Thayu! Thayu thayu!",
+                    "audio_path": "data/audio/responses/response_abc123.wav",
+                    "audio_url": "http://localhost:8000/api/v1/audio/responses/response_abc123.wav",
+                    "engine": "openai"
+                }
+            ]
+        }
+    }
 
 
 # ============================================
@@ -143,3 +186,96 @@ class ErrorResponse(BaseModel):
     error: str
     detail: Optional[str] = None
     timestamp: datetime = Field(default_factory=datetime.now)
+
+
+# ============================================
+# AGRICULTURE CHATBOT SCHEMAS
+# ============================================
+
+class AgricultureChatRequest(BaseModel):
+    """Request schema for AI agriculture chatbot"""
+    text: str = Field(..., min_length=1, max_length=1000, description="User's question in Kikuyu or English")
+    input_language: Optional[str] = Field("kikuyu", description="Input language: 'kikuyu' or 'english'")
+    output_language: Optional[str] = Field("kikuyu", description="Output language: 'kikuyu' or 'english'")
+    include_sources: Optional[bool] = Field(False, description="Whether to include source documents in response")
+    generate_audio: Optional[bool] = Field(True, description="Whether to generate TTS audio response")
+    
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "text": "Ndiwigura iti?",
+                    "input_language": "kikuyu",
+                    "output_language": "kikuyu",
+                    "include_sources": True
+                }
+            ]
+        }
+    }
+
+
+class AgricultureSource(BaseModel):
+    """Source document from RAG search"""
+    text: str
+    category: str
+    crop: str
+
+
+class AgricultureChatResponse(BaseModel):
+    """Response schema for AI agriculture chatbot"""
+    success: bool
+    response: str = Field(..., description="Chatbot response in requested language")
+    english_response: Optional[str] = Field(None, description="English response (if output is Kikuyu)")
+    translated_input: Optional[str] = Field(None, description="Translated input (if input was Kikuyu)")
+    processing_time: float = Field(..., description="Processing time in seconds")
+    sources: Optional[List[AgricultureSource]] = Field(None, description="Retrieved source documents")
+    audio_url: Optional[str] = Field(None, description="URL to audio response if generated")
+    
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "success": True,
+                    "response": "Mbura ya maize inowera ikagwa mabanga 75cm Hagati na 25cm Hagati ya mime. Iyo ni ya maana sana.",
+                    "english_response": "Maize should be planted at a spacing of 75cm between rows and 25cm between plants. This is very important.",
+                    "translated_input": "How do I plant maize?",
+                    "processing_time": 2.5,
+                    "sources": [
+                        {
+                            "text": "The recommended spacing for maize planting is 75cm between rows and 25cm between plants.",
+                            "category": "planting",
+                            "crop": "maize"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+
+
+class TranslationRequest(BaseModel):
+    """Request schema for translation"""
+    text: str = Field(..., min_length=1, max_length=2000, description="Text to translate")
+    source_language: str = Field(..., description="Source language: 'kikuyu' or 'english'")
+    target_language: str = Field(..., description="Target language: 'kikuyu' or 'english'")
+    
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "text": "Ndiwigura iti?",
+                    "source_language": "kikuyu",
+                    "target_language": "english"
+                }
+            ]
+        }
+    }
+
+
+class TranslationResponse(BaseModel):
+    """Response schema for translation"""
+    success: bool
+    original_text: str
+    translated_text: str
+    source_language: str
+    target_language: str

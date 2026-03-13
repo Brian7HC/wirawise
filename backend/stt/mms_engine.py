@@ -44,6 +44,18 @@ KIKUYU_GREETINGS = [
 ]
 
 
+def load_mms_model():
+    """
+    Stub function for MMS warmup.
+    
+    Note: This module uses Groq Whisper API instead of Meta MMS.
+    The API client is initialized lazily on first use.
+    This function exists for backward compatibility with main.py.
+    """
+    logger.info("MMS warmup: Using Groq Whisper API (no local model needed)")
+    return True
+
+
 def normalize_kikuyu_text(text: str) -> str:
     """
     Normalize Kikuyu text to handle common transcription errors.

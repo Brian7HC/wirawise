@@ -466,6 +466,32 @@ body {
     border-bottom-left-radius: 4px;
 }
 
+/* Audio play button */
+.audio-play-btn {
+    background: var(--primary-solid);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    transition: transform 0.2s, background 0.2s;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.audio-play-btn:hover {
+    transform: scale(1.1);
+    background: var(--accent);
+}
+
+.audio-play-btn:active {
+    transform: scale(0.95);
+}
+
 .message-text {
     font-size: 15px;
     line-height: 1.5;

@@ -48,6 +48,14 @@ class Settings(BaseSettings):
     OPENAI_MODEL: str = "gpt-4o-mini"
     OPENAI_TTS_VOICE: str = "alloy"
     
+    # TTS Engine Settings
+    TTS_ENGINE: str = "openai"  # Options: openai, coqui
+    AUTO_TTS: bool = True  # Automatically generate TTS for chat responses
+    COQUI_TTS_MODEL: str = ""
+    COQUI_TTS_VOICE: str = ""
+    KHAYA_API_KEY: str = ""
+    KHAYA_API_URL: str = "https://api.khayavoice.com/v1/synthesize"
+    
     # Groq Settings (alternative to OpenAI)
     GROQ_API_KEY: str = ""
     GROQ_MODEL: str = "llama-3.3-70b-versatile"

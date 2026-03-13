@@ -6,8 +6,10 @@ from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
+from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 import logging
+import os
 from datetime import datetime
 
 from backend.config import settings
@@ -54,6 +56,10 @@ async def lifespan(app: FastAPI):
         logger.info("✅ Meta MMS ready for Kikuyu speech")
     except Exception as e:
         logger.warning(f"⚠️  MMS warmup failed: {e}")
+    
+    # Pre-load translation model for fast responses (now uses Groq, no pre-load needed)
+    logger.info("Translation will be handled by Groq LLM...")
+    logger.info("✅ Translation ready (Groq-based)")
     
     logger.info("=" * 70)
     
@@ -160,6 +166,16 @@ app.include_router(
         500: {"description": "Internal server error"}
     }
 )
+
+# Create audio directory if it doesn't exist
+audio_dir = os.path.join(os.path.dirname(__file__), "..", "data", "audio", "responses")
+os.makedirs(audio_dir, exist_ok=True)
+
+# Serve audio files
+app.mount("/api/v1/audio", StaticFiles(directory="data/audio"), name="audio")
+
+# Serve frontend static files
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
 
 # Root endpoint

@@ -26,6 +26,20 @@ torchaudio>=2.1.0
 sentencepiece
 accelerate
 
+# Translation (NLLB)
+sentence-transformers>=2.2.0
+
+# Vector Database (RAG)
+faiss-cpu>=1.7.4
+
+# LLM Providers
+groq>=0.4.0
+openai>=1.0.0
+
+# Audio Processing
+numpy>=1.24.0
+scipy>=1.10.0
+
 # Testing (optional)
 pytest==7.4.4
 httpx==0.26.0

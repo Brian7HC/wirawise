@@ -1,0 +1,573 @@
+{
+  "metadata": {
+    "language": "Kikuyu (Gĩgĩkũyũ)",
+    "language_code": "kik",
+    "iso_639_3": "kik",
+    "version": "3.0.0",
+    "created_at": "2024",
+    "last_updated": "2024",
+    "description": "Comprehensive Q&A knowledge base for WIRAWISE chatbot including greetings and agriculture topics"
+  },
+  "greetings": {
+    "metadata": {
+      "category": "greetings",
+      "greeting_hierarchy": {
+        "initiation_rules": [
+          "Younger greets older first",
+          "Smaller group greets larger group first",
+          "Walking person greets sitting person first",
+          "Inferiors greet superiors first"
+        ],
+        "response_rule": "Greetee should respond with equal or more courteous greeting",
+        "politeness_principle": "The longer the greeting term, the more polite and courteous it is"
+      },
+      "person_identifiers": {
+        "first_singular": "ndí (I am)",
+        "first_plural": "tú/tũrĩ (we are)",
+        "second_singular": "ú/wĩ (you are)",
+        "second_plural": "mú/mũrĩ (you all are)",
+        "third_singular": "a/arĩ (he/she is)",
+        "third_plural": "ma/marĩ (they are)"
+      }
+    },
+    "intents": [
+      {
+        "intent_id": "greeting_thayu",
+        "intent_name": "Most Polite Traditional Greeting (Thayu)",
+        "category": "greetings",
+        "formality_level": 10,
+        "politeness_score": 10,
+        "patterns": ["Thayu", "Thayũ", "Thaai", "Thaayu", "Peace be upon you", "Peace"],
+        "responses": [
+          {
+            "response_id": "thayu_r1",
+            "text": "Thayu! Thayu thayu!",
+            "translation": "Peace be upon you! Peace, peace!",
+            "formality": "very_formal",
+            "politeness_score": 10,
+            "priority": 1
+          },
+          {
+            "response_id": "thayu_r2",
+            "text": "Thayu! Ndí mwega mũno.",
+            "translation": "Peace! I am very well.",
+            "formality": "formal",
+            "politeness_score": 9,
+            "priority": 2
+          },
+          {
+            "response_id": "thayu_r3",
+            "text": "Thayu! Úhoro waku nĩ atía?",
+            "translation": "Peace! How are you?",
+            "formality": "formal",
+            "politeness_score": 9,
+            "priority": 3
+          },
+          {
+            "response_id": "thayu_r4",
+            "text": "Thayu! Wĩ mwega?",
+            "translation": "Peace! Are you well?",
+            "formality": "formal",
+            "politeness_score": 8,
+            "priority": 4
+          }
+        ]
+      },
+      {
+        "intent_id": "greeting_nikwega",
+        "intent_name": "I Am Well Greeting",
+        "category": "greetings",
+        "formality_level": 7,
+        "politeness_score": 7,
+        "patterns": ["Ndí mwega", "Ndi mwega", "I am fine", "I am well"],
+        "responses": [
+          {
+            "response_id": "nikwega_r1",
+            "text": "Mwega! Ndí mwega mũno.",
+            "translation": "Good! I am very well.",
+            "formality": "warm",
+            "politeness_score": 8,
+            "priority": 1
+          },
+          {
+            "response_id": "nikwega_r2",
+            "text": "Mwega! Wĩ na úhoro?",
+            "translation": "Good! Do you have news?",
+            "formality": "warm",
+            "politeness_score": 7,
+            "priority": 2
+          }
+        ]
+      },
+      {
+        "intent_id": "greeting_uhoro_work",
+        "intent_name": "Work/Activity Greeting",
+        "category": "greetings",
+        "formality_level": 5,
+        "politeness_score": 6,
+        "patterns": ["Úhoro wa ũgĩrĩo", "Uhoro wa ugirio", "How is work?", "What are you doing?"],
+        "responses": [
+          {
+            "response_id": "uhoro_work_r1",
+            "text": "Mwega! Ndí ũgĩrĩo.",
+            "translation": "Good! I am working.",
+            "formality": "casual",
+            "politeness_score": 6,
+            "priority": 1
+          },
+          {
+            "response_id": "uhoro_work_r2",
+            "text": "Mwega! Ndí ũgĩrĩo, na wĩ?",
+            "translation": "Good! I am working, and you?",
+            "formality": "casual",
+            "politeness_score": 6,
+            "priority": 2
+          }
+        ]
+      }
+    ]
+  },
+  "topics": [
+    {
+      "topic": "Coffee",
+      "qa_pairs": [
+        {
+          "question_en": "Which varieties of coffee are grown in Kenya?",
+          "question_ki": "Nī mīthemba īrīkū ya kahūa īkūragio gūkū Kenya?",
+          "answer_en": "SL 34 suitable for high altitude area; SL 28 at a spacing of 9ft by 9ft suitable for medium to high altitude area, has good rooting system, high yielder but susceptible to diseases. K7 suitable for low altitude area, has good rooting system, high yielder but susceptible to diseases. Ruiru 11 is suited to all coffee growing zones in Kenya at a spacing of 6ft by 6ft. It is a high yielder, has best population per unit, high disease tolerance but with poor rooting system. Batian is the newest variety in the country, is suited to all coffee growing zones in Kenya, a high yielder, has good population per unit, moderate disease tolerance but with moderate rooting system. Other coffee varieties commonly grown are SL-28, SL-34, K7, Ruiru 11 and Batian.",
+          "answer_ki": "SL 34 īrīa īhandagūo kūndū kūrī irīma; SL 28 īhandagūo na ūtaganu wa fiti kenda gwa kenda na yagīrīire kūhandwo kūndū kūrīa kūrī irīma, īkoragwo na mīri mīega, īgīaga na magetha maingī no nīinyitagwo nī mīrimū raithi. K7 nīyagīraga kūndū kūrīa gūtarī igūrū mūno, īkoragwo na mīri mīega, īciaraga mūno noo nīīnyitagwo nī mīrimū raithi. Mūthemba wa Ruiru 11 ūhandagwo kūndū guothe kūrīa gūkūragio kahūa Kenya na ūtaganu wa futi ithathatū gwa ithathatū. Nīūkoragwo na maciaro maingī, na ūkoragwo na ūhoti mūnene wa kūhūrana na mīrimū noo ndīrī mīri mīega mūno. Batian nī mūthemba ūrīa mūerū mūno būrūri-inī ūyū, nīūhandagwo kūndū guothe kūrīa gūkūragio kahūa Kenya, nīūciaraga mūno, nīūhandagwo itina nyingī harī īka, nīūhotaga gūitiria mīrimū na nīngīūkoragwo na mīri ītambaga kūndū kūnene. Mīthemba īngī ya kahūa īrīa īhandagwo mūno nī SL-28, SL-34, K7, Ruiru 11, na Batian."
+        },
+        {
+          "question_en": "Which is the recommended spacing for coffee?",
+          "question_ki": "Itina cia kahūa ciagīrīirwo gūtaganūkanio atia hīndī ya kūhanda?",
+          "answer_en": "Different varieties require different spacings. Ruiru 11 spacing of 6ft by 6ft. It is a high yielder, has best population per unit, high disease tolerance but with poor rooting system. Batian is at a spacing of 7ft by 8ft. SL 34, SL 28, and K7 varieties, the spacing should be 2.74m x 2.74m (9ft × 9ft). Ruiru 11 variety, the spacing should be 2m x 2m (6.6 ft. x 6.6 ft.). Batian variety, the spacing should be 2.1m x 2.5m (7ft x 8 ft.).",
+          "answer_ki": "Mīthemba ngūrani ya kahūa īhandagwo na ithimo ngūrani. Mūthemba wa Ruiru 11 wagīrīire ūtaganu wa fiti 6 kwa 6 na nīūrīmaciaro maingī oharī gītina, ūhandagwo itina nyingī harī īka, nī wītiragia mīrimū no mīri ndītheremaga wega. Batian yendaga ūtiganu wa fiti mūgwanja kwa inyanya. Mīthemba ya SL 34, SL28, and K7 yagīrīirwo nī ūtaganu wa mita 2.74 gwa 2.74 kana (futi 9 gwa 9). Kahūa mūthemba wa Ruiru 11 kagīrīire kūhandwo na ūtaganu wa mita igīrī kwa igīrī kana futi 6.6 gwa 6.6. Kahūa mūthemba wa Batian kagīrīire kūhandwo na ūtaganu wa mita 2.1 kwa 2.5 kana futi 7 kwa 8."
+        },
+        {
+          "question_en": "Which is the best coffee variety to plant?",
+          "question_ki": "N īmūthemba ūrikū mwega wa kahūa kūhanda?",
+          "answer_en": "The best variety to plant will depend on the zone as different varieties are suited for different ecological zones. However Ruiru 11 is a high yielder, has best population per unit, high disease tolerance but with poor rooting system, it is suited to all coffee growing zones in Kenya.",
+          "answer_ki": "Mīthemba īrīa mīega ya kūhanda īcagūragwo kūringa na rīera rīa matūra na tīīri. Ona Kūrī ūguo, mūthemba wa Ruiru 11 nīūciaraga mūno, ūhandagwo itina nyingī harī īka, nīūhotaga gwītiria mīrimū noo mīri ndītheremaga ūrīa kwagīrīire. Ruiru 11 nīihandagwo matūra mothe kūria kahūa kahandagwo."
+        },
+        {
+          "question_en": "What is SL variety?",
+          "question_ki": "Hihi mūthemba wa SL nī ūrīkū?",
+          "answer_en": "SL is a coffee variety suitable for middle altitudes. It's known as SL since it was selected in former Scott Laboratories- Now Kabete, Kenya. The strain has a long stem which is suitable for absorbing more nutrients from the soil. The SL 28 cultivar was selected at the former Scott Laboratories (now the National Agricultural Laboratories, NARL situated at Kabete) on a single tree basis from the Tanganyika Drought Resistant variety selected in Northern Tanzania in 1931. The prefix SL in the variety name are acronymous for Scott Laboratories where the variety was selected. The name is completed by a serial number (28) for the selection. The variety is suited for medium to high altitude coffee growing zones. SL 34 was also selected at the former Scott Laboratories from French Mission Coffee. The cultivar is adapted to high altitude areas with good rainfall. It is majorly characterized by dark bronze shoot tipped plants with a few green-tipped strains.",
+          "answer_ki": "SL nī mūthemba wa kahūa ūrīa ūkūraga wega kūndū gūtarī irīma nene kana mīaragano-inī. Mūthemba ūyū wītagwo SL kuumana na kīhumo kīagwo kīrīa nī Scott Laboratories, īrīa ūmūthī yūīkaine ta Kabete Kenya. Mūthemba ūyū nī mūraihu ūndū ūria ūtūmaga ūhote kūrīa irio nyingī kuuma tīīrī-inī kwa wīingī. SL 28 yacagūrirwo kuuma mūgūnda-inī wa Scott Laboratories īrīa rīū niyo National Agricultural Laboratories, NARL Kabete na waciarithanirio kuuma kūrī mūthemba ūngī warutītwo Tanzania ya rūgongo mwaka-inī wa 1931 ūrīa ūrī ūhoti wa gūītiria wagi wa maaī. SL nī ndemwa cia mbere cia Scott Laboratories na 28 nī namba ya kīrathi kia mūthemba ūyū. SL28 īkūraga wega kūndū kwaraganu ona kūrī irīma kūrīa kahūa gakūragio. Mūthemba wa SL 34 onagwo waciarithanīirio mūgūnda-inīo ūyū wa Scott Laboratories kuuma mūthemba wa Faranja. Kahūa gaka gaciaraga wega kūndū igurū kana irīma-inī na kūndū kūrī mbura nyingī. Mūthemba ūyū wīkūranite nīūndū nīūrī mathangū marī rangi wa gītīri gīcamu na ngirini."
+        },
+        {
+          "question_en": "What is Ruiru 11 variety?",
+          "question_ki": "Ruiru 11 nī mūthemba ūrikū wa kahūa?",
+          "answer_en": "Ruiru 11 variety was released in 1985. The variety name has the prefix 'Ruiru' referring to the location of the Kenyan Coffee Research Station where the variety was developed. The name is completed by an additional two code numbers, 11. The first code number denotes the type of variety as a one way cross between two designated parent populations and the second number defines the sequence of release, in this case the first release. The variety is not only resistant to CBD and CLR but is also compact allowing farmers to intensity production per unit land especially in high potential areas where population is high and coffee is in competition with other crops and farm enterprises required for food security and income. Ruiru 11 is planted at a density of 2500/3300 trees/ha compared to 1300 trees/ha for the traditional varieties. This translates into a higher production per unit area of land. The variety comes into production earlier, hence earlier realization of benefits to the farmers. The development of Ruiru 11 also took into consideration the importance of quality as a major marketing parameter. Since the quality of the traditional varieties was already popular among consumers of Kenyan coffee, Ruiru 11 was developed with quality attributes similar to the traditional varieties. It's also compact therefore more stems can be accommodated per unit area.",
+          "answer_ki": "Ruiru 11 yarekereirio mwaka-inī wa 1985, na wetanītio na kūrīa wathundūrīirwo, Kenya Coffee Research Station. Rītwa rīrī rīrūmīrīirwo nī namba ikūmi na īmwe. Namba īmwe ya mbere īkoragwo īkīrūga mīrīra mūthemba wa mbegū nayo 1 ya kerī īkoragwo īkīrūgamīrīra namba harīa ya rekereirio mūtaratara-inī wa kūrekererio kwa mbeū. Mūthemba ūyū nīūhotaga gwītiria mīrimū ya CBD na CRL na nīngī mbegū ciagwo ikoragwo irīnyitu ikahothia mūrīmi kūona magetha maingī, makīria kūndū kūrīa gekaga wega na kūrīa itina nyingī ihandītwo o īka. kwoguo kahūa gagakorwo na ūhūrani wa mwanya gakīringithanio na mīmera īrīa īngī. Ruiru 11 yagīrīirwo kūhandwo gatagatī ka mīmera ngiri igīrī īmwe na magana matano nginya ngiri ithatū na magana matatū hectare-inī īmwe ūkiringithania na mītī ngiri imwe na magana matatū ya kahua mīthemba ya kīmerera. Ūū nīkuuga atī Ruiru 11 nīrī magetha maingī kūrī mīthemba īngī. Ningīkoyaga ihinda inini gūkūra na kwoguo mūrīmi akagīa magetha tene na akajia kūgūnīka. Rūirū 11 rīrīa yathondekagwo, nīgwatigīrīirwo atī mūcamo nī wagīkīro kīa igūrū ota ūrīa thoko yendaga. Na rīu tondū kahūa ga kīmerera nī kamenyeretwo nīanyui kenya, Ruiru 11 yathondekirwo na mūcamo ūhanaine na wa kahūa ga kīmerera. Itina cia kahūa gaka onacio nīitumanagio rīrīa ikūhandwo."
+        },
+        {
+          "question_en": "Which type of coffee grows well in high altitude zones?",
+          "question_ki": "Nī mūthemba ūrīkū wa kahūa ūkūraga wega kūndū kwīna irīma?",
+          "answer_en": "Arabica coffee does well in high altitude areas. SL 34 – high coffee zone with good rainfall. Ruiru 11 can also be grown in all coffee growing areas.",
+          "answer_ki": "Mūthemba wa Arabica ūkūraga wega kūndū kwīna irīma. SL 34 nayo īgakūra wega kūndū kūrīa kūhandagwo kahūa na kūrī mbura nyingī. Ruiru 11 nī mūthemba ūngīkūra wega kūndū o guothe kūhandagwo kahūa."
+        },
+        {
+          "question_en": "What is the difference between Ruiru 11 and Batian?",
+          "question_ki": "Ngūrani ya Ruiru 11 na Batian nī īrīkū?",
+          "answer_en": "Ruiru 11 is suited to all coffee growing zones in Kenya at a spacing of 6ft by 6ft. Batian is the newest variety in Kenya and it is suited to all coffee growing zones in Kenya at a spacing of 7ft by 8ft.",
+          "answer_ki": "Ruiru 11 nī mūthemba ūkūraga kūndū guothe kahūa gakūragio na itina itaganagio na fiti ithathatū gwa ithathatū. Batian naguo nī mūthemba mwerū mūno Kenya na nīūrakūra wega kūndū guothe kūhandagwo kahūa na ūhandagwo na ūtaganu wa fiti mūgwanja kwa inyanya."
+        },
+        {
+          "question_en": "Where to buy coffee seeds and seedlings?",
+          "question_ki": "Ingīgūra mbegū kana mīūngūrwa ya kahūa kū?",
+          "answer_en": "Certified seed is only available from CRI-Ruiru centre. Select seedlings that are about 30 - 40 cm tall, with 1 - 2 pairs of primary branches and that should have undergone sufficient hardening. Grafted Ruiru 11 seedlings available at ksh 60 per stem.",
+          "answer_ki": "Mbegū irīa ikinyanīirie ikīro cionekaga CRI Ruiru. Ūthure mīūngūrwa īna ūraihu wa sentimita mīrongo ītatu nginya mīrongo īna na īkorwo na kahonge kamwe kana twīīrī twīnahinya. Mūngūrwa ūmwe wa kahūa ka Ruiru 11 wendagio shiringi mīrongo ītandatū."
+        },
+        {
+          "question_en": "Where is Robusta coffee grown in Kenya?",
+          "question_ki": "Kahūa mūthemba wa Robusta ūkūragio kū kenya?",
+          "answer_en": "Robusta coffee is currently grown in 5 counties (Kisumu, Homabay, Siaya, Bungoma and Busia) with a potential of expansion to Kilifi and Kwale counties in the coastal region.",
+          "answer_ki": "Kahūa mūthemba wa Robusta ūkūragio thīinī wa county ithano teria nī Kisumu, Homabay, Siaya, Bungoma na Busia. Kwīna ūhotekū wa mūthemba ūyū wa kahūa ūkorwo ūgīkūrio Kilifi na Kwale gīchūa-inī."
+        },
+        {
+          "question_en": "Why is coffee grown at high altitudes better?",
+          "question_ki": "Nīkīī gītūmaga kahūa gakūrīirio irīma-inī kagīe mūcamo mwega?",
+          "answer_en": "The altitude is closely related to the latitude of the region which affects the temperature, and this directly affects the quality of the coffee bean. When grown in lower temperatures, the beans take longer to develop, resulting in more complex and delicious flavors. This creates denser beans that roast more evenly and produces a better cup of coffee.",
+          "answer_ki": "O ūrīa ūrambata irīma-inī, noguo rīera rīcenjagia na makīria uhehu ūkaingīha. ūndū ūyū nīūtūmaga kahūa gakorwo na ngūrani na mūcamo ūgacenjia. Nīūndū wa rīera kūheha, mbegū nīcioyaga kahinda karaihu gūkūra na kuoguo igakorwo irī nyitu, igakorwo na mūcinīre ūiganarīirie na gīkombe gīako gīgakorwo na mūcamo mwega."
+        },
+        {
+          "question_en": "How long does Ruiru 11 coffee take to mature?",
+          "question_ki": "Mūthemba wa Ruiru 11 woyaga kahinda kaigana atia kūruta maciaro ma mbere?",
+          "answer_en": "Compared with other varieties, which are more slow-growing, Ruiru 11 generally produces its first harvest within two years of planting.",
+          "answer_ki": "Mūthemba ūyū wa kahūa ka Ruiru 11 nīūkūraga narua ūkīringithanio na mīthemba īyo īngī tondū ūrūtaga maciaro ma mbere thutha wa kahinda ka mīaka īrī."
+        },
+        {
+          "question_en": "How many kgs can one coffee tree produce?",
+          "question_ki": "Gītina kīmwe gīa kahūa kiagīrīire gūciara kilo cigana?",
+          "answer_en": "The yield per tree depends on the variety, ecological factors, agronomic practices among others. Generally, Coffee trees produce an average of 2.5kg of berries per year, yielding around 0.5kg of green coffee or the equivalent of 0.4kg of roasted coffee, which corresponds to about 40 cups of beverage.",
+          "answer_ki": "Gūciara gwa kahūa kūringanaga na mūthemba wa kahūa, rīera rīa itūra, mūtungatīre, gatagatī ka mangī maingī. Kaingī, mūtī ūmwe wa kahūa ūciaraga kiro igīrī na nuthu o mwaka teria nī nuthu kiro ya kahūa ka green kana ngiramu 400 ma kahūa gacine karīa kangīthondeka ikombe mīrongo īna cia kahūa."
+        },
+        {
+          "question_en": "Where does coffee grow best?",
+          "question_ki": "Nīkū kahūa gakūraga wega makīria?",
+          "answer_en": "The optimal coffee-growing conditions include cool to warm tropical climates, rich soils. Most coffee grows at altitudes between 1400 and 2000 metres in deep, well-drained volcanic soils. Temperatures range from 15 to 24 degrees and average rainfall ranges from 900–1200mm.",
+          "answer_ki": "Kahūa gakūraga wega kūndū gūtarī kūhio mūno, kūhehu no ūrugarī mūnini na tīīri mūnoru. Kahūa kaingī gakūraga wega matūra-inī marīa marī mita 1400 nĪrīo."
+        },
+        {
+          "question_en": "How to make a nursery bed for coffee?",
+          "question_ki": "Natharī ya kahūa īthondekagwo atīa?",
+          "answer_en": "Prepare 4ft (wide) x 10ft (long) beds. Mix 1 (composted bio-slurry) : 10 (black loam soil). Plant the coffee beans at shallow depth. Water the beds, then mulch.",
+          "answer_ki": "Harīria handū harī na wariī wa fiti inya na ūraihu wa fiti ikūmi (tukania thumu wa ng'ombe na tīīri mūirū kwa icūnje 1 gwa 10). Enja marima matarī mariku mūno na ūhande mbegū cia kahūa. Itīīrīria maaī na ūhumbīre na mahuti."
+        },
+        {
+          "question_en": "How do I raise coffee nursery?",
+          "question_ki": "Ingīhota atīa gūtungata natharī ya kahūa?",
+          "answer_en": "Preparing the nursery plot. Choose a bigger, flat and fertile plot next to the seed plot. Make beds of soil 1.2 metres wide, with 60-centimetre paths in between. Use planting materials from known sources to ascertain genetic purity. Source seed ONLY from the coffee research institute. The Potting mixture should be free from either biological or chemical contaminants. Establish nurseries in pollution free environments. Put a shade at 1.2 m (4 ft) above the poly bed. Provide dense shade initially. Harden seedlings by gradually reducing the shade. Reduce shade by half when seedlings are 8–9 months old. Remove shade completely one month before transplanting. Use ONLY recommended pesticides to control pests and diseases.",
+          "answer_ki": "Kūharīria natharī ya kahūa kūbataraga handū hena wariī, haraganū na hena tīīri mūnoru. Thondeka natharī cia wariī wa mita 1.2 ugītigaga tūcīra twa sentimita 60 gatagatī gacio. Gūra mīūngūrwa kuuma kambuni teria iramenyeka nīgūo ūkorwo na ūma wamūkūrire wacio. Gūra tu kuuma kwa Coffee Research Institute. Mūtukanio wa harīa mīūngūrwa īkūhandwo hatigakorwo na indo cia gūthūkia ta tūtambi kama thumu. Thondeka natharī haraihu na kīndū ogīothe kīngīthūkia. Īkīra kīruru kīa ūraihu wa mita 1.2 kana futi 4 na ūtumanie thikū cia mbere. Ehereria kīruru kahorakahora nīgūo komīrīrie. Eheria nuthu ya kīruru mweri wa kanana nangnya wa kenda. Eheria kīruru gīothe mweri ūmwe mbere ya gūgatwara kūhanda mūgūnda. Tūmīra dawa cia tūtabi na mīrimūiria hetūkīe."
+        },
+        {
+          "question_en": "When coffee seedling moved to the nursery?",
+          "question_ki": "Mīūngūrwa ya kahūa īrutagwo natharī-inī rī?",
+          "answer_en": "Six weeks after sowing, the little plant comes up from the soil. When the seedlings are three months old, the first two leaves are well developed. This is the moment to take the seedlings out of the seed beds and to transplant them into a nursery. In removing the seedlings from the seed beds, be very careful not to break the roots.",
+          "answer_ki": "Mbegū ya kahūa yumīraga wiki ithathatū kuuma mūthi ūria yahurirwo. Thutha wa mīeri itatū, mathangū meerī ma mbere magakorwo methondekete wega. Rīrī nīrīo ihinda rīega rīa gūthamia mīūngūrwa yaku na gūtwara natharī-inī. Ūgīthamia mīūngūrwa yaku ūmenyerere ndūkaunange mīri."
+        },
+        {
+          "question_en": "How long does the coffee seedlings stay in a nursery?",
+          "question_ki": "Mīūgūrwa ya kahūa īikaraga natharī-inī ihinda rīigana atīa?",
+          "answer_en": "4 to 5 months if you want to plant them during the next rainy season, 12 months or more if you want to plant them only next year. When you remove the coffee tree seedlings from the nursery bed in order to plant them in the plantation, be very careful not to break the roots.",
+          "answer_ki": "Mīeri īna nangnya ītano ungīenda kūhanda ihinda ria mbura njūku, kana mīeri ikūmi na īri ūngīenda kūhanda mwaka ūkīte. Ūgīthamia mīūngūrwa kuuma natharī-inī ūgītwara mūgūnda menyerera kuunanga mīri."
+        },
+        {
+          "question_en": "What is the best method for propagating coffee plants?",
+          "question_ki": "Nī njīra irīkū njega cia gūciarithania kahūa?",
+          "answer_en": "Coffee can be vegetatively propagated either by grafting, stem-cutting or seed. Select a straight shoot that's about 8 to 10 inches long and remove all but a pair of upper leaves. Then, plant the cutting in a small pot of soilless potting mix, and keep the soil slightly moist. When you can gently tug on the plant and feel resistance, you'll know roots have formed. The cutting should be about 6 inches long with at least two leaves. Snip off the stem with a diagonal cut. Remove the leaves from the bottom third of the cutting. Dip the cut end in rooting hormone, then plant the cutting in the hole.",
+          "answer_ki": "Kahūa no gaciarithanio na njīra ya kūhūthīra irūngo, kuohithania, kana ona mbegū. Thuura thuna ciothe nūngarū cia ūraihu wa iji inyanya nangnya ikūmi na ūmībure ūgītigagīa mathangū merī. Ūcoke ūhande thīinī wa tūnyūngū na ūige tīīri na ūgūnyu mūnini. Ūngīgeria kūgūcia mīūngūrwa naigūru taarī kūmunya, wīigue nī mūnyitu, ūmenye mīri nīyanjītie gūikīra. Tinia thuna ya ūraihu wa iji ithathatū na īkorwo na mathangū meerī. Ūcoke ūtinie gītina wūinamītie. Ūcoke ūbure mathangū kuuma nathī ūgītigagia manini. Ikia thuna yaku dawa-inī ya guteng'eria mīīri ūcoke ūhande irima-inī."
+        },
+        {
+          "question_en": "How do you transplant the coffee seedlings to the farm?",
+          "question_ki": "Wagīrīirwo gūthamia mīūngūrūa ya kahūa atīa kuuma nathari-inī ūgītwara mūgūnda-inī?",
+          "answer_en": "Prepare the new planting site by loosening the soil and adding compost or other organic matter to improve the soil structure and fertility. Choose a location that receives plenty of sunlight and has well-drained soil. When the seedlings are ready, dig a large enough hole to accommodate the seedling's root system without crowding it. Gently loosen the seedlings roots and position it in the hole, ensuring that the top of the root ball is level with the surrounding soil. Fill in the hole around the roots, and firm the soil gently to remove any air pockets.",
+          "answer_ki": "Hariīia mūgūnda na njīra ya kūrīma na wīkire thumu wa mahiū kana wa mabūthū ma mahuti nīgūo wongerere ūnorū wa tiri ūcio. Handa handū hakinyagīrwo nī riūa wega na hatangīaraha maaī. Mīūngūrwa yarīkia kūharīrio, enja irima inene rīkūiganīra mīīri wega ūndū ītekūhatīkana. Tanganura mīīri ya mīūngūrwa ūmenyereire, na ūmīikie marima-inī ūtegūkīria haria tīīri ūrakinyīte. Mīthike ugīkindagīra tīīri kahora kahora nīgūo kūruta rīera rīria rīngikorwo thīinī."
+        },
+        {
+          "question_en": "What are the conditions for coffee growing?",
+          "question_ki": "Kahūa karabataraga maūndū marīkū nīgetha gakūre wega?",
+          "answer_en": "Most coffee grows at altitudes between 1400 and 2000 metres in deep, well-drained volcanic soils. Temperatures range from 15 to 24 degrees and average rainfall ranges from 900–1200mm.",
+          "answer_ki": "Kahūa kaingī gakūraga wega matūra-inī marīa marī mita 1400 nangnya 2000 igūrū wairia, na ningī tīīri-inī mūriku mūtune wa volcanic woikūrūkagia maaī wega. Ūrugarī wa ikīro cia ndigirii ikūmi na ithano nangnya mīrongo īrī na ithano na mbura ya ikīro icia milimita 900-200."
+        },
+        {
+          "question_en": "What to consider when selecting a site for coffee planting?",
+          "question_ki": "Wagīrīirwo nīkūrora maūndū marīkū ūgīthura mūgūnda wa kūhanda kahūa?",
+          "answer_en": "The soil must have a good structure so that the roots can penetrate well. This is because coffee trees have tap roots. The tap root goes straight down into the soil. You can improve the soil structure by spreading manure around the base of the coffee trees. The soil must be deep, so that the roots can go down deep. Never plant coffee trees in soil which has a hard layer, or, if you do, break up the hard layer.",
+          "answer_ki": "Tīīri wagīrīirwo nīgūkorwo na mūmbīre mwega nīguo kūhotithia mīri ya kahūa gūtonya wega. Ūū nīūndū mītī ya kahūa īkoragwo na mīri ya itimū. Mīri īno ya itimū īmeraga irūngarīte na gwūikūrūka haraya thīinī wa tīīri. No wagīrie mūūmbīre wa tīīri na njīra ya gwīkīra thumu itina-inī cia mītī ya kahūa. No mūhaka tīīri ūkorwo mūriku nīguo mīri īhote kwīngīra handū haraya. Ndūka hande kahūa handū harī na tīīri mūnyitu, na wakorwo no mūhaka, nīwega kūhaciba."
+        },
+        {
+          "question_en": "How to prepare land for planting coffee?",
+          "question_ki": "Mūgūnda wa kūhanda kahūa ūharagīrīo atia?",
+          "answer_en": "Land preparation should be done early about 6 months prior to planting by clearing existing vegetation and getting rid of tree stumps and roots. If the farm is heavily forested gradually dry existing trees about a year before planting. Prepare the land well in advance, digging out all tree stumps, roots, bushes and grasses. Land cleared of trees within 6 months should not be used for coffee planting because of the risk of Armillaria, a fungal disease that causes root rot. Ensure soil analysis is done to determine the inherent soil condition. Make terraces or other soil conservation structures where the land has steep slopes. Protect bench terraces by planting grasses e.g. Blue grass (Paspulum notatum) on the bench faces.",
+          "answer_ki": "Mūgūnda ūharagīrio mīeri ītandatū mbere ya kūhanda, weherie mahuti, ithukī na mīri yothe. Angīkorwo mūgūnda wīna mītī mīingī, hebata kūmīeheria mwaka ūmwe mbere ya kūhanda kahūa. Harīria mūgūnda wega tene, ūkīmunyaga ithukī, mīīri, mahuti ona nyeki. Mūgūnda ūtaninīte mīeri ītandatū ndūbatiī kūhandwo kahūa nīūndū wa ūgwati wa mūrimū wa Armillaria ūrīa ūtūmaga mīri ībuthe. Tigīrīra tīīri nī mūthime nīguo ūmenyeke ūria ūhana. Thondeka beji kana mīako īngī kūrīa kūinamu. Gitīra beji na njīra ya kūhanda nyeki ta mūthemba wa Blue grass (Paspulum notatum) mīthia-inī."
+        },
+        {
+          "question_en": "What is the best way to grow coffee?",
+          "question_ki": "Nī njīra īrīkū njega makīria ya gūkūria kahūa?",
+          "answer_en": "Leave 3 metres between trees. In this way you can plant about 1,000 coffee trees per hectare. Before planting the coffee seedlings you must dig holes in order to stir the soil and loosen it. Dig the holes two months before planting the coffee trees.",
+          "answer_ki": "Tiga ūtaganu wa mita ithatū kuuma gītina gia kahūa nangnya kīria kīngī. Kwa njīra ino, no ūhande itina ngiri īmwe harī hectare īmwe ya mūgūnda. Mbere ya kūhanda mīūngūrūa, enja marima na ūtūkanie tīīri mīeri īrī mbere ya kūhanda."
+        },
+        {
+          "question_en": "How to plant coffee seedlings?",
+          "question_ki": "Mīūngūrwa ya kahūa yagīrīire kūhandwo atīa?",
+          "answer_en": "Before planting, the seeds should be soaked in water for 24 hours to soften the seed coat and encourage germination.",
+          "answer_ki": "Mbere ya kūhanda, mbegu ciagīire kūrindwo maai-inī mathaa 24 nīguo ihūthie ngothi na imere na ihenya."
+        },
+        {
+          "question_en": "Which is the best type of soil to plant coffee?",
+          "question_ki": "Nī tīīri ūrīkū mwega wa kūhanda kahūa?",
+          "answer_en": "Coffee can be grown on many different soil types, but the ideal is a fertile, volcanic red earth or a deep, sandy loam.",
+          "answer_ki": "Kahūa nogakūre tīīri-inī ūtiganīte no ūrīa mwega mūno nī tīīri ūrīa wīna ūnoru, mūtune kana volcanic red soil, na sandy-loam."
+        },
+        {
+          "question_en": "What is the soil pH for coffee cultivation?",
+          "question_ki": "Ūrūrū mwega wa tīīri wa kūhanda kahūa nī ūrīkū?",
+          "answer_en": "Coffee prefers a soil with pH of 5 to 6.",
+          "answer_ki": "Kahūa kagīraga tīīri-inī ūrī na ūrūrū wa gatagatī wa gīthimo gia pH gia kuuma ithano nangnya ithathatū."
+        },
+        {
+          "question_en": "How many coffee trees can be planted in an acre?",
+          "question_ki": "Īka imwe ībatiī kūhandwo itina cigana cia kahūa?",
+          "answer_en": "1380-2000 trees per acre depending on the arabica variety; in the case of Robusta, plant between 253-675 trees per acre. With Ruiru 11 spacing of 2×2 meters (6.6 by 6.6 feet), it will translate to 2,500 Ruiru 11 coffee trees per hectare (1,012 coffee plants per acre).",
+          "answer_ki": "Itina ngiri īmwe na magana matatū ma mīrongo īnana nangnya ngiri igīrī cia mūthemba wa Arabica kana itina magana meerī ma mīrongo ītano na ithatū nangnya magana matandatū ma mīrongo mūgwanja na ithano cia mūthemba wa Robusta. Mūthemba wa Ruiru II wagīrīire ūtaganu wa mita igīrī kwa igīrī kana futi ithathatū gwa ithathatū. Ūū nīkuga ūkūhanda itina ngiri igīrī na magana matano harī hectare īmwe kana ngiri imwe na ikūmi na igirī īka-inī īmwe."
+        },
+        {
+          "question_en": "When you want to change cycle, what height of stump should you leave?",
+          "question_ki": "Rīrīa ūkwenda kūgarūra kahūa, wagīrīire gūtiga gīthūkī kīna ūrahu woigana atīa?",
+          "answer_en": "Cut stems about 25-30 cm from ground at angle of 45 degrees slanting outwards.",
+          "answer_ki": "Ceha honge gatagati ka ūraihu wa sentimita 25-30 kuuma thīna ūgītinagia na ango ya 45° ūrutītie na nja."
+        },
+        {
+          "question_en": "How to prune coffee in Kenya?",
+          "question_ki": "Hihi mūcehere mwega wa kahūa gūkū Kenya nī ūrīkū?",
+          "answer_en": "Cut off the top of the tree so that the coffee tree is not taller than 1.5 to 2 metres. Remove the branches at the bottom of the trunk. Leave only the thickest and best branches on the trunk. Cut away all the small branches that grow on the trunk. Cut away all the dead and dry branches, and all diseased branches. Cut away suckers; they are not needed. Coffee plants can be pruned in the early stages of growth by cutting back the growing tip to encourage lateral branching, this will promote more flowers and fruits. Mature plants can be cut back quite hard every three years to manage size and encourage lateral growth.",
+          "answer_ki": "Ceha kahūa gaku mūtwe nīguo gatigakīrie ūraihu wa mita imwe na nuthu nangnya mita igīrī. Ruta hongeiria irī gītina-inī. Tigia hongeiria ndungu na irī na riri. Tiniairia njeke na nini. Ruta hongeiria nguo,iria ciumīte nairia ndwaru. Ruta thuna ciothe tondū itirī na bata. Kahūa no gūcehwo karīo kanini na njīra ya gūkarenga kīongo nīgūo honge cia mwena ciitīkīre gūkūra na ihote kūruta mahūa na matunda maingī. Mītī mīkūrū noicehagwo o thutha wa mīaka ītatū nīguo kūgiria īnenehe mūno na honge ingī njerū ciūre."
+        },
+        {
+          "question_en": "Why is it important to prune coffee trees?",
+          "question_ki": "Bata wa gūceha kahūa nī ūrīkū?",
+          "answer_en": "Pruning and stumping help to improve the health and yield of your coffee plants. Coffee cherry production naturally decreases with age, exhaustion, and phytosanitary problems, but this kind of maintenance can help to maintain or boost productivity levels throughout the years.",
+          "answer_ki": "Gūceha na kweheria honge ciothe cia kahūairia ītarī na bata nīgūcokagia riri wako na gakahota kugīa na maciaro maingī. Gūciara gwa kahūa gūthiaga nathī o ūrīa karakūra na gakanoga no gūceha nīgūteithagia kuongerera magetha mwaka wothe."
+        },
+        {
+          "question_en": "How to mulch coffee?",
+          "question_ki": "Kahūa karagīrwo mūceng'i atīa?",
+          "answer_en": "It can be done using sisal waste, coffee pruning, and maize or banana trash. Mulching has several benefits to coffee e.g. conservation of moisture during dry spells, suppression of weed growth, nutrient supply, improvement of soil structure and water infiltration, checking of soil erosion and topsoil temperature as well as reduction of pests' incidence, e.g. thrips.",
+          "answer_ki": "No ūhūthīre ngurura cia makongo ma mīrura, mahuti ma mīceho ya kahūa, mabebe kana macoya ma marigū. Mūceng'i īrehaga baita nene, kwa mūhiano, gūteithīrīria kūiga maaī tīīri-inī rīrīa gwī kūūmū, kūgiria ria rīkūre, gūtuīka thumu rīrīa mahuti macio mabutha, gūthondeka mūmbīre wa tīīri ona kūgiria tīīri gūkuo nī kīguo, kūnyihia ūrugarī wa tīīri ona ningī nīūrigagīrīria tūtambi ta thrips gūtherema."
+        },
+        {
+          "question_en": "When does coffee mature after planting?",
+          "question_ki": "Kahūa kajagia gūcara thutha wa kahinda kaigana atīa?",
+          "answer_en": "Coffee tree reaches maturity after 4 – 7 years, when it begins to bear fruit in clusters along its branches. These fruits are commonly referred to as cherries. It can take anywhere between three to four years after planting for coffee plants to bear the cherries. They start by producing white blossoms and around eight months later, coffee cherries will usually appear. The cherries contain the coffee seeds or more commonly recognised as the coffee beans.",
+          "answer_ki": "Kahūa kagimaraga thutha wa mīaka 4 nangnya 7, nīrīo kambagia gūciara matunda honge-inī. Matunda maya nīmo metagwo cherries. Kahūa nogaikare gatagatī ka mīaka itatū nangnya īna nīguo kambie gūciara matunda. Kambaga kūruta mahūa meerū na thutha wa kahinda ta ka mīeri īnana, matunda makambīrīria kuoneka. Matunda maya nīmo makūīte mbegūiria ciūīkaine ta coffee beans."
+        },
+        {
+          "question_en": "Which is the recommended way to weed a coffee farm?",
+          "question_ki": "Kahūa kagīrīire kūrīmīrwo atīa?",
+          "answer_en": "Do hand weeding around the young trees. Use implements like the half-moon jembe to weed in between the rows. In the event that there are stubborn weeds like couch grass, cover the seedlings (with a bucket or bag) before spraying the weeds with a suitable herbicide.",
+          "answer_ki": "Kamunyīre ria itina-inī cia mītī īrīa mīnini. Huthīra icembe rīrīa ūkūrima gatagatī ka mīkaro. Kūngīkinyīrīra atī kwīna ria rīrīa rītahukaga raithi ta thangari, hubīra mītī na bucket kana iratathi mbere ya kūhūra dawa ya ria."
+        },
+        {
+          "question_en": "Which crops can you intercrop with coffee?",
+          "question_ki": "Nī mīmera īrīkū īngīhandanīrio na kahūa?",
+          "answer_en": "Suitable intercrops include short leguminous crops such as beans, tomatoes and Irish potatoes. Plant the intercrops using a recommended fertilizer preferably NPK fertilizer such as 17:17:17. Plant the intercrop at the middle of the inter rows at least 2 feet away from the coffee rows/stem. The technically and economically viable intercrops for coffee were potatoes, tomatoes, beans, and tomatoes in combination with beans. Intercropping can be undertaken within the first two years after establishment.",
+          "answer_ki": "Mīmera īrīa mīega ya kuhandanīria na kahūa nī īrīa yoyaga kahinda kanini gūkūra ta mboco, nyanya na waru cia ngwacī. Handa mīmera īno ya gatagatī ūkīhūthīra bataraitha īrīa njītīkīrie ta NPK-17:17:17. Handa mīmera ino gatagatī-inī ka raini cia kahūa ūtigītie ta fiti 2 kuuma gītina-inī gia kahūa. Mīmera mīega na īrī umithio ībatiī kūhandanīrio na kahūa nī waru, nyanya hamwe na mboco. Kahūa kangīambīrīria gūtukanio na mīmera īngī mīaka īrī thutha wa kūhandwo."
+        },
+        {
+          "question_en": "How to maintain a coffee plantation?",
+          "question_ki": "Kahūa kamenyagīrīrwo atīa?",
+          "answer_en": "Replace seedlings that have not grown, keep the soil covered and remove weeds, prune the coffee trees correctly, apply fertilizers, protect the coffee trees from insects and diseases.",
+          "answer_ki": "Cokereria mīūngūrwa īrīa ītanagwata, thondeka mūceng'i na urīmīre, ceha kahūa ūrīa kwagīrīire na gūkahe bataraitha, kagitīre kuumana na tūtambi na mīrimū."
+        },
+        {
+          "question_en": "How to increase coffee berry weight and quality?",
+          "question_ki": "Mbegū cia kahūa ingīongererwo ūritū na mūcamo atīa?",
+          "answer_en": "Nitrogen is needed for good growth, but too much at later stages can compromise coffee berry size. High supplies of potassium are needed during berry set and berry fill to maximize sugar accumulation in berry and eventual bean. Potassium has a crucial role in improving coffee berry size and quality. Boron has a significant positive effect on coffee berry size – improving the quality grade of coffee beans. The highest coffee yields are obtained on freely drained soils where water is not limiting. Thorough soil preparation prior to planting, and maintenance of pH between 5.2-6.3, good rooting and nutrient availability. Regular pruning is essential to thicken the tree structure and produce new branch growth with a greater number of berries.",
+          "answer_ki": "Nitrogen nīyabata mūmera ūgīkūra, no īngīkīra kihūa gīgīkūrū, ūnene wa mbegū nīūhatīkagwo. Potassium nīyendagwo kwa wūīngī kahūa gagīkīra mbegū na gūteithia igīe sukari wakūigana. Potassium īteithagia kūnenehia mbegū na kūmīhe mūcamo. Boron ya mathangū nīyabata mūno harī kūnenehia mbegū na kūhe kahūa gredi njega. Kahūa kaingī kagethagwo tīīri-inī ūrīa ūtaigaga maaī na kūria gūtomaga mūno. Tīīri-inī mūharīrīrie wega mbere ya kūhanda ūrī na ūrūrū wa pH ya 5.2 – 6.3, mīrita mīega na mabataro moothe ma īrīo cia mūmera nī makinyanīirie. Gūceha kaīngī gūtūmaga mūtī ūgīe hinya na ūkaruta honge njerū īria irī na ūhoti wa gūciara mbegū ingī nyingī."
+        },
+        {
+          "question_en": "What are the stages of coffee fruiting?",
+          "question_ki": "Matīna ma gūkūra kwa mbegū nī marīkū?",
+          "answer_en": "STAGE 1: 1-7 weeks (0-50 days) after blooming. Slow Growth stage; the fruit is as big as the tip of a match. STAGE 2: 8-17 weeks (50-120 days) after blooming. The fruit grows quickly; the seed has a gelatinous consistency. STAGE 3: 18–25 weeks (120–180 days) after blooming. The seed completes its development, acquires a solid consistency and gains weight. STAGE 4: 26–32 weeks (180–224 days) after blooming. Fruit is physiologically developed and begins to mature. After week 32 (more than 224 days), fruit over-ripens and turns dark purple. Finally, it dries.",
+          "answer_ki": "ITĪNA RĪA MBERE: Wiki īmwe nangnya mūgwanja (thikū 0 nangnya 50) thutha wa ihūa gūcanūka. Mbegū īgakūra kahora na īgakorwo īigana ta kīongo gīa kībiriti. ITĪNA RĪA KEERĪ: Wiki ya kanana nangnya ikūmi na mūgwanja (thikū 50-120) kuuma Ihūa rīacanūka. Mbegū īgakūra na ihenya, na īkagīa na gelatine. ITĪNA RĪA GATATŪ: Wiki ya ikūmi na kanana nangnya ya mīrongo īrī na ītano (thikū 120-180) kuuma ihūa rīacanūka. Mbegū īkarīkia gūkūra, īkaiyūria na īkagīa na ūritū. ITĪNA RĪA KANA: Wiki ya mīrongo īrī na ītandatū nangnya mīrongo ītatū na ithathatū (thikū 180–224 kuuma ihūa gūcanūka). Mbegū ikambīrīria gūtuta. Thutha wa wiki 32, makīria ma thikū 224, mbegūcieruha makīria ikagarūrūka rangi igatuīka cia purple njirīrīru, na ikoma."
+        },
+        {
+          "question_en": "What is the water requirement of coffee?",
+          "question_ki": "Kahūa kabataraga maaī maigana atīa?",
+          "answer_en": "The irrigation requirement of coffee is very high; around 101 m3 water per acre per season. Drip irrigation increases coffee yields, while also improving crop quality.",
+          "answer_ki": "Kahūa kabataraga maaī maingī mūno kuuma gīthimi kia 101m³ harī īka o kīmera. Kūhe maaī na mībira ya drip nīkuongagīrīra magetha na gūgatūma mbegtū ikorwo irī njega mūno."
+        },
+        {
+          "question_en": "What to do when the land is slope?",
+          "question_ki": "Ingīka atīa angīkorwo mūgūnda nī mūinamu?",
+          "answer_en": "Undertake terracing and plant stabilizing grass on the face of the terraces.",
+          "answer_ki": "Thondeka beji na ūhande nyeki mīthia-inī."
+        },
+        {
+          "question_en": "What are the common coffee diseases and pests?",
+          "question_ki": "Nī mīrimū na tūtambi tūrīkū tūgūmagīra kahūa?",
+          "answer_en": "Common diseases: Coffee rust, Coffee berry disease, Root rot, Leaf blight, Coffee mosaic virus. Common pests: Coffee berry borer, Coffee leaf miner, Coffee mealybug, Coffee thrips, Coffee mite.",
+          "answer_ki": "Mīrimū: Coffee rust, Coffee berry disease, Root rot, Leaf Blight, Coffee Mosaic Virus. Tūtambi: Coffee Berry Borer, Coffee Leaf Miner, Coffee Mealybug, Coffee Thrips, Mbūmbūī ya kahūa."
+        },
+        {
+          "question_en": "How to control common coffee pests and diseases?",
+          "question_ki": "Njīra cia kūrūa na tūtambi na mīrimū cia kahūa nī irīkū?",
+          "answer_en": "Plant resistant varieties (e.g. Ruiru 11, Batian). Proper pruning, field sanitation, use of recommended copper-based fungicides and insecticides, biological control (e.g. parasitic wasps), crop rotation, and integrated pest management (IPM).",
+          "answer_ki": "Handa mīthemba ītiragia mīrimū ta Ruiru 11 kana Batian. Gūceha wega, gūtheria mūgūnda, kūhūthīra dawa cia copper na cia tūtambi, thū cia kīīmerera, kūgarūra mīmera, na IPM."
+        },
+        {
+          "question_en": "How do you know coffee is ready for harvesting?",
+          "question_ki": "Ingīhota atīa kūmenya kahūa nīgakinyu ga kūgethwo?",
+          "answer_en": "The fruit is initially green and turns red when it is ready for harvesting. Coffee berries do not generally mature all at once.",
+          "answer_ki": "Itunda rīa kahūa mbere rīkoragwo rīrī rīa rangi wa ngirini na nīrīcokaga rīkagarūra rangi ūgatūīka mūtune, rīkonania nīikinyu rīa kūgethwo. Mbegū cia kahūa itikūranagīra hamwe."
+        },
+        {
+          "question_en": "What is the best way to harvest coffee?",
+          "question_ki": "Nī njīra īrīkū njega ya kūgetha kahūa?",
+          "answer_en": "Selective hand picking of only ripe cherries is best for quality. Strip picking is faster but lower quality. Harvesting time varies by region and altitude.",
+          "answer_ki": "Gūtua na moko karia keeru tu nī njega makīria harī mūcamo. Gūbura yothe nī narua no mūcamo mūru. Ihinda rīa kūgetha rīringanaga na itūūra na irīma."
+        },
+        {
+          "question_en": "What is the process of coffee after harvesting?",
+          "question_ki": "Kahūa gekagwo maūndū marīkū thutha wa kūgethwo?",
+          "answer_en": "Harvesting → pulping → fermenting → washing → drying → hulling → cleaning → grading → sorting → storing → transporting green beans. Divided into Wet Processing (cherry to dry parchment) and Dry Processing (dry parchment to exportable green bean).",
+          "answer_ki": "Kūgetha → gūkonyora → kūrinda → gūthambia → kūūmithia → kūhīhia → gūthurania → irathi → gūchagūrania → kūiga thitoo → gūkuithia karīkia gūkonyorwo. Wet Processing (cherry to dry parchment) na Dry Processing (dry parchment to exportable green bean)."
+        },
+        {
+          "question_en": "What are the grades of coffee in Kenya?",
+          "question_ki": "Hihi irathi cia mbegū ngonyore cia kahūa Kenya nī irīkū?",
+          "answer_en": "E, PB, AA, AB, C, TT, T, and MH/ML (based on bean size).",
+          "answer_ki": "E, PB, AA, AB, C, TT, T, na MH/ML."
+        },
+        {
+          "question_en": "How should coffee be stored?",
+          "question_ki": "Hihi kahūa kagīrīirwo kūigwo atīa?",
+          "answer_en": "Dry, clean, well-ventilated stores. Keep fully dry coffee on wooden platforms, away from walls and corrugated iron. Store for a minimum of 4 weeks and a maximum of 6 months. Use opaque, airtight containers at room temperature for roasted coffee.",
+          "answer_ki": "Makūmbī ma kahūa no mūhaka makorwo marī matherū, matarī na wūigū, na marī na riera rīracera thīinī wega. Hebata kūiga kahūa komithio wega igūrū ria metha cia mbaū, sentimita 15 kuuma floo-inī na matikahutanie na thingo. Kahūa rīu no kaigīke kwa ihinda rīa wiki inya nangnya mīeri ītandatū. Hūthira gīkabu gītekūhetūkia ūtheri kana rīera, handū hahehu."
+        },
+        {
+          "question_en": "What is the average profit/yield in coffee farming in Kenya?",
+          "question_ki": "Kahūa kangīhe baida/magetha īigana atia Kenya?",
+          "answer_en": "Average yield 1-1.5 tons per acre. One ton sells at approx. KES 350,000 → potential income KES 350,000–525,000 per acre (costs deducted will give profit).",
+          "answer_ki": "Kahūa kaingī nīgaciaraga tani 1-1.5 kuuma īka-inī īmwe. Tani īmwe ya kahua no īgūrūo KES 350,000,iria ingirehe maumirira ma mbeca mūigana wa KES 350,000 nangnya KES 525,000 harīīka īmwe."
+        }
+      ]
+    },
+    {
+      "topic": "Potato",
+      "qa_pairs": [
+        {
+          "question_en": "What altitude does potato grow in Kenya?",
+          "question_ki": "Nīkūndū kūrīkū kūraihu mūno kūrīa waru ikūraga būrūri-inī wa Kenya?",
+          "answer_en": "Potatoes are traditionally grown between 1500 to 3000 metres Above Sea Level (m.a.s.l). However, some new varieties can still do well in altitude below 1500 m.a.s.l.",
+          "answer_ki": "Waru ithinūkagio gatagatī ka mita 1500 na 3000 igūrū wa muka (m.a.s.l.). O na kūrī ūguo, mīthemba īmwe njerū no īkorūo na ūguni o na irīma-inī irīna igūrū rīa mita 1,500."
+        },
+        {
+          "question_en": "Which soil types favor potato growing in Kenya?",
+          "question_ki": "Nīmīthemba īrīkū ya tīīri īteithagia kūrīma waru būrūri-inī wa Kenya?",
+          "answer_en": "Ideal soils for potatoes vary within the counties but usually loam soils (silt loam; clay loam) with adequate organic content, well-draining to light soils are suitable. Suitable soil pH ranges from 5.5-7.0. Ideal soil pH 5.8.",
+          "answer_ki": "Mūgūnda ūrīa mwega wa kūhanda waru ūkoragwo ūrī ngūrani kūringana na kauntī, no kaingī nī mūgūnda wa tīīrī (silt loam; clay loam) ūrīna indo cia kūigana cia kīīmwīrī, na ūkoragwo na mīhūmū mīega ya maaī. pH īrīa yagīrīire ya tīīri īkoragwo gatagatī ka 5.5-7.0. pH īrīa yagīrīire ya tīīri 5.8."
+        },
+        {
+          "question_en": "What is the ideal temperature for potato to grow?",
+          "question_ki": "Nīrīera rīrīkū rīega rīa gūkūria waru?",
+          "answer_en": "Potato do well or require a mean daily temperature range from 15-24 degrees Celsius.",
+          "answer_ki": "Waru nīciekaga wega na ūrugarī mwega kana nīībataraga rīera rīa o mūthenya rīa digrii 15-24°C."
+        },
+        {
+          "question_en": "How much annual rainfall does potato require to grow?",
+          "question_ki": "Nīmbura īigana atīa ībataranagia o mwaka nīguo waru īhote gūkūra?",
+          "answer_en": "Potato require a Mean Rainfall of 1200-1800mm.",
+          "answer_ki": "Waru nīībataraga Mbura ya mūigana wa 1200-1800mm."
+        },
+        {
+          "question_en": "When is the ideal time to plant potatoes in Kenya?",
+          "question_ki": "Nīhīndī īrīkū njega ya kūhanda waru Kenya?",
+          "answer_en": "The ideal planting time for potatoes in Kenya varies based on the region and altitude. Generally, potatoes are planted at the onset of the rainy season. For many areas, this translates to planting between March and May.",
+          "answer_ki": "Ihinda rīrīa rīagīrīire rīa kūhanda waru būrūri-inī wa Kenya rītihaanaine kūringana na kūrīa irīna kūrīa irī kūraihu. Kaingī, waru īhandwo kīambīrīria-inī kīa hīndī ya mbura."
+        },
+        {
+          "question_en": "Where do potatoes grow in Kenya?",
+          "question_ki": "Waru ikūraga kū Kenya?",
+          "answer_en": "There are 13 major potato-producing counties which are: Meru, Nyeri, Nyandarua, Kiambu, Taita-Taveta, Nakuru, Narok, Bomet, Elgeyo-Marakwet, Trans-Nzoia, Bungoma, Uasin-Gishu and West Pokot.",
+          "answer_ki": "Kūrī kauntī 13 neneiria ikūragia waru ta Meru, Nyeri, Nyandarua, Kiambu, Taita-Taveta, Nakuru, Narok, Bomet, Elgeyo-Marakwet, Trans-Nzoia, Bungoma, Uasin-Gishu na West Pokot."
+        },
+        {
+          "question_en": "Why is field sanitation important in potato production?",
+          "question_ki": "Nīkīī gītūmaga ūrigitani ūkorūo ūrī wa bata harī kūrīma waru?",
+          "answer_en": "Field sanitation prevents diseases and is done by the removal of all early disease inoculum in field before planting - potato plant residues, volunteer plants, culled tuber piles, residual tubers in soil, weeds.",
+          "answer_ki": "Ūgītheria wa mīgūnda nīūgiragia mīrimū na ūrutagwo na njīra ya kweheria indo ciotheiria irī mūgūnda mbere ya kūhanda - matigari ma mīmera ya waru, mīmera ya kwīrutīra, mīrigo ya mbūrū, mīmera īrīa ītigarīte tīīri-inī, mīmera mīūru."
+        },
+        {
+          "question_en": "Which is the most recommended mode of irrigation in potato production?",
+          "question_ki": "Nīnjīra īrīkū ya kūhehenja īrīa yagīrīire mūno harī kūrīma waru?",
+          "answer_en": "Overhead irrigation on hilled potato furrows is the most common irrigation way. Drip irrigation is the fastest growing method of irrigating potatoes because it is water efficient.",
+          "answer_ki": "Gūitīīrīrio maaī na igūrū nīnjīra īrīa īhūthagīrūo mūno ya kūitīīrīrio maaī. Kūminjamūra na njīra ya kūminjamūra nī njīra ya gūkūra na ihenya mūno ya kūhe waru maī tondū nī īteithagia kūhūthīra maī wega."
+        },
+        {
+          "question_en": "What is the best manure for potatoes?",
+          "question_ki": "Nīthūmū ūrīkū mwega wa waru?",
+          "answer_en": "It has been shown that chicken manure pellets are the go-to choice fertilizer for potato farmers. Potatoes thrive in calcium-rich soil, this helps produce large full flavour potatoes. Chicken manure pellets contain up to 7% calcium.",
+          "answer_ki": "Nīkuonekete atī magego ma mūtararīko wa ngūkū nīmo magego marīa mathuuragwo mūno harī arīmi a waru. Waru ciongagīra tīīri-inī wīna calcium nyingī, na ūndū ūcio nīūteithagia kūruta waru nene cia mūtararīko. Mbūri cia ngūkū nīikoragwo na calcium ya hakuhī 7%."
+        },
+        {
+          "question_en": "Which fertilizers and manure are best for potatoes?",
+          "question_ki": "Ni bataraitha na mūtararīko ūrīa wega mūno harī waru?",
+          "answer_en": "Apply DAP fertilizer in the rows at planting at the rate of 500 kg/ha (or 200 kg/acre). On acidic soils, apply Monoammonium Phosphate (MAP) at the same rate as DAP. Apply well decomposed manure at the rate of 5-10t/ha.",
+          "answer_ki": "Hūthīra DAP mūtaratara-inī wa kūhanda na ūigana wa 500 kg/ha (kana 200 kg/īka). Thīinī wa tīīri wina acidi, ūhūthagīre Monoammonium Phosphate (MAP) na ūigana wa DAP. Hūthīra mūtararīko mwega ūigana wa 5-10t/ha."
+        },
+        {
+          "question_en": "What is the maturity period for Irish potato in Kenya?",
+          "question_ki": "Waru cīkūraga thutha wa kahinda kaigana atīa Kenya?",
+          "answer_en": "Maturity Period: Range between 3 – 4 months after planting depending on the variety.",
+          "answer_ki": "Nīguo gūkūra warū cīhūthagīra mīeri 3-4 thutha wa kūhanda kūringana na mūthemba wa waru."
+        },
+        {
+          "question_en": "What is the average Irish potato production per acre in Kenya?",
+          "question_ki": "Magetha ma waru īka imwe maigana atīa Kenya?",
+          "answer_en": "Average yield in Kenya: 3.2 tons/acre but the Yields potential: 16 tons/acre.",
+          "answer_ki": "Magetha ma gatagatīini Kenya: nī tani 3.2 harī īka no īrute tani 16 harī īka."
+        },
+        {
+          "question_en": "What is greening in potato and how can it be prevented?",
+          "question_ki": "Waru kūgia rangi wa grini nī kuga atīa na īngī girīrīrio atia?",
+          "answer_en": "The greening of potato is caused due to the exposure of the tubers to sunlight which causes the development of the green pigment called Solanin. This reduces the market value due to its poor colour, taste and cooking quality. This can be prevented by practicing earthing up after every top dressing.",
+          "answer_ki": "Waru kūgia rangī wa ngirini nīūndū wa rīua. Rangi ūyū ūthondekaga kemiko ītagūo Solanin. Rangī ūyu nīuteaga thoko nīūndū wa kwaga kūgucīrīria, gūtee mūcamo na kwaga kūrugīka. No ūgīrīrīrie ūū ūngīkīra tīīri o thutha wa gūīta bataraitha."
+        },
+        {
+          "question_en": "How can a farmer determine if Irish potatoes are mature?",
+          "question_ki": "Mūrīmi angimenya atīa waru ciake nī ngūrū?",
+          "answer_en": "Maturity period varies from one variety to another and can be indicated by yellowing of the crop's leaves and easy separation of tubers from their stolons.",
+          "answer_ki": "Gūkūra kwa waru kūringanaga na mūthemba wa waru na umenyaga mahuti magia rangi wa ngoikoni."
+        }
+      ]
+    },
+    {
+      "topic": "Cabbage",
+      "qa_pairs": [
+        {
+          "question_en": "What is the best season to plant cabbage in Kenya?",
+          "question_ki": "Nīhīndī īrīkū njega ya kūhanda kabichi Kenya?",
+          "answer_en": "Cabbage can be grown throughout the year in most parts of Kenya, but the best season is during the cool, wet months from March to May and September to November.",
+          "answer_ki": "Kabichi nīgakūra mwaka wothe būrūri-inī wa Kenya, no ihinda rīrīa rīega nī mīeri ya kūhehu na mbura kuuma Machi na Mei na kuuma Sepitema na Novemba."
+        },
+        {
+          "question_en": "What is the recommended spacing for cabbage?",
+          "question_ki": "Itina cia kabichi ciagīrīirwo gūtaganūkanio atia?",
+          "answer_en": "Recommended spacing for cabbage is 60cm between rows and 45cm between plants. This gives a plant population of about 35,000-40,000 plants per hectare.",
+          "answer_ki": "Ūtaganu ūrīa ūgīrīire wa kabichi nī sentimita 60 gatagatī ka mīkaro na sentimita 45 gatagatī ka mītī. Ūū nīkuga itina ya mītī ya 35,000-40,000 harī hectare."
+        },
+        {
+          "question_en": "How long does cabbage take to mature?",
+          "question_ki": "Kabichi kajagia gūcara thutha wa kahinda kaigana atīa?",
+          "answer_en": "Cabbage takes about 60-90 days to mature depending on the variety and growing conditions.",
+          "answer_ki": "Kabichi kagīra mathaa 60-90 kūruta gūkūra kūringana na mūthemba na maūndū akūragio."
+        },
+        {
+          "question_en": "What type of soil is best for cabbage?",
+          "question_ki": "Nī tīīri ūrīkū mwega wa kabichi?",
+          "answer_en": "Cabbage grows best in fertile, well-drained soils with a pH of 6.0-7.5. Rich organic matter is beneficial.",
+          "answer_ki": "Kabichi īkūraga wega tīīri-inī mūnoru, mūrīku wega na pH ya 6.0-7.5. Indo cia kīīmwīrī nīīteithia."
+        },
+        {
+          "question_en": "How often should cabbage be watered?",
+          "question_ki": "Kabichi īgīrīire kūhehenja kahinda kaigana atia?",
+          "answer_en": "Cabbage requires consistent moisture. Water deeply at least 2-3 times per week, depending on weather conditions.",
+          "answer_ki": "Kabichi ībataraga maaī maingī. Itīīrīrie maaī wega ta Mara 2-3 mūthenya ūmwe, kūringana na rīera."
+        },
+        {
+          "question_en": "What are common pests affecting cabbage?",
+          "question_ki": "Nī tūtambi tūrīkū tūgūmagīra kabichi?",
+          "answer_en": "Common cabbage pests include aphids, caterpillars, diamondback moth, and cabbage root fly.",
+          "answer_ki": "Tūtambi ta kabichi nī aphids, caterpillars, diamondback moth, na cabbage root fly."
+        },
+        {
+          "question_en": "What are common diseases affecting cabbage?",
+          "question_ki": "Nī mīrimū īrīkū īgūmagīra kabichi?",
+          "answer_en": "Common cabbage diseases include black rot, clubroot, downy mildew, and fusarium wilt.",
+          "answer_ki": "Mīrimū ya kabichi nī black rot, clubroot, downy mildew, na fusarium wilt."
+        },
+        {
+          "question_en": "How do you control pests and diseases in cabbage?",
+          "question_ki": "Wagīrīirwo gūrūa atīa tūtambi na mīrimū cia kabichi?",
+          "answer_en": "Use integrated pest management: crop rotation, resistant varieties, proper spacing, and recommended pesticides when necessary.",
+          "answer_ki": "Hūthīra IPM: kūgarūra mīmera, mīthemba ītiragia mīrimū, ūtaganu mwega, na dawa cia tūtambi rīrīa hetūkīe."
+        },
+        {
+          "question_en": "What is the average yield of cabbage per acre?",
+          "question_ki": "Magetha ma kabichi īka imwe maigana atīa?",
+          "answer_en": "Average yield is 20-30 tons per acre, depending on variety and management practices.",
+          "answer_ki": "Magetha ma gatagatī nī tani 20-30 harī īka, kūringana na mūthemba na mūtungatīre."
+        },
+        {
+          "question_en": "When is cabbage ready for harvest?",
+          "question_ki": "Kabichi nīgakinyu ga kūgethwa rī?",
+          "answer_en": "Cabbage is ready for harvest when the heads are firm and solid. This is usually 60-90 days after transplanting.",
+          "answer_ki": "Kabichi nīgakinyu gūgethwa thutha wa mathaa 60-90 kuuma rīrīa yathamiirwo."
+        }
+      ]
+    }
+  ]
+}
