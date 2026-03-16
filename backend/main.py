@@ -59,6 +59,18 @@ async def lifespan(app: FastAPI):
     logger.info("Translation will be handled by Groq LLM...")
     logger.info("✅ Translation ready (Groq-based)")
     
+    # Initialize production coffee engine
+    logger.info("Initializing Production Coffee Engine...")
+    try:
+        from app.core.production_engine import ProductionCoffeeEngine
+        from pathlib import Path
+        kb_path = Path(__file__).parent.parent / "data" / "knowledge" / "comprehensive_qa.json"
+        app.state.production_engine = ProductionCoffeeEngine(str(kb_path))
+        logger.info("✅ Production Coffee Engine ready")
+    except Exception as e:
+        logger.warning(f"⚠️  Production Engine initialization failed: {e}")
+        app.state.production_engine = None
+    
     logger.info("=" * 70)
     
     yield

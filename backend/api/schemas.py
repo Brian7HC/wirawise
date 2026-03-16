@@ -279,3 +279,34 @@ class TranslationResponse(BaseModel):
     translated_text: str
     source_language: str
     target_language: str
+    error: Optional[str] = None
+
+
+# ============================================
+# PRODUCTION ENGINE SCHEMAS
+# ============================================
+
+class ProductionChatRequest(BaseModel):
+    """Request schema for production coffee chatbot"""
+    message: str = Field(..., min_length=1, max_length=500, description="User's question")
+    language: str = Field("auto", description="Language: 'en', 'ki', or 'auto'")
+    include_seasonal: bool = Field(True, description="Include seasonal tips")
+    location: Optional[str] = Field(None, description="User location (optional)")
+
+
+class ProductionChatResponse(BaseModel):
+    """Response schema for production coffee chatbot"""
+    success: bool
+    message_type: str
+    response: str
+    language: str
+    confidence: float
+    confidence_level: Optional[str] = None
+    match_type: Optional[str] = None
+    topic: Optional[str] = None
+    matched_question: Optional[str] = None
+    seasonal_tip: Optional[dict] = None
+    related_questions: Optional[list] = None
+    suggested_queries: Optional[list] = None
+    processing_time_ms: float
+    emergency: Optional[bool] = False

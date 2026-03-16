@@ -157,10 +157,12 @@ class SemanticSearchEngine:
         self.texts = cache_data['texts']
         self.embedding_to_qa = cache_data['embedding_to_qa']
         
-        # Reconstruct the vectorizer from saved params
+        # Reconstruct the vectorizer from saved params AND FIT IT
         vectorizer_params = cache_data.get('vectorizer_params')
         if vectorizer_params:
             self.tfidf_vectorizer = TfidfVectorizer(**vectorizer_params)
+            # Fit the vectorizer on cached texts so it can transform new queries
+            self.tfidf_vectorizer.fit(self.texts)
         else:
             # Fallback: recreate with default params
             self.tfidf_vectorizer = TfidfVectorizer(
@@ -168,6 +170,7 @@ class SemanticSearchEngine:
                 max_features=10000,
                 sublinear_tf=True
             )
+            self.tfidf_vectorizer.fit(self.texts)
     
     def _build_embeddings(self):
         """Generate embeddings using sentence-transformers"""

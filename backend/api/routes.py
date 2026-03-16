@@ -32,7 +32,9 @@ from backend.api.schemas import (
     AgricultureChatRequest,
     AgricultureChatResponse,
     TranslationRequest,
-    TranslationResponse
+    TranslationResponse,
+    ProductionChatRequest,
+    ProductionChatResponse
 )
 from backend.config import settings
 from backend.utils.audio_utils import AudioProcessor
@@ -1167,4 +1169,135 @@ async def health_check():
             "status": "unhealthy",
             "error": str(e)
         }
+
+
+# ============================================
+# PRODUCTION ENGINE ENDPOINT
+# ============================================
+
+# Global production engine instance (initialized lazily)
+_production_engine = None
+
+
+def _get_production_engine():
+    """Get or create production coffee engine"""
+    global _production_engine
+    if _production_engine is None:
+        from backend.app.core.production_engine import ProductionCoffeeEngine
+        import os
+        # Initialize with knowledge base path
+        kb_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+            "data", "knowledge", "comprehensive_qa.json"
+        )
+        _production_engine = ProductionCoffeeEngine(kb_path)
+        logger.info("Production Coffee Engine initialized")
+    return _production_engine
+
+
+class ProductionChatRequest(BaseModel):
+    """Request for production coffee engine"""
+    message: str = Field(..., min_length=1, max_length=1000)
+    language: str = Field("auto", description="en, ki, or auto")
+    include_seasonal: bool = Field(True, description="Include seasonal tips")
+    location: Optional[str] = Field(None, description="User location")
+
+
+class ProductionChatResponse(BaseModel):
+    """Response from production coffee engine"""
+    success: bool
+    message_type: str
+    response: str
+    language: str
+    confidence: float
+    confidence_level: Optional[str] = None
+    match_type: Optional[str] = None
+    topic: Optional[str] = None
+    matched_question: Optional[str] = None
+    seasonal_tip: Optional[dict] = None
+    related_questions: Optional[list] = None
+    suggested_queries: Optional[list] = None
+    processing_time_ms: float
+    emergency: Optional[bool] = False
+
+
+@router.post(
+    "/chat/production",
+    response_model=ProductionChatResponse,
+    summary="Production Coffee Chat",
+    description="Full production coffee chatbot with intelligent routing, guardrails, and smart fallback",
+    tags=["AI Chat"]
+)
+async def production_chat(request: ProductionChatRequest):
+    """
+    Full production coffee chatbot with:
+    - Intelligent query routing
+    - Guardrails for off-topic content
+    - Smart fallback for unmatched queries
+    - Seasonal tips
+    - Query logging
+    """
+    try:
+        logger.info(f"Production chat: {request.message[:50]}...")
+        
+        engine = _get_production_engine()
+        result = engine.process_query(
+            query=request.message,
+            language=request.language,
+            include_seasonal=request.include_seasonal,
+            user_location=request.location
+        )
+        
+        return ProductionChatResponse(**result)
+        
+    except Exception as e:
+        logger.error(f"Production chat error: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Production chat error: {str(e)}"
+        )
+
+
+@router.get(
+    "/analytics/unanswered",
+    summary="Get common unanswered queries",
+    description="Get queries that the system couldn't answer well",
+    tags=["Analytics"]
+)
+async def get_unanswered_queries(limit: int = 20):
+    """Get common unanswered queries for KB improvement"""
+    try:
+        engine = _get_production_engine()
+        unanswered = engine.logger.get_common_unanswered(limit)
+        return {
+            "success": True,
+            "unanswered_queries": unanswered,
+            "count": len(unanswered)
+        }
+    except Exception as e:
+        logger.error(f"Error getting unanswered: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
+
+
+@router.get(
+    "/analytics/popular",
+    summary="Get popular topics",
+    description="Get most common topics from queries",
+    tags=["Analytics"]
+)
+async def get_popular_topics(limit: int = 30):
+    """Get popular topics from queries"""
+    try:
+        engine = _get_production_engine()
+        topics = engine.logger.get_popular_topics(limit)
+        return topics
+    except Exception as e:
+        logger.error(f"Error getting topics: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
 
