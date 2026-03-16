@@ -1,7 +1,4 @@
-"""
-Voice service for the Kikuyu Chatbot using Groq API
-Handles the complete voice pipeline: record -> transcribe -> process -> speak
-"""
+"""Voice service for recording and playback."""
 
 import logging
 import os

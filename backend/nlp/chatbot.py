@@ -1,11 +1,4 @@
-"""
-Main chatbot module that combines translation and LLM.
-Pipeline: Kikuyu -> English (Groq) -> LLM (Groq) -> Kikuyu (Groq)
-
-Hybrid AI + Knowledge approach:
-- Greetings: Uses JSON responses from database
-- Agriculture questions: Uses AI model for real-time information
-"""
+"""Chatbot module combining translation and LLM."""
 
 import logging
 from typing import Dict, Optional, List

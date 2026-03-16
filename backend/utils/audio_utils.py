@@ -1,7 +1,4 @@
-"""
-Audio processing utilities for Kikuyu Chatbot
-Handles audio file conversion, validation, and processing
-"""
+"""Audio processing utilities."""
 
 import os
 import tempfile

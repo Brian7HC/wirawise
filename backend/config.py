@@ -1,7 +1,4 @@
-"""
-Configuration management for Kikuyu Chatbot
-Loads settings from .env file
-"""
+"""Configuration settings."""
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import field_validator, model_validator

@@ -1,7 +1,4 @@
-"""
-LLM module using Groq for agriculture advice.
-Now integrates with Knowledge Base for accurate, real data.
-"""
+"""LLM module using Groq for agriculture advice."""
 
 import logging
 import os

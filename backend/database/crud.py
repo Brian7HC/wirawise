@@ -1,6 +1,4 @@
-"""
-CRUD (Create, Read, Update, Delete) operations for database
-"""
+"""Database CRUD operations."""
 
 from sqlalchemy.orm import Session
 from sqlalchemy import text, func

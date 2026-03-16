@@ -1,7 +1,4 @@
-"""
-Text normalizer for Kikuyu transcription cleanup.
-Handles common Whisper transcription errors and provides fuzzy matching.
-"""
+"""Text normalization utilities."""
 
 import json
 import os

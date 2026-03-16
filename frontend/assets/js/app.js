@@ -107,6 +107,16 @@ class ChatAPI {
         'kuhamba', 'kurima', 'kuvuna', 'muvuno', 'gutudo', 'gutitira', 'kahua'
     ];
     
+    // Coffee-specific keywords
+    static COFFEE_KEYWORDS = [
+        'coffee', 'kahua', 'kahũa', 'kahua', 'kahuha'
+    ];
+    
+    static isCoffeeQuery(text) {
+        const lowerText = text.toLowerCase();
+        return this.COFFEE_KEYWORDS.some(keyword => lowerText.includes(keyword));
+    }
+    
     static isAgricultureQuery(text) {
         const lowerText = text.toLowerCase();
         return this.AGRICULTURE_KEYWORDS.some(keyword => lowerText.includes(keyword)) ||
@@ -114,6 +124,10 @@ class ChatAPI {
     }
     
     static async sendMessage(text, sessionId) {
+        // Check if this is a coffee query first (more specific)
+        if (this.isCoffeeQuery(text)) {
+            return this.sendCoffeeMessage(text);
+        }
         // Check if this is an agriculture query
         if (this.isAgricultureQuery(text)) {
             return this.sendAgricultureMessage(text);
@@ -151,7 +165,7 @@ class ChatAPI {
                 },
                 body: JSON.stringify({
                     text: text,
-                    generate_audio: false,  // Disable for faster response
+                    generate_audio: false,
                     include_sources: false
                 })
             });
@@ -163,6 +177,35 @@ class ChatAPI {
             return await response.json();
         } catch (error) {
             console.error('Error sending agriculture message:', error);
+            throw error;
+        }
+    }
+    
+    static async sendCoffeeMessage(text) {
+        try {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/chat/coffee`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: text
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            // Convert coffee response to standard format
+            return {
+                success: true,
+                response_text: data.answer,
+                confidence: data.confidence
+            };
+        } catch (error) {
+            console.error('Error sending coffee message:', error);
             throw error;
         }
     }

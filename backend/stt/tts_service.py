@@ -1,10 +1,4 @@
-"""
-Text-to-Speech service supporting multiple TTS engines:
-- OpenAI TTS (gpt-4o-mini-tts)
-- Coqui TTS (for low-resource languages like Kikuyu)
-- Khaya API (African languages TTS)
-Converts text to speech using various TTS backends
-"""
+"""Text-to-Speech service."""
 
 import logging
 import os

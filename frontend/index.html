@@ -1,1880 +1,792 @@
 <!DOCTYPE html>
 <html lang="sw" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-<meta name="theme-color" content="#1b4332">
-<meta name="description" content="WIRA WISE - Mũndũ wa Murimi | Kikuyu Agricultural Assistant">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>WIRA WISE – Mũndũ wa Murimi</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-/* ═══════════════════════════════════════════
-   DESIGN TOKENS - BLENDED SHAMBABOT + WIRA WISE
-═══════════════════════════════════════════ */
-:root {
-  /* ShambaBot Colors */
-  --c-moss:   #1b4332;
-  --c-fern:   #2d6a4f;
-  --c-leaf:   #40916c;
-  --c-sage:   #74c69d;
-  --c-mist:   #b7e4c7;
-  --c-dew:    #d8f3dc;
-  --c-gold:   #e9a825;
-  --c-amber:  #f4a261;
-  --c-bark:   #5c3317;
-  --c-clay:   #bc6c25;
-  --c-sun:    #ffd166;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1b4332">
+    <meta name="description" content="WIRA WISE - Mũndũ wa Murimi | Kikuyu Agricultural Assistant">
+    <title>WIRA WISE – Mũndũ wa Murimi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ═══════════════════════════════════════════
+           DESIGN TOKENS - WIRA WISE BLENDED DESIGN
+        ═══════════════════════════════════════════ */
+        :root {
+            --c-moss:   #1b4332;
+            --c-fern:   #2d6a4f;
+            --c-leaf:   #40916c;
+            --c-sage:   #74c69d;
+            --c-mist:   #b7e4c7;
+            --c-dew:    #d8f3dc;
+            --c-gold:   #e9a825;
+            --c-amber:  #f4a261;
+            --kenya-red: #DC143C;
+            
+            --bg:           #f0faf3;
+            --bg-alt:       #e4f4e9;
+            --surface:      #ffffff;
+            --surface-alt:  #f6fcf8;
+            --border:       #c3e6cc;
+            --border-hi:    #74c69d;
+            --tx-1:         #0d2b1a;
+            --tx-2:         #3a5a47;
+            --tx-3:         #6b8f7a;
+            --tx-inv:       #ffffff;
+            --accent:       #2d6a4f;
+            --accent-glow:  rgba(45,106,79,0.18);
+            
+            --sh-sm: 0 1px 4px rgba(13,43,26,0.08);
+            --sh-md: 0 4px 20px rgba(13,43,26,0.10);
+            --sh-lg: 0 8px 40px rgba(13,43,26,0.14);
+            
+            --r-sm: 8px;
+            --r-md: 14px;
+            --r-lg: 20px;
+            --r-xl: 26px;
+            --r-f:  999px;
+            
+            --ease: cubic-bezier(0.16,1,0.3,1);
+            --tf:   150ms;
+            --tb:   260ms;
+            --ts:   420ms;
+        }
 
-  /* WIRA WISE Accent */
-  --kenya-red: #DC143C;
+        [data-theme="dark"] {
+            --bg:          #0a1f12;
+            --bg-alt:      #0d2419;
+            --surface:     #112b1a;
+            --surface-alt: #0f2416;
+            --border:      #1e4a2a;
+            --border-hi:   #2d6a4f;
+            --tx-1:        #e8f5ec;
+            --tx-2:        #9ed4b2;
+            --tx-3:        #5e9e78;
+            --sh-md:       0 4px 20px rgba(0,0,0,0.4);
+            --sh-lg:       0 8px 40px rgba(0,0,0,0.5);
+            --accent-glow: rgba(116,198,157,0.14);
+        }
 
-  --bg:           #f0faf3;
-  --bg-alt:       #e4f4e9;
-  --surface:      #ffffff;
-  --surface-alt:  #f6fcf8;
-  --border:       #c3e6cc;
-  --border-hi:    #74c69d;
-  --tx-1:         #0d2b1a;
-  --tx-2:         #3a5a47;
-  --tx-3:         #6b8f7a;
-  --tx-inv:       #ffffff;
-  --accent:       #2d6a4f;
-  --accent-glow:  rgba(45,106,79,0.18);
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body {
+            font-family: 'Nunito',system-ui,sans-serif;
+            background: var(--bg);
+            color: var(--tx-1);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background var(--tb) var(--ease), color var(--tb) var(--ease);
+            overflow-x: hidden;
+        }
+        
+        /* Background effects */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 70% 50% at 5% 0%, rgba(45,106,79,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 55% at 95% 100%, rgba(233,168,37,0.07) 0%, transparent 65%);
+        }
 
-  --sh-sm: 0 1px 4px rgba(13,43,26,0.08);
-  --sh-md: 0 4px 20px rgba(13,43,26,0.10);
-  --sh-lg: 0 8px 40px rgba(13,43,26,0.14);
+        /* ═══════════════════════════════════════════
+           APP CONTAINER
+        ═══════════════════════════════════════════ */
+        .app {
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 100vh;
+        }
 
-  --r-sm:  8px;
-  --r-md:  14px;
-  --r-lg:  20px;
-  --r-xl:  26px;
-  --r-f:   999px;
+        /* ═══════════════════════════════════════════
+           HEADER
+        ═══════════════════════════════════════════ */
+        .header {
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-xl);
+            box-shadow: var(--sh-md);
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            animation: fadeDown var(--ts) var(--ease) both;
+        }
+        
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: none; }
+        }
 
-  --ease:  cubic-bezier(0.16,1,0.3,1);
-  --tf:    150ms;
-  --tb:    260ms;
-  --ts:    420ms;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-  --fs:    1rem;
-  --fsc:   1;
-}
+        .logo-box {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
 
-[data-theme="dark"] {
-  --bg:          #0a1f12;
-  --bg-alt:      #0d2419;
-  --surface:     #112b1a;
-  --surface-alt: #0f2416;
-  --border:      #1e4a2a;
-  --border-hi:   #2d6a4f;
-  --tx-1:        #e8f5ec;
-  --tx-2:        #9ed4b2;
-  --tx-3:        #5e9e78;
-  --sh-md:       0 4px 20px rgba(0,0,0,0.4);
-  --sh-lg:       0 8px 40px rgba(0,0,0,0.5);
-  --accent-glow: rgba(116,198,157,0.14);
-}
+        .logo-face {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(145deg, var(--c-moss), var(--c-leaf));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 16px rgba(27,67,50,0.38), inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: transform var(--tb) var(--ease);
+        }
 
-[data-hc="1"] {
-  --bg: #fff; --surface: #fff; --border: #000;
-  --tx-1: #000; --tx-2: #111; --tx-3: #333;
-  --accent: #004d20; --border-hi: #000;
-}
-[data-hc="1"][data-theme="dark"] {
-  --bg: #000; --surface: #000; --border: #fff;
-  --tx-1: #fff; --tx-2: #eee; --tx-3: #ccc;
-  --accent: #4cff88; --border-hi: #fff;
-}
+        .logo-box:hover .logo-face {
+            transform: rotate(-5deg) scale(1.06);
+        }
 
-/* ═══════════════════════════════════════════
-   BASE
-═══════════════════════════════════════════ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:calc(16px * var(--fsc));scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  font-family:'Nunito',system-ui,sans-serif;
-  background:var(--bg);color:var(--tx-1);line-height:1.6;
-  min-height:100vh;overflow-x:hidden;
-  transition:background var(--tb) var(--ease),color var(--tb) var(--ease);
-}
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 70% 50% at 5% 0%,rgba(45,106,79,.12) 0%,transparent 65%),
-    radial-gradient(ellipse 50% 55% at 95% 100%,rgba(233,168,37,.07) 0%,transparent 65%);
-}
-[data-theme="dark"] body::before{
-  background:
-    radial-gradient(ellipse 70% 50% at 5% 0%,rgba(45,106,79,.22) 0%,transparent 65%),
-    radial-gradient(ellipse 50% 55% at 95% 100%,rgba(233,168,37,.09) 0%,transparent 65%);
-}
-:focus-visible{outline:3px solid var(--c-gold);outline-offset:2px;border-radius:var(--r-sm)}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+        .logo-dot {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            width: 12px;
+            height: 12px;
+            background: var(--c-gold);
+            border-radius: 50%;
+            border: 2px solid var(--surface);
+            animation: pulseDot 2.4s ease-in-out infinite;
+        }
 
-/* ═══════════════════════════════════════════
-   APP SHELL
-═══════════════════════════════════════════ */
-#app{
-  position:relative;z-index:1;
-  max-width:900px;margin:0 auto;
-  padding:14px 14px 32px;
-  display:flex;flex-direction:column;gap:12px;
-  min-height:100vh;
-}
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.35); opacity: 0.7; }
+        }
 
-/* ═══════════════════════════════════════════
-   HEADER
-═══════════════════════════════════════════ */
-.hdr{
-  background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--r-xl);box-shadow:var(--sh-md);
-  padding:12px 18px;
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  flex-wrap:wrap;
-  animation:fadeDown var(--ts) var(--ease) both;
-}
-@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+        .brand-text h1 {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--c-moss);
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
 
-.hdr-brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.logo-box{
-  position:relative;width:52px;height:52px;flex-shrink:0;
-}
-.logo-face{
-  width:52px;height:52px;
-  background:linear-gradient(145deg,var(--c-moss),var(--c-leaf));
-  border-radius:15px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.55rem;
-  box-shadow:0 4px 16px rgba(27,67,50,.38),inset 0 1px 0 rgba(255,255,255,.15);
-  transition:transform var(--tb) var(--ease);
-}
-.logo-box:hover .logo-face{transform:rotate(-5deg) scale(1.06)}
-.logo-dot{
-  position:absolute;top:-3px;right:-3px;
-  width:13px;height:13px;
-  background:var(--c-gold);border-radius:50%;
-  border:2px solid var(--surface);
-  animation:pulseDot 2.4s ease-in-out infinite;
-}
-@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.7}}
-.brand-text h1{
-  font-family:'Lora',Georgia,serif;font-size:1.28rem;font-weight:700;
-  color:var(--c-moss);line-height:1.1;letter-spacing:-.01em;
-}
-[data-theme="dark"] .brand-text h1{color:var(--c-sage)}
-.brand-text p{font-size:.68rem;color:var(--tx-3);font-weight:800;text-transform:uppercase;letter-spacing:.09em;margin-top:1px}
+        .brand-text p {
+            font-size: 0.65rem;
+            color: var(--tx-3);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+        }
 
-.hdr-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.lang-pill{
-  display:flex;align-items:center;gap:6px;
-  padding:5px 12px;border:1.5px solid var(--border);border-radius:var(--r-f);
-  background:var(--surface-alt);
-  font-size:.68rem;font-weight:900;color:var(--tx-3);
-  text-transform:uppercase;letter-spacing:.07em;
-}
-.lp-dot{width:7px;height:7px;border-radius:50%;background:var(--c-sage);animation:pulseDot 2.4s ease-in-out infinite}
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:6px;
-  border:1.5px solid transparent;border-radius:var(--r-md);
-  padding:8px 14px;
-  font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:800;
-  cursor:pointer;transition:all var(--tb) var(--ease);
-  white-space:nowrap;-webkit-tap-highlight-color:transparent;user-select:none;
-  position:relative;overflow:hidden;
-}
-.btn:active{transform:scale(.96)}
-.btn-ghost{background:var(--surface-alt);border-color:var(--border);color:var(--tx-2)}
-.btn-ghost:hover{border-color:var(--border-hi);color:var(--accent)}
-.btn-ghost.act{background:var(--accent);border-color:var(--accent);color:var(--tx-inv)}
-.btn-pri{
-  background:linear-gradient(135deg,var(--c-moss),var(--c-fern));
-  color:#fff;box-shadow:0 4px 14px rgba(27,67,50,.3);
-}
-.btn-pri:hover{box-shadow:0 6px 22px rgba(27,67,50,.42);transform:translateY(-1px)}
-.btn-lg{padding:13px 22px;font-size:.9rem;border-radius:var(--r-lg);gap:8px}
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-md);
+            background: var(--surface-alt);
+            color: var(--tx-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--tb) var(--ease);
+            font-size: 1rem;
+        }
 
-/* ═══════════════════════════════════════════
-   A11Y PANEL
-═══════════════════════════════════════════ */
-.a11y-panel{
-  background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--r-xl);box-shadow:var(--sh-md);
-  padding:16px 20px;display:none;gap:20px;flex-wrap:wrap;align-items:flex-start;
-}
-.a11y-panel.open{display:flex;animation:expandUp var(--tb) var(--ease) both}
-@keyframes expandUp{from{opacity:0;transform:scaleY(.92) translateY(-6px);transform-origin:top}to{opacity:1;transform:none}}
+        .icon-btn:hover {
+            border-color: var(--border-hi);
+            color: var(--accent);
+        }
 
-.ag{display:flex;flex-direction:column;gap:8px;flex:1;min-width:130px}
-.ag-lbl{font-size:.66rem;font-weight:900;color:var(--tx-3);text-transform:uppercase;letter-spacing:.1em}
-.ag-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+        .icon-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--tx-inv);
+        }
 
-.fsz-btn{
-  width:40px;height:40px;border:1.5px solid var(--border);border-radius:var(--r-md);
-  background:var(--surface-alt);cursor:pointer;font-family:'Lora',serif;font-weight:700;
-  color:var(--tx-2);display:flex;align-items:center;justify-content:center;
-  transition:all var(--tb) var(--ease);-webkit-tap-highlight-color:transparent;
-}
-.fsz-btn:hover{border-color:var(--border-hi);color:var(--accent)}
-.fsz-btn.act{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(45,106,79,.3)}
+        /* ═══════════════════════════════════════════
+           FEATURE CARDS
+        ═══════════════════════════════════════════ */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            animation: fadeUp var(--ts) var(--ease) 100ms both;
+        }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: none; }
+        }
 
-.theme-row{
-  display:flex;align-items:center;gap:0;
-  background:var(--surface-alt);border:1.5px solid var(--border);border-radius:var(--r-f);
-  padding:3px;height:40px;
-}
-.th-btn{
-  height:32px;padding:0 13px;border:none;border-radius:var(--r-f);
-  background:transparent;color:var(--tx-3);
-  font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;
-  cursor:pointer;transition:all var(--tb) var(--ease);
-  display:flex;align-items:center;gap:4px;-webkit-tap-highlight-color:transparent;
-}
-.th-btn.act{background:var(--c-moss);color:#fff;box-shadow:0 2px 8px rgba(27,67,50,.3)}
-[data-theme="dark"] .th-btn.act{background:var(--c-gold);color:#1a0e00}
+        .feature-card {
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--tb) var(--ease);
+        }
 
-.hc-btn{
-  height:40px;padding:0 16px;border:1.5px solid var(--border);border-radius:var(--r-f);
-  background:var(--surface-alt);color:var(--tx-2);
-  font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;
-  cursor:pointer;transition:all var(--tb) var(--ease);
-  display:flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent;
-}
-.hc-btn:hover{border-color:var(--border-hi)}
-.hc-btn.act,[data-hc="1"] .hc-btn{background:#000;color:#fff;border-color:#000}
-[data-hc="1"][data-theme="dark"] .hc-btn{background:#fff;color:#000;border-color:#fff}
+        .feature-card:hover {
+            border-color: var(--border-hi);
+            transform: translateY(-2px);
+            box-shadow: var(--sh-md);
+        }
 
-/* ═══════════════════════════════════════════
-   TOPICS (Categories for WIRA WISE)
-═══════════════════════════════════════════ */
-.topics{display:flex;gap:7px;flex-wrap:wrap;animation:fadeDown var(--ts) var(--ease) .08s both}
-.t-chip{
-  display:flex;align-items:center;gap:7px;
-  padding:7px 15px;border:1.5px solid var(--border);border-radius:var(--r-f);
-  background:var(--surface);color:var(--tx-3);
-  font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:800;
-  cursor:pointer;transition:all var(--tb) var(--ease);
-  -webkit-tap-highlight-color:transparent;user-select:none;
-}
-.t-chip:hover{border-color:var(--border-hi);color:var(--accent);transform:translateY(-2px);box-shadow:var(--sh-sm)}
-.t-chip.act{
-  background:linear-gradient(135deg,var(--c-moss),var(--c-fern));
-  border-color:transparent;color:#fff;
-  box-shadow:0 4px 16px rgba(27,67,50,.3);transform:translateY(-2px);
-}
+        .feature-card.active {
+            background: linear-gradient(135deg, var(--c-moss), var(--c-fern));
+            border-color: var(--c-fern);
+            color: white;
+        }
 
-/* ═══════════════════════════════════════════
-   MODE SWITCHER
-═══════════════════════════════════════════ */
-.mode-sw{
-  display:grid;grid-template-columns:1fr 1fr;
-  background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--r-xl);padding:5px;gap:4px;
-  box-shadow:var(--sh-md);
-  animation:fadeDown var(--ts) var(--ease) .14s both;
-}
-.mode-btn{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  padding:13px 16px;border:none;border-radius:16px;
-  background:transparent;color:var(--tx-3);
-  font-family:'Lora',serif;font-size:1rem;font-weight:600;
-  cursor:pointer;transition:all var(--tb) var(--ease);
-  -webkit-tap-highlight-color:transparent;user-select:none;
-}
-.mode-btn .mico{font-size:1.3rem;transition:transform var(--tb) var(--ease)}
-.mode-btn:hover .mico{transform:scale(1.18)}
-.mode-btn:hover{color:var(--accent)}
-.mode-btn.act{
-  background:linear-gradient(145deg,var(--c-moss),var(--c-fern));
-  color:#fff;box-shadow:0 6px 20px rgba(27,67,50,.32);
-}
-.mode-btn.act .mico{transform:scale(1.1)}
+        .feature-card i {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+            display: block;
+        }
 
-/* ═══════════════════════════════════════════
-   TEXT / CHAT PANEL
-═══════════════════════════════════════════ */
-#panel-text{display:flex;flex-direction:column;gap:10px;animation:panelIn var(--ts) var(--ease) both}
-#panel-text.gone{display:none}
-@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+        .feature-card h3 {
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
 
-.q-row{display:flex;gap:6px;flex-wrap:wrap}
-.q-chip{
-  display:flex;align-items:center;gap:5px;
-  padding:6px 12px;border:1.5px solid var(--border);border-radius:var(--r-f);
-  background:var(--surface);color:var(--tx-2);
-  font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;
-  cursor:pointer;transition:all var(--tb) var(--ease);-webkit-tap-highlight-color:transparent;
-}
-.q-chip:hover{border-color:var(--c-gold);color:var(--c-bark);background:rgba(233,168,37,.08);transform:translateY(-1px)}
-[data-theme="dark"] .q-chip:hover{color:var(--c-gold)}
+        .feature-card p {
+            font-size: 0.55rem;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
 
-.chat-win{
-  background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--r-xl);box-shadow:var(--sh-md);
-  overflow-y:auto;overscroll-behavior:contain;
-  padding:18px;
-  min-height:300px;max-height:clamp(260px,44vh,460px);
-  display:flex;flex-direction:column;gap:12px;
-  scroll-behavior:smooth;
-  transition:background var(--tb),border-color var(--tb);
-}
-.chat-win::-webkit-scrollbar{width:4px}
-.chat-win::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-.chat-win::-webkit-scrollbar-thumb:hover{background:var(--border-hi)}
+        /* ═══════════════════════════════════════════
+           TOPICS BAR
+        ═══════════════════════════════════════════ */
+        .topics {
+            display: flex;
+            gap: 8px;
+            padding: 10px 14px;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-lg);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        
+        .topics::-webkit-scrollbar { display: none; }
 
-.msg{display:flex;gap:10px;align-items:flex-end;max-width:90%;animation:msgIn var(--tb) var(--ease) both}
-@keyframes msgIn{from{opacity:0;transform:translateY(7px) scale(.98)}to{opacity:1;transform:none}}
-.msg.usr{flex-direction:row-reverse;align-self:flex-end}
-.msg.bot{align-self:flex-start}
-.mav{
-  width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1rem;flex-shrink:0;
-}
-.mav.bav{background:linear-gradient(145deg,var(--c-moss),var(--c-leaf));box-shadow:0 3px 10px rgba(27,67,50,.3)}
-.mav.uav{background:linear-gradient(145deg,var(--c-bark),var(--c-clay));box-shadow:0 3px 10px rgba(92,51,23,.25)}
-.mbody{display:flex;flex-direction:column;gap:3px}
-.bubble{
-  padding:11px 15px;border-radius:18px;
-  font-size:.85rem;font-weight:600;line-height:1.62;
-  white-space:pre-line;word-break:break-word;
-}
-.msg.bot .bubble{background:var(--surface-alt);border:1.5px solid var(--border);border-bottom-left-radius:5px;color:var(--tx-1)}
-[data-theme="dark"] .msg.bot .bubble{background:var(--bg-alt)}
-.msg.usr .bubble{background:linear-gradient(145deg,var(--c-moss),var(--c-fern));color:#fff;border-bottom-right-radius:5px}
-.mts{font-size:.6rem;color:var(--tx-3);opacity:.8}
-.msg.usr .mts{text-align:right}
+        .topic-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: var(--r-f);
+            background: var(--surface-alt);
+            color: var(--tx-2);
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all var(--tb) var(--ease);
+            border: 2px solid transparent;
+        }
 
-.typ-wrap{display:flex;gap:10px;align-items:flex-end;animation:msgIn var(--tb) var(--ease) both}
-.typ-bub{
-  background:var(--surface-alt);border:1.5px solid var(--border);
-  border-radius:18px;border-bottom-left-radius:5px;
-  padding:14px 16px;display:flex;gap:5px;align-items:center;
-}
-.td{width:7px;height:7px;background:var(--c-sage);border-radius:50%;animation:tdot 1.4s ease-in-out infinite}
-.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
-@keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-6px);opacity:1}}
+        .topic-btn.active {
+            background: var(--c-fern);
+            color: white;
+            box-shadow: var(--sh-sm);
+        }
 
-.inp-row{
-  background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--r-xl);box-shadow:var(--sh-md);
-  display:flex;align-items:flex-end;gap:8px;padding:10px 14px;
-  transition:border-color var(--tb),box-shadow var(--tb);
-}
-.inp-row:focus-within{border-color:var(--border-hi);box-shadow:var(--sh-md),0 0 0 3px var(--accent-glow)}
-.chat-ta{
-  flex:1;border:none;background:transparent;
-  font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:600;color:var(--tx-1);
-  resize:none;outline:none;line-height:1.55;
-  min-height:26px;max-height:108px;overflow-y:auto;caret-color:var(--accent);
-}
-.chat-ta::placeholder{color:var(--tx-3);opacity:.7}
-.snd-btn{
-  width:44px;height:44px;
-  background:linear-gradient(145deg,var(--c-moss),var(--c-fern));
-  border:none;border-radius:var(--r-md);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:1.05rem;flex-shrink:0;
-  transition:all var(--tb) var(--ease);box-shadow:0 4px 14px rgba(27,67,50,.3);
-  -webkit-tap-highlight-color:transparent;
-}
-.snd-btn:hover{transform:scale(1.09);box-shadow:0 6px 20px rgba(27,67,50,.44)}
-.snd-btn:active{transform:scale(.95)}
+        .topic-btn:hover:not(.active) {
+            border-color: var(--border-hi);
+        }
 
-.st-row{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 4px;font-size:.66rem;color:var(--tx-3);flex-wrap:wrap;gap:6px;font-weight:700;
-}
-.st-dot-w{display:flex;align-items:center;gap:5px}
-.sdot{width:6px;height:6px;border-radius:50%;background:var(--c-sage);animation:pulseDot 2.2s ease-in-out infinite}
+        /* ═══════════════════════════════════════════
+           CHAT WINDOW
+        ═══════════════════════════════════════════ */
+        .chat-window {
+            flex: 1;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-xl);
+            box-shadow: var(--sh-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+        }
 
-/* ═══════════════════════════════════════════
-   VOICE PANEL
-═══════════════════════════════════════════ */
-#panel-voice{
-  display:none;flex-direction:column;align-items:center;gap:20px;
-  background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--r-xl);box-shadow:var(--sh-lg);
-  padding:36px 20px;text-align:center;
-  min-height:440px;justify-content:center;
-  animation:panelIn var(--ts) var(--ease) both;
-}
-#panel-voice.show{display:flex}
-#panel-voice.gone{display:none}
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-.orb-stage{
-  position:relative;width:190px;height:190px;
-  display:flex;align-items:center;justify-content:center;
-}
-.orb-ring{
-  position:absolute;border-radius:50%;
-  border:2.5px solid var(--c-leaf);opacity:0;
-}
-.orb-ring:nth-child(2){border-color:var(--c-fern)}
-.orb-ring:nth-child(3){border-color:var(--c-gold)}
-.is-listen .orb-ring:nth-child(1){animation:ringPulse 2s 0s infinite;width:100%;height:100%}
-.is-listen .orb-ring:nth-child(2){animation:ringPulse 2s .5s infinite;width:79%;height:79%}
-.is-listen .orb-ring:nth-child(3){animation:ringPulse 2s 1s infinite;width:60%;height:60%}
-@keyframes ringPulse{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.6)}}
+        .message {
+            max-width: 82%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            animation: msgIn 0.3s ease;
+        }
+        
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(8px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
 
-.orb-btn{
-  position:relative;z-index:2;
-  width:108px;height:108px;border-radius:50%;
-  background:linear-gradient(145deg,var(--c-moss),var(--c-leaf));
-  border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  font-size:2.1rem;color:#fff;
-  box-shadow:0 10px 38px rgba(27,67,50,.48),inset 0 1px 0 rgba(255,255,255,.18);
-  transition:all var(--tb) var(--ease);-webkit-tap-highlight-color:transparent;user-select:none;
-}
-.orb-btn:hover{transform:scale(1.07);box-shadow:0 14px 50px rgba(27,67,50,.58),inset 0 1px 0 rgba(255,255,255,.18)}
-.orb-btn:active{transform:scale(.96)}
-.orb-btn.rec{
-  background:linear-gradient(145deg,#8b0000,#c62828);
-  box-shadow:0 10px 38px rgba(198,40,40,.52),inset 0 1px 0 rgba(255,255,255,.14);
-  animation:orbPulse 1.1s ease-in-out infinite;
-}
-@keyframes orbPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+        .message.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, var(--c-moss), var(--c-fern));
+            color: white;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 4px 12px rgba(27,67,50,0.3);
+        }
 
-.waveform{
-  display:flex;gap:4px;align-items:center;height:46px;
-  opacity:0;transition:opacity var(--tb);
-}
-.waveform.vis{opacity:1}
-.wbar{width:5px;background:var(--c-leaf);border-radius:5px;height:6px}
-.is-listen .wbar{animation:wbarAnim .62s ease-in-out infinite alternate}
-.wbar:nth-child(1){animation-delay:.00s}.wbar:nth-child(2){animation-delay:.10s}
-.wbar:nth-child(3){animation-delay:.20s}.wbar:nth-child(4){animation-delay:.30s}
-.wbar:nth-child(5){animation-delay:.15s}.wbar:nth-child(6){animation-delay:.05s}
-.wbar:nth-child(7){animation-delay:.25s}.wbar:nth-child(8){animation-delay:.35s}
-@keyframes wbarAnim{from{height:6px}to{height:34px}}
+        .message.bot {
+            align-self: flex-start;
+            background: var(--surface);
+            color: var(--tx-1);
+            border: 1px solid var(--border);
+            border-bottom-left-radius: 4px;
+            box-shadow: var(--sh-sm);
+        }
 
-.vlabel{font-family:'Lora',serif;font-size:1.12rem;font-weight:600;color:var(--tx-1);line-height:1.3}
-.vsub{font-size:.78rem;color:var(--tx-3);margin-top:4px;font-weight:600}
+        .message.typing {
+            background: var(--surface-alt);
+            color: var(--tx-3);
+            font-style: italic;
+        }
 
-.t-card{
-  background:var(--surface-alt);border:1.5px solid var(--border);border-radius:var(--r-lg);
-  padding:14px 18px;width:100%;max-width:500px;text-align:left;
-  font-size:.83rem;font-weight:600;color:var(--tx-1);line-height:1.6;min-height:54px;display:none;
-}
-[data-theme="dark"] .t-card{background:var(--bg-alt)}
-.t-card.vis{display:block;animation:msgIn var(--tb) var(--ease)}
-.t-lbl{font-size:.64rem;font-weight:900;color:var(--tx-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+        /* ═══════════════════════════════════════════
+           WELCOME SCREEN
+        ═══════════════════════════════════════════ */
+        .welcome {
+            text-align: center;
+            padding: 30px 20px;
+            animation: fadeUp var(--ts) var(--ease) both;
+        }
+        
+        .welcome h2 {
+            font-family: 'Lora', serif;
+            color: var(--c-moss);
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+        
+        .welcome p {
+            color: var(--tx-2);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .quick-btn {
+            padding: 10px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-f);
+            background: var(--surface);
+            color: var(--tx-2);
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--tb) var(--ease);
+        }
+        
+        .quick-btn:hover {
+            border-color: var(--c-fern);
+            color: var(--c-fern);
+            transform: translateY(-2px);
+            box-shadow: var(--sh-md);
+        }
 
-.v-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+        /* ═══════════════════════════════════════════
+           INPUT AREA
+        ═══════════════════════════════════════════ */
+        .input-row {
+            padding: 14px;
+            background: var(--surface);
+            border-top: 1.5px solid var(--border);
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
 
-.vrc{
-  background:linear-gradient(145deg,rgba(27,67,50,.07),rgba(116,198,157,.06));
-  border:1.5px solid var(--border);border-left:4px solid var(--c-leaf);
-  border-radius:var(--r-lg);padding:18px;
-  width:100%;max-width:520px;text-align:left;
-  font-size:.83rem;color:var(--tx-1);line-height:1.66;display:none;
-}
-.vrc.vis{display:block;animation:msgIn var(--tb) var(--ease)}
-.vrc-hdr{
-  display:flex;align-items:center;gap:7px;
-  font-size:.64rem;font-weight:900;color:var(--c-leaf);
-  text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;
-}
-[data-theme="dark"] .vrc-hdr{color:var(--c-sage)}
-.tts-btn{
-  margin-top:12px;display:inline-flex;align-items:center;gap:6px;
-  padding:8px 16px;border:1.5px solid var(--border);border-radius:var(--r-f);
-  background:var(--surface);color:var(--tx-2);
-  font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;
-  cursor:pointer;transition:all var(--tb) var(--ease);-webkit-tap-highlight-color:transparent;
-}
-.tts-btn:hover,.tts-btn.spk{background:var(--c-gold);color:#1a0e00;border-color:var(--c-gold)}
+        .input-row textarea {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--r-lg);
+            font-size: 0.95rem;
+            font-family: inherit;
+            resize: none;
+            max-height: 100px;
+            outline: none;
+            transition: border-color var(--tb) var(--ease);
+            background: var(--surface-alt);
+            color: var(--tx-1);
+        }
 
-/* ═══════════════════════════════════════════
-   AUDIO PLAY BUTTON (for bot responses)
-═══════════════════════════════════════════ */
-.audio-play-btn {
-  background: var(--c-gold);
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 8px;
-  transition: transform 0.2s, background 0.2s;
-  font-size: 14px;
-  color: #1a0e00;
-  vertical-align: middle;
-}
+        .input-row textarea:focus {
+            border-color: var(--c-fern);
+        }
 
-.audio-play-btn:hover {
-  transform: scale(1.1);
-  background: var(--c-amber);
-}
+        .send-btn {
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: var(--r-lg);
+            background: linear-gradient(135deg, var(--c-moss), var(--c-fern));
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--tb) var(--ease);
+            box-shadow: 0 4px 14px rgba(27,67,50,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.audio-play-btn:active {
-  transform: scale(0.95);
-}
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27,67,50,0.4);
+        }
 
-/* ═══════════════════════════════════════════
-   WELCOME SCREEN
-═══════════════════════════════════════════ */
-.welcome-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px 20px;
-}
+        .send-btn:active {
+            transform: scale(0.96);
+        }
 
-.welcome-icon {
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(145deg, var(--c-moss), var(--c-leaf));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  box-shadow: var(--sh-lg);
-}
+        .send-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
 
-.welcome-icon i {
-  font-size: 48px;
-  color: white;
-}
+        /* ═══════════════════════════════════════════
+           STATUS BAR
+        ═══════════════════════════════════════════ */
+        .status-bar {
+            padding: 10px 16px;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-lg);
+            font-size: 0.75rem;
+            color: var(--tx-3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.welcome-content h2 {
-  font-family: 'Lora', Georgia, serif;
-  font-size: 1.8rem;
-  margin-bottom: 12px;
-  color: var(--c-moss);
-  line-height: 1.2;
-}
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-.welcome-content p {
-  font-size: 0.95rem;
-  color: var(--tx-2);
-  margin-bottom: 24px;
-}
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulseDot 2s infinite;
+        }
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin: 20px 0;
-  width: 100%;
-}
+        .topic-badge {
+            background: var(--surface-alt);
+            padding: 4px 10px;
+            border-radius: var(--r-f);
+            font-weight: 700;
+        }
 
-.feature-card {
-  background: var(--surface-alt);
-  padding: 16px;
-  border-radius: var(--r-md);
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--sh-md);
-  border-color: var(--c-leaf);
-}
-
-.feature-card i {
-  font-size: 28px;
-  color: var(--c-moss);
-  margin-bottom: 8px;
-}
-
-.feature-card h3 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-  color: var(--tx-1);
-}
-
-.feature-card p {
-  font-size: 0.75rem;
-  color: var(--tx-3);
-  margin-bottom: 0;
-}
-
-.welcome-cta {
-  font-size: 0.85rem;
-  color: var(--tx-3);
-  margin-top: 16px;
-}
-
-/* ═══════════════════════════════════════════
-   RESPONSIVE — DEVICE BREAKPOINTS
-═══════════════════════════════════════════ */
-
-/* IoT / micro screens 240–319px */
-@media (max-width:319px){
-  :root{--fsc:.78}
-  #app{padding:6px 6px 16px;gap:7px}
-  .hdr{padding:8px 10px;border-radius:var(--r-lg)}
-  .logo-face{width:36px;height:36px;font-size:1.1rem;border-radius:10px}
-  .brand-text h1{font-size:.9rem}
-  .mode-btn{padding:9px 8px;font-size:.8rem}
-  .mode-btn .mico{font-size:1rem}
-  .chat-win{max-height:200px;min-height:150px;padding:10px}
-  .bubble{font-size:.74rem;padding:8px 10px}
-  .orb-btn{width:68px;height:68px;font-size:1.5rem}
-  .orb-stage{width:120px;height:120px}
-  .vlabel{font-size:.92rem}
-  .a11y-panel{padding:10px 12px;gap:10px}
-  .topics,.q-row{gap:5px}
-  .t-chip,.q-chip{padding:5px 9px;font-size:.66rem}
-  .hdr-right{gap:5px}
-  .lang-pill{display:none}
-}
-
-/* IoT 320–359px */
-@media (min-width:320px) and (max-width:359px){
-  :root{--fsc:.84}
-  #app{padding:8px 8px 18px;gap:8px}
-  .hdr{padding:9px 12px}
-  .logo-face{width:42px;height:42px;font-size:1.25rem;border-radius:12px}
-  .brand-text h1{font-size:1rem}
-  .chat-win{max-height:230px;min-height:170px}
-  .bubble{font-size:.76rem}
-  .orb-btn{width:78px;height:78px;font-size:1.7rem}
-  .orb-stage{width:138px;height:138px}
-}
-
-/* Small mobile 360–479px */
-@media (min-width:360px) and (max-width:479px){
-  :root{--fsc:.9}
-  #app{padding:10px 10px 24px;gap:9px}
-  .chat-win{max-height:280px}
-  .orb-btn{width:88px;height:88px;font-size:1.85rem}
-  .orb-stage{width:156px;height:156px}
-}
-
-/* Medium mobile 480–639px */
-@media (min-width:480px) and (max-width:639px){
-  #app{padding:12px 12px 28px}
-  .chat-win{max-height:330px}
-}
-
-/* Tablet 640–1023px */
-@media (min-width:640px){
-  .hdr{flex-wrap:nowrap}
-  .a11y-panel{flex-wrap:nowrap}
-  .chat-win{max-height:clamp(320px,46vh,480px)}
-}
-
-/* Desktop 1024px+ */
-@media (min-width:1024px){
-  #app{padding:20px 20px 40px;gap:14px}
-  .chat-win{max-height:500px}
-  .mode-btn{font-size:1.05rem}
-  .mode-btn .mico{font-size:1.4rem}
-}
-
-/* Large display 1400px+ */
-@media (min-width:1400px){
-  #app{max-width:900px}
-  .chat-win{max-height:560px}
-}
-
-/* Touch devices — bigger tap targets */
-@media (pointer:coarse){
-  .btn,.mode-btn,.orb-btn,.t-chip,
-  .q-chip,.fsz-btn,.th-btn,.hc-btn,
-  .snd-btn,.tts-btn{min-height:44px}
-  .btn{padding:10px 16px}
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-}
-</style>
+        /* Hide elements */
+        .hidden { display: none !important; }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--border-hi); }
+    </style>
 </head>
 <body>
 
-<div id="app" role="main">
-
-  <!-- ══ HEADER ══ -->
-  <header class="hdr" role="banner">
-    <div class="hdr-brand">
-      <div class="logo-box" aria-hidden="true">
-        <div class="logo-face">🌱</div>
-        <div class="logo-dot"></div>
-      </div>
-      <div class="brand-text">
-        <h1>WIRA WISE</h1>
-        <p>Mũndũ wa Murimi · Farmer's Guide</p>
-      </div>
-    </div>
-    <div class="hdr-right">
-      <div class="lang-pill" aria-label="Language: Kikuyu and Swahili">
-        <div class="lp-dot" aria-hidden="true"></div>
-        <span>Kikuyu / Swahili</span>
-      </div>
-      <button class="btn btn-ghost" id="btnA11y" aria-expanded="false" aria-controls="a11yPanel">
-        ⚙️ <span class="a11y-lbl-txt">Mipangilio</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ══ ACCESSIBILITY PANEL ══ -->
-  <section class="a11y-panel" id="a11yPanel" role="region" aria-label="Accessibility settings — Mipangilio ya Upatikanaji">
-
-    <div class="ag">
-      <div class="ag-lbl" id="fs-grp-lbl">📝 Ukubwa wa Herufi</div>
-      <div class="ag-row" role="group" aria-labelledby="fs-grp-lbl">
-        <button class="fsz-btn" data-sc=".85" style="font-size:.72rem" aria-label="Ndogo — Small font">A</button>
-        <button class="fsz-btn act" data-sc="1" style="font-size:.88rem" aria-label="Kawaida — Normal font">A</button>
-        <button class="fsz-btn" data-sc="1.2" style="font-size:1.04rem" aria-label="Kubwa — Large font">A</button>
-        <button class="fsz-btn" data-sc="1.45" style="font-size:1.18rem" aria-label="Kubwa Sana — Extra large font">A</button>
-      </div>
-    </div>
-
-    <div class="ag">
-      <div class="ag-lbl" id="th-grp-lbl">🌙 Mandhari / Theme</div>
-      <div class="ag-row" role="radiogroup" aria-labelledby="th-grp-lbl">
-        <div class="theme-row">
-          <button class="th-btn act" data-tv="light" role="radio" aria-checked="true">☀️ Mwanga</button>
-          <button class="th-btn" data-tv="dark"  role="radio" aria-checked="false">🌙 Giza</button>
+<div class="app">
+    <!-- Header -->
+    <header class="header">
+        <div class="brand">
+            <div class="logo-box">
+                <div class="logo-face">🌽</div>
+                <div class="logo-dot"></div>
+            </div>
+            <div class="brand-text">
+                <h1>WIRA WISE</h1>
+                <p>Mũndũ wa Murimi</p>
+            </div>
         </div>
-      </div>
-    </div>
+        <div class="header-actions">
+            <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="icon-btn" id="voiceBtn" title="Voice Mode">
+                <i class="fas fa-microphone"></i>
+            </button>
+        </div>
+    </header>
 
-    <div class="ag">
-      <div class="ag-lbl" id="hc-grp-lbl">👁 Tofauti / Contrast</div>
-      <div class="ag-row" role="group" aria-labelledby="hc-grp-lbl">
-        <button class="hc-btn" id="hcBtn" aria-pressed="false">⬛ High Contrast</button>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ══ TOPICS ══ -->
-  <nav class="topics" role="navigation" aria-label="Chagua mada — Select topic">
-    <button class="t-chip act" data-tp="general"  aria-pressed="true"><span>🌿</span>General</button>
-    <button class="t-chip" data-tp="farming" aria-pressed="false"><span>🌾</span>Kilimo</button>
-    <button class="t-chip" data-tp="market"  aria-pressed="false"><span>📈</span>Soko</button>
-    <button class="t-chip" data-tp="finance" aria-pressed="false"><span>💰</span>Fedha</button>
-    <button class="t-chip" data-tp="weather" aria-pressed="false"><span>🌦</span>Hewa</button>
-  </nav>
-
-  <!-- ══ MODE SWITCHER ══ -->
-  <div class="mode-sw" role="tablist" aria-label="Chagua njia ya kuingiza — Choose input mode">
-    <button class="mode-btn act" id="btnTxt"   role="tab" aria-selected="true"  aria-controls="panel-text">
-      <span class="mico" aria-hidden="true">💬</span> Andika · Text
-    </button>
-    <button class="mode-btn"     id="btnVoice" role="tab" aria-selected="false" aria-controls="panel-voice">
-      <span class="mico" aria-hidden="true">🎙️</span> Ongea · Voice
-    </button>
-  </div>
-
-  <!-- ══ TEXT / CHAT PANEL ══ -->
-  <div id="panel-text" role="tabpanel" aria-labelledby="btnTxt">
-
-    <div class="q-row" role="group" aria-label="Maswali ya haraka — Quick questions">
-      <button class="q-chip" data-q="Niambie kuhusu kilimo cha mahindi">🌽 Mahindi</button>
-      <button class="q-chip" data-q="Bei za soko leo ni gani?">📊 Bei za leo</button>
-      <button class="q-chip" data-q="Nitawezaje kupata mkopo wa kilimo?">💳 Mkopo</button>
-      <button class="q-chip" data-q="Mbolea gani nzuri kwa udongo wa Kenya?">🌱 Mbolea</button>
-      <button class="q-chip" data-q="Ni wakati gani wa kupanda mbegu?">📅 Msimu</button>
-      <button class="q-chip" data-q="Bima ya mazao inafanya kazi vipi?">🛡️ Bima</button>
-    </div>
-
-    <!-- Welcome Screen -->
-    <div class="welcome-screen" id="welcomeScreen">
-      <div class="welcome-icon">
-        <i class="fas fa-comments"></i>
-      </div>
-      <div class="welcome-content">
-        <h2>Wĩmwega! Welcome! 🇰🇪</h2>
-        <p>I'm your Kikuyu agricultural assistant. I can help you with:</p>
-        <div class="features-grid">
-          <div class="feature-card">
+    <!-- Feature Cards -->
+    <div class="features">
+        <div class="feature-card active" data-feature="general">
             <i class="fas fa-seedling"></i>
             <h3>Kilimo</h3>
-            <p>Farming & Crops</p>
-          </div>
-          <div class="feature-card">
+            <p>Farming</p>
+        </div>
+        <div class="feature-card" data-feature="market">
             <i class="fas fa-chart-line"></i>
             <h3>Soko</h3>
-            <p>Market Prices</p>
-          </div>
-          <div class="feature-card">
+            <p>Markets</p>
+        </div>
+        <div class="feature-card" data-feature="finance">
             <i class="fas fa-coins"></i>
             <h3>Fedha</h3>
-            <p>Loans & Finance</p>
-          </div>
-          <div class="feature-card">
+            <p>Finance</p>
+        </div>
+        <div class="feature-card" data-feature="weather">
             <i class="fas fa-cloud-sun"></i>
             <h3>Hewa</h3>
-            <p>Weather & Climate</p>
-          </div>
+            <p>Weather</p>
         </div>
-        <p class="welcome-cta">Start by typing a greeting or click a quick action!</p>
-      </div>
     </div>
 
-    <div class="chat-win" id="chatWin" role="log" aria-live="polite" aria-label="Mazungumzo — Chat messages" aria-relevant="additions" style="display:none;"></div>
-
-    <div class="inp-row">
-      <label for="chatTa" class="sr-only">Andika ujumbe wako hapa</label>
-      <textarea class="chat-ta" id="chatTa" rows="1"
-        placeholder="Andika hapa kwa Kikuyu au Kiswahili…"
-        aria-label="Type your message in Kikuyu or Swahili"
-        autocomplete="off" spellcheck="false"
-        onkeydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); sendMessageFromInput(); }"></textarea>
-      <button class="snd-btn" id="sndBtn" aria-label="Tuma ujumbe — Send message"
-        onclick="sendMessageFromInput();">
-        <span aria-hidden="true">➤</span>
-      </button>
+    <!-- Topics -->
+    <div class="topics">
+        <button class="topic-btn active" data-topic="general">🌿 General</button>
+        <button class="topic-btn" data-topic="farming">🌾 Kilimo</button>
+        <button class="topic-btn" data-topic="market">📈 Soko</button>
+        <button class="topic-btn" data-topic="finance">💰 Fedha</button>
+        <button class="topic-btn" data-topic="weather">🌦 Hewa</button>
     </div>
 
-    <div class="st-row" role="status" aria-live="polite">
-      <div class="st-dot-w"><div class="sdot" aria-hidden="true"></div><span id="stMsg">WIRA WISE iko tayari</span></div>
-      <span id="tpBadge" aria-label="Current topic">📌 General</span>
-    </div>
-
-  </div>
-
-  <!-- ══ VOICE PANEL ══ -->
-  <div id="panel-voice" role="tabpanel" aria-labelledby="btnVoice" aria-label="Pande la sauti — Voice panel">
-
-    <div class="voice-orb-container">
-      <div class="starfield">
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-      </div>
-      <div class="mountain-layers">
-        <div class="mountain-layer layer-back"></div>
-        <div class="mountain-layer layer-mid"></div>
-        <div class="mountain-layer layer-front"></div>
-      </div>
-      <div class="horizon-glow"></div>
-      <div class="nebula-ambient">
-        <div class="nebula-cloud cloud-1"></div>
-        <div class="nebula-cloud cloud-2"></div>
-        <div class="nebula-cloud cloud-3"></div>
-      </div>
-      <div class="tilt-grid">
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <div class="tilt-area"></div>
-        <input type="checkbox" class="orb-toggle" id="orbToggle" />
-        <label for="orbToggle" class="orb-label">
-          <div class="orb-card">
-            <div class="orb-aura"></div>
-            <div class="orb-sphere">
-              <div class="sphere-body"></div>
-              <div class="sphere-gradient"></div>
-              <div class="sphere-light"></div>
-              <div class="sphere-specular"></div>
-              <div class="sphere-shadow-inner"></div>
-              <div class="sphere-rim"></div>
-              <div class="core-energy">
-                <div class="core-outer-glow"></div>
-                <div class="core-radiance"></div>
-                <div class="core-center"></div>
-                <div class="core-bright-spot"></div>
-              </div>
-              <div class="icon-holder">
-                <div class="mic-icon">
-                  <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0z"></path>
-                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5"></path>
-                  </svg>
+    <!-- Chat Window -->
+    <div class="chat-window">
+        <div class="messages" id="messages">
+            <div class="welcome" id="welcome">
+                <h2>Nikwega! 👋</h2>
+                <p>Welcome to WIRA WISE. Ask me anything about farming, crops, weather, or markets in Kenya!</p>
+                <div class="quick-actions">
+                    <button class="quick-btn" data-msg="Niambie kuhusu kilimo cha mahindi">🌽 Mahindi</button>
+                    <button class="quick-btn" data-msg="Bei za soko leo ni gani?">📊 Bei</button>
+                    <button class="quick-btn" data-msg="Nitawezaje kupata mkopo?">💳 Mkopo</button>
+                    <button class="quick-btn" data-msg="Mbolea gani nzuri?">🌱 Mbolea</button>
+                    <button class="quick-btn" data-msg="Wakati wa kupanda?">📅 Msimu</button>
+                    <button class="quick-btn" data-msg="Bima ya mazao">🛡️ Bima</button>
                 </div>
-                <div class="wave-icon">
-                  <div class="wave-bar bar-1"></div>
-                  <div class="wave-bar bar-2"></div>
-                  <div class="wave-bar bar-3"></div>
-                  <div class="wave-bar bar-4"></div>
-                  <div class="wave-bar bar-5"></div>
-                </div>
-              </div>
             </div>
-            <div class="particles-field">
-              <span class="particle p-1"></span>
-              <span class="particle p-2"></span>
-              <span class="particle p-3"></span>
-              <span class="particle p-4"></span>
-              <span class="particle p-5"></span>
-              <span class="particle p-6"></span>
-              <span class="particle p-7"></span>
-              <span class="particle p-8"></span>
-            </div>
-            <div class="listening-text">
-              <span class="letter">L</span>
-              <span class="letter">i</span>
-              <span class="letter">s</span>
-              <span class="letter">t</span>
-              <span class="letter">e</span>
-              <span class="letter">n</span>
-              <span class="letter">i</span>
-              <span class="letter">n</span>
-              <span class="letter">g</span>
-            </div>
-          </div>
-        </label>
-      </div>
+        </div>
+
+        <!-- Input -->
+        <div class="input-row">
+            <textarea id="messageInput" rows="1" placeholder="Andika hapa kwa Kikuyu au Kiswahili..." 
+                      onkeydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); sendMessage(); }"></textarea>
+            <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
     </div>
 
-    <div>
-      <div class="vlabel" id="vlbl">Bonyeza kuongea</div>
-      <div class="vsub" id="vsub">Press the button · Speak in Kikuyu or Swahili</div>
+    <!-- Status -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="status-dot"></span>
+            <span>WIRA WISE iko tayari</span>
+        </div>
+        <span class="topic-badge" id="topicBadge">📌 General</span>
     </div>
-
-    <div class="t-card" id="tCard" aria-live="polite">
-      <div class="t-lbl">Ulichosema · You said:</div>
-      <div id="tText"></div>
-    </div>
-
-    <div class="v-actions" id="vActs" style="display:none" role="group" aria-label="Voice response actions">
-      <button class="btn btn-pri btn-lg" id="vSend">📤 Tuma · Send</button>
-      <button class="btn btn-ghost btn-lg" id="vCancel">✖ Futa · Cancel</button>
-    </div>
-
-    <div class="vrc" id="vrc">
-      <div class="vrc-hdr">🌿 WIRA WISE anasema · Bot says:</div>
-      <div id="vrcTxt"></div>
-      <button class="tts-btn" id="ttsBtn">🔊 Soma tena · Read aloud</button>
-    </div>
-
-  </div>
-
-</div><!-- /#app -->
+</div>
 
 <script>
-'use strict';
+    const API_BASE = 'http://localhost:8000/api/v1';
+    let sessionId = null;
+    let currentTopic = 'general';
 
-/* ═══════════════════════════════════════════
-   CONFIGURATION
-═══════════════════════════════════════════ */
-const CONFIG = {
-    API_BASE_URL: 'http://localhost:8000/api/v1',
-    API_TIMEOUT: 30000,
-    MAX_RETRIES: 3,
-    TYPING_DELAY: 1000,
-    AUTO_SCROLL_DELAY: 100
-};
+    const messagesDiv = document.getElementById('messages');
+    const input = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const topicBadge = document.getElementById('topicBadge');
+    const welcome = document.getElementById('welcome');
+    const themeBtn = document.getElementById('themeBtn');
 
-/* ═══════════════════════════════════════════
-   STATE
-═══════════════════════════════════════════ */
-const S = {
-  mode:'text', 
-  topic:'general',
-  isRec:false, 
-  rec:null, 
-  vText:'', 
-  hc:false,
-  sessionId: null,
-  messageCount: 0,
-  isTyping: false,
-  hasStartedChat: false
-};
-
-const G = id => document.getElementById(id);
-const QA = s => document.querySelectorAll(s);
-
-const D = {
-  app:G('app'), pText:G('panel-text'), pVoice:G('panel-voice'),
-  btnTxt:G('btnTxt'), btnVoice:G('btnVoice'),
-  chatWin:G('chatWin'), chatTa:G('chatTa'), sndBtn:G('sndBtn'),
-  stMsg:G('stMsg'), tpBadge:G('tpBadge'),
-  a11y:G('a11yPanel'), btnA11y:G('btnA11y'), hcBtn:G('hcBtn'),
-  orbBtn:G('orbBtn'), orbStage=G('orbStage'), wform=G('wform'),
-  vlbl:G('vlbl'), vsub=G('vsub'),
-  tCard:G('tCard'), tText=G('tText'),
-  vActs:G('vActs'), vSend=G('vSend'), vCancel=G('vCancel'),
-  vrc:G('vrc'), vrcTxt=G('vrcTxt'), ttsBtn=G('ttsBtn'),
-  welcomeScreen: G('welcomeScreen'),
-};
-
-/* ═══════════════════════════════════════════
-   API SERVICE
-═══════════════════════════════════════════ */
-class ChatAPI {
-    static async createSession() {
+    // Initialize session
+    async function init() {
         try {
-            const response = await fetch(`${CONFIG.API_BASE_URL}/session/create`, {
+            const resp = await fetch(`${API_BASE}/session/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
             });
-            
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
-            
-            const data = await response.json();
-            return data.session_id;
-        } catch (error) {
-            console.error('Error creating session:', error);
-            throw error;
+            const data = await resp.json();
+            sessionId = data.session_id;
+            console.log('Session:', sessionId);
+        } catch (e) {
+            console.error('Session error:', e);
         }
     }
-    
-    // Keywords that indicate agriculture/crop queries
-    static AGRICULTURE_KEYWORDS = [
-        'crop', 'crops', 'plant', 'plants', 'farm', 'farming', 'agriculture',
-        'harvest', 'soil', 'seed', 'seeds', 'fertilizer', 'pest', 'pests',
-        'disease', 'rain', 'irrigation', 'maize', 'wheat', 'beans', 'coffee',
-        'potato', 'potatoes', 'sweet', 'vegetable', 'vegetables',
-        'waru', 'mboga', 'ira', 'ngima', 'ikinyuga', 'githaka', 'rugo', 'mucere',
-        'kuhamba', 'kurima', 'kuvuna', 'muvuno', 'gutudo', 'gutitira',
-        'kilimo', 'shamba', 'mazao', 'mbegu', 'mbolea', 'mvua', 'maji'
-    ];
-    
-    static isAgricultureQuery(text) {
-        const lowerText = text.toLowerCase();
-        return this.AGRICULTURE_KEYWORDS.some(keyword => lowerText.includes(keyword));
-    }
-    
-    static async sendMessage(text, sessionId) {
-        // Check if this is an agriculture query
-        if (this.isAgricultureQuery(text)) {
-            return this.sendAgricultureMessage(text);
+    init();
+
+    // Toggle theme
+    function toggleTheme() {
+        const html = document.documentElement;
+        if (html.getAttribute('data-theme') === 'dark') {
+            html.setAttribute('data-theme', 'light');
+            themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            html.setAttribute('data-theme', 'dark');
+            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
         }
+    }
+
+    // Send message
+    async function sendMessage() {
+        const text = input.value.trim();
+        if (!text) return;
+
+        if (welcome) welcome.classList.add('hidden');
         
+        addMessage(text, 'user');
+        input.value = '';
+        input.style.height = 'auto';
+        
+        sendBtn.disabled = true;
+        showTyping();
+
         try {
-            const response = await fetch(`${CONFIG.API_BASE_URL}/chat/text`, {
+            const isAgri = isAgricultureQuery(text);
+            const endpoint = isAgri ? '/chat/agriculture' : '/chat/text';
+
+            const resp = await fetch(`${API_BASE}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     text: text,
-                    session_id: sessionId
+                    session_id: sessionId,
+                    generate_audio: false
                 })
             });
-            
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
-            
-            return await response.json();
-        } catch (error) {
-            console.error('Error sending message:', error);
-            throw error;
-        }
-    }
-    
-    static async sendAgricultureMessage(text) {
-        try {
-            const response = await fetch(`${CONFIG.API_BASE_URL}/chat/agriculture`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    text: text,
-                    generate_audio: false,
-                    include_sources: false
-                })
-            });
-            
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
-            
-            return await response.json();
-        } catch (error) {
-            console.error('Error sending agriculture message:', error);
-            throw error;
-        }
-    }
-    
-    static async sendVoiceMessage(audioBlob, sessionId) {
-        try {
-            const formData = new FormData();
-            formData.append('audio', audioBlob, 'recording.wav');
-            if (sessionId) {
-                formData.append('session_id', sessionId);
-            }
-            
-            const response = await fetch(`${CONFIG.API_BASE_URL}/chat/voice`, {
-                method: 'POST',
-                body: formData
-            });
-            
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
-            
-            return await response.json();
-        } catch (error) {
-            console.error('Error sending voice message:', error);
-            throw error;
-        }
-    }
-    
-    static async getHealth() {
-        try {
-            const response = await fetch(`${CONFIG.API_BASE_URL}/health`);
-            return await response.json();
-        } catch (error) {
-            console.error('Error checking health:', error);
-            return { status: 'error' };
-        }
-    }
-}
 
-/* ═══════════════════════════════════════════
-   AUDIO RECORDING
-═══════════════════════════════════════════ */
-class AudioRecorder {
-    constructor() {
-        this.mediaRecorder = null;
-        this.audioChunks = [];
-        this.isRecording = false;
-        this.micStream = null;
-    }
-    
-    async startRecording() {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ 
-                audio: {
-                    echoCancellation: true,
-                    noiseSuppression: true,
-                    autoGainControl: true
-                } 
-            });
-            
-            this.mediaRecorder = new MediaRecorder(stream, {
-                mimeType: 'audio/webm;codecs=opus'
-            });
-            
-            this.audioChunks = [];
-            
-            this.mediaRecorder.ondataavailable = (event) => {
-                if (event.data.size > 0) {
-                    this.audioChunks.push(event.data);
-                }
-            };
-            
-            this.mediaRecorder.start(100);
-            this.isRecording = true;
-            this.micStream = stream;
-            
-            console.log('🎤 Recording started (WebM/Opus - will convert to WAV)');
-            
-        } catch (error) {
-            console.error('Error starting recording:', error);
-            throw new Error('Microphone access denied or not available');
+            const data = await resp.json();
+            hideTyping();
+
+            const botText = data.response_text || data.response || 'Ndicũraga.';
+            addMessage(botText, 'bot');
+
+        } catch (e) {
+            hideTyping();
+            addMessage('Kosa lililotokea.', 'bot');
+            console.error(e);
         }
+
+        sendBtn.disabled = false;
+        input.focus();
     }
-    
-    async stopRecording() {
-        return new Promise((resolve, reject) => {
-            if (!this.mediaRecorder || !this.isRecording) {
-                reject(new Error('Not currently recording'));
-                return;
-            }
-            
-            this.mediaRecorder.onstop = async () => {
-                try {
-                    if (this.micStream) {
-                        this.micStream.getTracks().forEach(track => track.stop());
-                    }
-                    
-                    const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
-                    const wavBlob = await this.convertToWav(audioBlob);
-                    
-                    this.isRecording = false;
-                    this.audioChunks = [];
-                    
-                    console.log('🎤 Recording stopped, WAV size:', wavBlob.size, 'bytes');
-                    
-                    resolve(wavBlob);
-                    
-                } catch (error) {
-                    console.error('Error converting audio:', error);
-                    reject(error);
-                }
-            };
-            
-            this.mediaRecorder.stop();
+
+    // Add message
+    function addMessage(text, sender) {
+        const div = document.createElement('div');
+        div.className = `message ${sender}`;
+        div.textContent = text;
+        messagesDiv.appendChild(div);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    // Typing
+    function showTyping() {
+        const div = document.createElement('div');
+        div.className = 'message bot typing';
+        div.id = 'typing';
+        div.textContent = '...';
+        messagesDiv.appendChild(div);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function hideTyping() {
+        const t = document.getElementById('typing');
+        if (t) t.remove();
+    }
+
+    // Check agriculture
+    function isAgricultureQuery(text) {
+        const keywords = ['crop', 'crops', 'plant', 'farm', 'agriculture', 'harvest', 
+            'soil', 'seed', 'fertilizer', 'pest', 'disease', 'rain', 'irrigation',
+            'maize', 'wheat', 'beans', 'coffee', 'potato', 'vegetable', 'cabbage',
+            'waru', 'mboga', 'ira', 'ngima', 'kuhamba', 'kurima', 'kuvuna', 'mbolea',
+            'kilimo', 'soko', 'bei', 'mkopo', 'bima', 'msimu', 'mahindi', 'cafe',
+            'irrigation', 'weather', 'climate'];
+        const lower = text.toLowerCase();
+        return keywords.some(k => lower.includes(k));
+    }
+
+    // Feature cards
+    document.querySelectorAll('.feature-card').forEach(card => {
+        card.addEventListener('click', () => {
+            document.querySelectorAll('.feature-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
         });
-    }
-    
-    async convertToWav(blob) {
-        const audioContext = new AudioContext({ sampleRate: 16000 });
-        const arrayBuffer = await blob.arrayBuffer();
-        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-        const channelData = audioBuffer.getChannelData(0);
-        
-        let resampledData = channelData;
-        if (audioBuffer.sampleRate !== 16000) {
-            resampledData = this.resample(channelData, audioBuffer.sampleRate, 16000);
-        }
-        
-        const maxVal = Math.max(...resampledData.map(Math.abs));
-        if (maxVal > 0) {
-            const scale = 0.9 / maxVal;
-            for (let i = 0; i < resampledData.length; i++) {
-                resampledData[i] *= scale;
-            }
-        }
-        
-        await audioContext.close();
-        return this.encodeWAV(resampledData, 16000);
-    }
-    
-    resample(audio, fromRate, toRate) {
-        if (fromRate === toRate) return audio;
-        
-        const ratio = fromRate / toRate;
-        const newLength = Math.round(audio.length / ratio);
-        const result = new Float32Array(newLength);
-        
-        for (let i = 0; i < newLength; i++) {
-            result[i] = audio[Math.round(i * ratio)];
-        }
-        
-        return result;
-    }
-    
-    encodeWAV(samples, sampleRate) {
-        const buffer = new ArrayBuffer(44 + samples.length * 2);
-        const view = new DataView(buffer);
-        
-        this.writeString(view, 0, 'RIFF');
-        view.setUint32(4, 36 + samples.length * 2, true);
-        this.writeString(view, 8, 'WAVE');
-        this.writeString(view, 12, 'fmt ');
-        view.setUint32(16, 16, true);
-        view.setUint16(20, 1, true);
-        view.setUint16(22, 1, true);
-        view.setUint32(24, sampleRate, true);
-        view.setUint32(28, sampleRate * 2, true);
-        view.setUint16(32, 2, true);
-        view.setUint16(34, 16, true);
-        this.writeString(view, 36, 'data');
-        view.setUint32(40, samples.length * 2, true);
-        
-        let offset = 44;
-        for (let i = 0; i < samples.length; i++) {
-            const s = Math.max(-1, Math.min(1, samples[i]));
-            view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
-            offset += 2;
-        }
-        
-        return new Blob([buffer], { type: 'audio/wav' });
-    }
-    
-    writeString(view, offset, string) {
-        for (let i = 0; i < string.length; i++) {
-            view.setUint8(offset + i, string.charCodeAt(i));
-        }
-    }
-    
-    cancelRecording() {
-        if (this.mediaRecorder && this.isRecording) {
-            this.mediaRecorder.stop();
-            if (this.micStream) {
-                this.micStream.getTracks().forEach(track => track.stop());
-            }
-            this.isRecording = false;
-            this.audioChunks = [];
-        }
-    }
-}
+    });
 
-/* ═══════════════════════════════════════════
-   TEXT-TO-SPEECH
-═══════════════════════════════════════════ */
-class TextToSpeech {
-    static async speak(text, audioUrl = null) {
-        window.speechSynthesis.cancel();
-        
-        if (audioUrl) {
-            try {
-                await this.playAudioFromUrl(audioUrl);
-                console.log('🔊 Playing server TTS audio:', audioUrl);
-                return;
-            } catch (error) {
-                console.warn('Failed to play server audio, falling back to browser TTS:', error);
-            }
-        }
-        
-        this.speakWithBrowser(text);
-    }
-    
-    static playAudioFromUrl(url) {
-        return new Promise((resolve, reject) => {
-            const audio = new Audio();
-            
-            audio.onloadedmetadata = () => {
-                console.log('🔊 Audio duration:', audio.duration, 'seconds');
-                audio.play().catch(reject);
-            };
-            
-            audio.onended = () => {
-                console.log('🔊 Audio playback completed');
-                resolve();
-            };
-            
-            audio.onerror = (error) => {
-                console.error('🔊 Audio error:', error);
-                reject(error);
-            };
-            
-            audio.src = url;
-            audio.load();
+    // Topic buttons
+    document.querySelectorAll('.topic-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentTopic = btn.dataset.topic;
+            const ico = {general:'🌿',farming:'🌾',market:'📈',finance:'💰',weather:'🌦'};
+            const nm = {general:'General',farming:'Kilimo',market:'Soko',finance:'Fedha',weather:'Hewa'};
+            topicBadge.textContent = `${ico[currentTopic]} ${nm[currentTopic]}`;
         });
-    }
-    
-    static speakWithBrowser(text, lang = 'sw-KE') {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang;
-        utterance.rate = 0.9;
-        utterance.pitch = 1.0;
-        utterance.volume = 1.0;
-        
-        const voices = window.speechSynthesis.getVoices();
-        const preferredVoices = voices.filter(v => 
-            v.lang.startsWith('sw') || 
-            v.lang.startsWith('en') ||
-            v.lang.startsWith('kik')
-        );
-        
-        if (preferredVoices.length > 0) {
-            utterance.voice = preferredVoices[0];
-        }
-        
-        utterance.onerror = (event) => {
-            console.error('TTS Error:', event.error);
-        };
-        
-        window.speechSynthesis.speak(utterance);
-        console.log('🔊 Speaking (browser TTS):', text);
-    }
-    
-    static stop() {
-        window.speechSynthesis.cancel();
-    }
-}
-
-/* ═══════════════════════════════════════════
-   MESSAGE HANDLING
-═══════════════════════════════════════════ */
-const ts = () => new Date().toLocaleTimeString('sw-KE', {hour:'2-digit', minute:'2-digit'});
-
-function addMsg(text, role, audioUrl = null) {
-    // Hide welcome screen, show chat
-    if (!S.hasStartedChat) {
-        S.hasStartedChat = true;
-        D.welcomeScreen.style.display = 'none';
-        D.chatWin.style.display = 'flex';
-    }
-
-    const w = document.createElement('div');
-    w.className = `msg ${role}`;
-    w.setAttribute('role','article');
-
-    const av = document.createElement('div');
-    av.className = `mav ${role==='bot'?'bav':'uav'}`;
-    av.setAttribute('aria-hidden','true');
-    av.textContent = role==='bot' ? '🌱' : '👤';
-
-    const body = document.createElement('div');
-    body.className = 'mbody';
-
-    const bub = document.createElement('div');
-    bub.className = 'bubble';
-    bub.style.whiteSpace = 'pre-line';
-    bub.textContent = text;
-    
-    // Add audio button for bot messages
-    if (role === 'bot' && audioUrl) {
-        const audioBtn = document.createElement('button');
-        audioBtn.className = 'audio-play-btn';
-        audioBtn.setAttribute('aria-label', 'Play audio response');
-        audioBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-        audioBtn.onclick = () => {
-            if (audioUrl.startsWith('http')) {
-                TextToSpeech.playAudioFromUrl(audioUrl);
-            } else {
-                TextToSpeech.speakWithBrowser(text);
-            }
-        };
-        bub.appendChild(document.createElement('br'));
-        bub.appendChild(audioBtn);
-    } else if (role === 'bot') {
-        // Add TTS button for bot messages without audio
-        const ttsBtn = document.createElement('button');
-        ttsBtn.className = 'audio-play-btn';
-        ttsBtn.setAttribute('aria-label', 'Read aloud');
-        ttsBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-        ttsBtn.onclick = () => TextToSpeech.speakWithBrowser(text);
-        bub.appendChild(document.createElement('br'));
-        bub.appendChild(ttsBtn);
-    }
-
-    bub.setAttribute('aria-label', (role==='bot'?'WIRA WISE: ':'Wewe: ') + text);
-
-    const t = document.createElement('div');
-    t.className = 'mts';
-    t.textContent = ts();
-
-    body.appendChild(bub);
-    body.appendChild(t);
-    w.appendChild(av);
-    w.appendChild(body);
-    D.chatWin.appendChild(w);
-    D.chatWin.scrollTop = D.chatWin.scrollHeight;
-    
-    S.messageCount++;
-}
-
-function showTyping() {
-    removeTyping();
-    
-    if (!S.hasStartedChat) {
-        S.hasStartedChat = true;
-        D.welcomeScreen.style.display = 'none';
-        D.chatWin.style.display = 'flex';
-    }
-    
-    const w = document.createElement('div');
-    w.className='typ-wrap'; w.id='typWrap';
-    w.setAttribute('aria-label','WIRA WISE anaandika...');
-    const av = document.createElement('div');
-    av.className='mav bav'; av.textContent='🌱'; av.setAttribute('aria-hidden','true');
-    const bub = document.createElement('div');
-    bub.className='typ-bub';
-    bub.innerHTML='<div class="td"></div><div class="td"></div><div class="td"></div>';
-    w.appendChild(av); w.appendChild(bub);
-    D.chatWin.appendChild(w);
-    D.chatWin.scrollTop = D.chatWin.scrollHeight;
-}
-function removeTyping() { const t=G('typWrap'); if(t) t.remove(); }
-
-async function sendMsg(text) {
-    if (!text.trim()) return;
-    
-    // Create session if not exists
-    if (!S.sessionId) {
-        try {
-            S.sessionId = await ChatAPI.createSession();
-            console.log('Session created:', S.sessionId);
-        } catch (err) {
-            console.warn('Could not create session, continuing without:', err);
-        }
-    }
-    
-    addMsg(text, 'user');
-    D.stMsg.textContent = 'WIRA WISE anafikiri…';
-    showTyping();
-    
-    try {
-        const response = await ChatAPI.sendMessage(text, S.sessionId);
-        
-        removeTyping();
-        
-        // Extract response text
-        const botText = response.response_text || response.response || 'Ndingĩrima ũrĩa.';
-        const audioUrl = response.audio_file || null;
-        
-        addMsg(botText, 'bot', audioUrl);
-        D.stMsg.textContent = 'WIRA WISE iko tayari';
-        D.chatWin.scrollTop = D.chatWin.scrollHeight;
-        
-    } catch (error) {
-        removeTyping();
-        console.error('Error sending message:', error);
-        
-        // Fallback response
-        addMsg('Ndirĩngĩcoka. Jaribu tena. (Sorry, I could not process that. Please try again.)', 'bot');
-        D.stMsg.textContent = 'Kosa lililotokea';
-    }
-}
-
-/* ═══════════════════════════════════════════
-   MODE SWITCHING
-═══════════════════════════════════════════ */
-function setMode(m) {
-    S.mode = m;
-    if (m === 'text') {
-        D.pText.classList.remove('gone');
-        D.pVoice.classList.remove('show'); D.pVoice.classList.add('gone');
-        D.btnTxt.classList.add('act');   D.btnTxt.setAttribute('aria-selected','true');
-        D.btnVoice.classList.remove('act'); D.btnVoice.setAttribute('aria-selected','false');
-        if (S.isRec && S.rec) S.rec.cancelRecording();
-    } else {
-        D.pText.classList.add('gone');
-        D.pVoice.classList.add('show'); D.pVoice.classList.remove('gone');
-        D.btnVoice.classList.add('act');  D.btnVoice.setAttribute('aria-selected','true');
-        D.btnTxt.classList.remove('act'); D.btnTxt.setAttribute('aria-selected','false');
-    }
-}
-D.btnTxt.addEventListener('click',   () => setMode('text'));
-D.btnVoice.addEventListener('click', () => setMode('voice'));
-
-/* ═══════════════════════════════════════════
-   TOPICS
-═══════════════════════════════════════════ */
-QA('.t-chip').forEach(c => {
-    c.addEventListener('click', () => {
-        QA('.t-chip').forEach(x => { x.classList.remove('act'); x.setAttribute('aria-pressed','false'); });
-        c.classList.add('act'); c.setAttribute('aria-pressed','true');
-        S.topic = c.dataset.tp;
-        const ico = {general:'🌿',farming:'🌾',market:'📈',finance:'💰',weather:'🌦'};
-        const nm  = {general:'General',farming:'Kilimo',market:'Soko',finance:'Fedha',weather:'Hewa'};
-        D.tpBadge.textContent = `${ico[S.topic]} ${nm[S.topic]}`;
     });
-});
 
-/* ═══════════════════════════════════════════
-   QUICK CHIPS
-═══════════════════════════════════════════ */
-QA('.q-chip').forEach(c => c.addEventListener('click', () => sendMsg(c.dataset.q)));
-
-/* ═══════════════════════════════════════════
-   SEND MESSAGE
-═══════════════════════════════════════════ */
-D.sndBtn.addEventListener('click', () => { 
-    console.log('Send button clicked!');
-    sendMsg(D.chatTa.value); 
-    D.chatTa.value=''; 
-    D.chatTa.style.height='auto'; 
-});
-D.chatTa.addEventListener('keydown', e => {
-    console.log('Key pressed:', e.key);
-    if (e.key==='Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMsg(D.chatTa.value); 
-        D.chatTa.value=''; 
-        D.chatTa.style.height='auto';
-    }
-});
-D.chatTa.addEventListener('input', () => {
-    D.chatTa.style.height='auto';
-    D.chatTa.style.height = Math.min(D.chatTa.scrollHeight,108)+'px';
-});
-
-/* ═══════════════════════════════════════════
-   VOICE RECORDING
-═══════════════════════════════════════════ */
-function buildRec() {
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) return null;
-    
-    const r = new SR();
-    r.continuous=false; 
-    r.interimResults=true; 
-    r.lang='sw-KE';
-
-    r.onstart = () => {
-        S.isRec=true;
-        D.orbBtn.classList.add('rec'); 
-        D.orbBtn.textContent='⏹️';
-        D.orbBtn.setAttribute('aria-label','Acha kurekodi — Press to stop');
-        D.orbStage.classList.add('is-listen');
-        D.wform.classList.add('vis');
-        D.pVoice.classList.add('is-listen');
-        D.vlbl.textContent='Sikiliza… Ongea sasa!';
-        D.vsub.textContent='Listening — Speak in Kikuyu or Swahili now';
-        D.tText.textContent='';
-        D.tCard.classList.add('vis');
-        D.vActs.style.display='none';
-        D.vrc.classList.remove('vis');
-    };
-    
-    r.onresult = e => {
-        let interim='',final='';
-        for (let i=e.resultIndex;i<e.results.length;i++) {
-            if(e.results[i].isFinal) final+=e.results[i][0].transcript;
-            else interim+=e.results[i][0].transcript;
-        }
-        D.tText.textContent = final||interim;
-        S.vText = final||interim;
-    };
-    
-    r.onend = () => {
-        S.isRec=false;
-        D.orbBtn.classList.remove('rec'); 
-        D.orbBtn.textContent='🎙️';
-        D.orbBtn.setAttribute('aria-label','Bonyeza kuanza kurekodi — Press to start recording');
-        D.orbStage.classList.remove('is-listen');
-        D.wform.classList.remove('vis');
-        D.pVoice.classList.remove('is-listen');
-        
-        if (S.vText.trim()) {
-            D.vlbl.textContent='Umesikika ✅';
-            D.vsub.textContent='Tuma jibu au futa — Send or cancel your message';
-            D.vActs.style.display='flex';
-        } else {
-            D.vlbl.textContent='Haikusikilizwa — Jaribu tena';
-            D.vsub.textContent='Not captured. Press button and try again.';
-            D.tCard.classList.remove('vis');
-        }
-    };
-    
-    r.onerror = err => {
-        S.isRec=false;
-        D.orbBtn.classList.remove('rec'); 
-        D.orbBtn.textContent='🎙️';
-        D.orbStage.classList.remove('is-listen');
-        D.wform.classList.remove('vis');
-        D.pVoice.classList.remove('is-listen');
-        D.vlbl.textContent='Kosa — Jaribu tena';
-        D.vsub.textContent=`Error: ${err.error}. Use Chrome for best voice support.`;
-        D.tCard.classList.remove('vis');
-        D.vActs.style.display='none';
-    };
-    
-    return r;
-}
-
-D.orbBtn.addEventListener('click', async () => {
-    if (S.isRec) { 
-        if(S.rec) S.rec.stop(); 
-        return; 
-    }
-    
-    // Check for Web Speech API support first
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SR) {
-        S.rec = buildRec();
-        if (S.rec) {
-            try { 
-                S.rec.start(); 
-            } catch(e) { 
-                D.vlbl.textContent='Kosa kuanza. Refresh na ujaribu tena.'; 
-            }
-            return;
-        }
-    }
-    
-    // Fallback to MediaRecorder
-    if (!S.audioRecorder) {
-        S.audioRecorder = new AudioRecorder();
-    }
-    
-    try {
-        await S.audioRecorder.startRecording();
-        S.isRec = true;
-        D.orbBtn.classList.add('rec'); 
-        D.orbBtn.textContent='⏹️';
-        D.orbBtn.setAttribute('aria-label','Acha kurekodi — Press to stop');
-        D.orbStage.classList.add('is-listen');
-        D.wform.classList.add('vis');
-        D.vlbl.textContent='Sikiliza… Ongea sasa!';
-        D.vsub.textContent='Recording — Speak now';
-    } catch(e) {
-        D.vlbl.textContent='Mikrofoni haiwezekani';
-        D.vsub.textContent='Microphone access denied. Please allow microphone access.';
-    }
-});
-
-// Handle voice stop - check if using Web Speech API or MediaRecorder
-const originalOrbBtnClick = D.orbBtn.onclick;
-D.orbBtn.addEventListener('click', async () => {
-    if (!S.isRec) return;
-    
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SR && S.rec) {
-        // Web Speech API handles itself
-        return;
-    }
-    
-    // MediaRecorder - need to stop manually
-    if (S.audioRecorder && S.isRec) {
-        try {
-            const wavBlob = await S.audioRecorder.stopRecording();
-            S.isRec = false;
-            D.orbBtn.classList.remove('rec'); 
-            D.orbBtn.textContent='🎙️';
-            D.orbStage.classList.remove('is-listen');
-            D.wform.classList.remove('vis');
-            
-            // Send to backend for processing
-            D.vlbl.textContent='Inachakata...';
-            D.vsub.textContent='Processing your voice...';
-            
-            const response = await ChatAPI.sendVoiceMessage(wavBlob, S.sessionId);
-            
-            const botText = response.response_text || response.response || 'Ndingĩrima ũrĩa.';
-            const audioUrl = response.audio_file || null;
-            
-            D.vrcTxt.textContent = botText;
-            D.vrc.classList.add('vis');
-            D.vlbl.textContent='Jibu liko hapa! 🎉';
-            D.vsub.textContent='Press 🔊 below to hear the answer';
-            
-            if (audioUrl) {
-                speakTxt(botText);
-            }
-            
-        } catch(e) {
-            console.error('Error stopping recording:', e);
-            D.vlbl.textContent='Kosa — Jaribu tena';
-            D.vsub.textContent='Error processing voice: ' + e.message;
-        }
-    }
-});
-
-D.vSend.addEventListener('click', async () => {
-    const q = S.vText;
-    if (!q.trim()) return;
-    
-    D.vActs.style.display='none';
-    D.vlbl.textContent='WIRA WISE anafikiri…';
-    D.vsub.textContent='Processing your question...';
-    D.vrc.classList.remove('vis');
-    
-    try {
-        const response = await ChatAPI.sendMessage(q, S.sessionId);
-        
-        const r = response.response_text || response.response || 'Ndingĩrima ũrĩa.';
-        D.vrcTxt.textContent = r;
-        D.vrc.classList.add('vis');
-        D.vlbl.textContent='Jibu liko hapa! 🎉';
-        D.vsub.textContent='Press 🔊 below to hear the answer';
-        
-        speakTxt(r);
-        S.vText='';
-        
-    } catch(e) {
-        D.vlbl.textContent='Kosa — Jaribu tena';
-        D.vsub.textContent='Error: ' + e.message;
-    }
-});
-
-D.vCancel.addEventListener('click', () => {
-    S.vText='';
-    D.tText.textContent=''; 
-    D.tCard.classList.remove('vis');
-    D.vActs.style.display='none'; 
-    D.vrc.classList.remove('vis');
-    D.vlbl.textContent='Bonyeza kuongea';
-    D.vsub.textContent='Press the button · Speak in Kikuyu or Swahili';
-});
-
-function speakTxt(t) {
-    if (!window.speechSynthesis) return;
-    speechSynthesis.cancel();
-    const clean = t.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu,'').replace(/[•→🟢🟡]/g,',');
-    const utt = new SpeechSynthesisUtterance(clean);
-    utt.lang='sw-KE'; 
-    utt.rate=0.82; 
-    utt.pitch=1.04;
-    utt.onstart = () => D.ttsBtn.classList.add('spk');
-    utt.onend   = () => D.ttsBtn.classList.remove('spk');
-    utt.onerror = () => D.ttsBtn.classList.remove('spk');
-    speechSynthesis.speak(utt);
-}
-D.ttsBtn.addEventListener('click', () => speakTxt(D.vrcTxt.textContent));
-
-/* ═══════════════════════════════════════════
-   ACCESSIBILITY CONTROLS
-═══════════════════════════════════════════ */
-D.btnA11y.addEventListener('click', () => {
-    const open = D.a11y.classList.toggle('open');
-    D.btnA11y.setAttribute('aria-expanded', String(open));
-    D.btnA11y.classList.toggle('act', open);
-});
-
-QA('.fsz-btn').forEach(b => {
-    b.addEventListener('click', () => {
-        QA('.fsz-btn').forEach(x=>x.classList.remove('act'));
-        b.classList.add('act');
-        document.documentElement.style.setProperty('--fsc', b.dataset.sc);
+    // Quick buttons
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            input.value = btn.dataset.msg;
+            sendMessage();
+        });
     });
-});
 
-QA('.th-btn').forEach(b => {
-    b.addEventListener('click', () => {
-        QA('.th-btn').forEach(x=>{ x.classList.remove('act'); x.setAttribute('aria-checked','false'); });
-        b.classList.add('act'); 
-        b.setAttribute('aria-checked','true');
-        document.body.dataset.theme = b.dataset.tv==='dark' ? 'dark' : '';
+    // Auto-resize textarea
+    input.addEventListener('input', () => {
+        input.style.height = 'auto';
+        input.style.height = Math.min(input.scrollHeight, 100) + 'px';
     });
-});
-
-D.hcBtn.addEventListener('click', () => {
-    S.hc = !S.hc;
-    document.body.dataset.hc = S.hc ? '1' : '0';
-    D.hcBtn.classList.toggle('act', S.hc);
-    D.hcBtn.setAttribute('aria-pressed', String(S.hc));
-    D.hcBtn.textContent = S.hc ? '🔲 Normal Contrast' : '⬛ High Contrast';
-});
-
-/* OS preferences on load */
-if (window.matchMedia?.('(prefers-color-scheme:dark)').matches) {
-    document.body.dataset.theme='dark';
-    QA('.th-btn').forEach(b=>{
-        b.classList.toggle('act', b.dataset.tv==='dark');
-        b.setAttribute('aria-checked', String(b.dataset.tv==='dark'));
-    });
-}
-if (window.matchMedia?.('(prefers-reduced-motion:reduce)').matches) {
-    document.documentElement.style.setProperty('--tb','0ms');
-    document.documentElement.style.setProperty('--ts','0ms');
-}
-
-/* ═══════════════════════════════════════════
-   INITIALIZATION
-═══════════════════════════════════════════ */
-
-// Initialize audio recorder
-S.audioRecorder = new AudioRecorder();
-
-// Welcome message
-setTimeout(() => {
-    addMsg(`Karibu WIRA WISE! 🌱\n\nMimi ni msaidizi wako wa kilimo, soko, na fedha. Ninaongea Kikuyu na Kiswahili.\n\nUnaweza:\n💬 Andika swali lako — Text\n🎙️ Ongea nami — Voice\n\nChagua mada hapo juu, au niulize chochote!`, 'bot');
-}, 500);
-
-// Check API health
-async function checkHealth() {
-    try {
-        const health = await ChatAPI.getHealth();
-        if (health.status === 'error') {
-            D.stMsg.textContent = 'API haipatikani';
-            console.warn('API health check failed');
-        } else {
-            D.stMsg.textContent = 'WIRA WISE iko tayari';
-        }
-    } catch(e) {
-        D.stMsg.textContent = 'API haipatikani';
-    }
-}
-checkHealth();
-
-console.log('🌱 WIRA WISE Frontend Loaded - Blended Design');
 </script>
+
 </body>
 </html>

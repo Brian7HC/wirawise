@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question_en": "How much water does coffee need?",
+    "question_ki": "Kahũa karabataraga maaĩ maingĩ atĩa?",
+    "answer_en": "Coffee plants need 1500-2500mm of rainfall per year. In dry periods, irrigate with 40-60mm per week.",
+    "answer_ki": "Kahũa nĩkarĩa maaĩ mangĩ maingĩ, maingĩ ma 1500-2500mm kaaka. Nĩ rĩrĩa mĩgũnĩ, irigate na 40-60mm per week."
+  },
+  {
+    "id": 2,
+    "question_en": "What fertilizer is best for coffee?",
+    "question_ki": "Mbolea gani nzuri ya kahua?",
+    "answer_en": "Use NPK 20:10:10 or 17:17:17 at planting. Apply CAN during fruiting. Organic compost is also recommended.",
+    "answer_ki": "Tũmĩra NPK 20:10:10 kana 17:17:17 kũrĩa ya kupanda. Tũmĩra CAN rĩrĩa maĩhĩa macio. Compost nayo nĩ mũrĩo."
+  },
+  {
+    "id": 3,
+    "question_en": "When should I prune coffee trees?",
+    "question_ki": "Nĩ rĩrĩa gĩtĩra kahua?",
+    "answer_en": "Prune coffee after harvesting. Remove dead branches, maintain 2-3 main stems, and shape the canopy.",
+    "answer_ki": "Pangũra kahũa rĩrĩa kuvuna. Ikĩra maguta marĩtũka, riĩ na mĩtĩ ĩrĩa 2-3, na kũra formatĩ ya canopy."
+  },
+  {
+    "id": 4,
+    "question_en": "What are common coffee pests?",
+    "question_ki": "Mahatĩ ma kahua ni atia?",
+    "answer_en": "Common coffee pests: Coffee Berry Borer, Leaf Miner, Ants, Mealybugs, and Scale insects.",
+    "answer_ki": "Mahatĩ a kahũa: Coffee Berry Borer, Leaf Miner, Ants, Mealybugs, na Scale insects."
+  },
+  {
+    "id": 5,
+    "question_en": "What diseases affect coffee?",
+    "question_ki": "Mĩrĩa ya kahua ni iyi?",
+    "answer_en": "Main coffee diseases: Coffee Leaf Rust, Wilt Disease, Berry Rot, and Root Rot. Use resistant varieties.",
+    "answer_ki": "Mĩrĩa mĩũru ya kahũa: Coffee Leaf Rust, Wilt Disease, Berry Rot, na Root Rot. Tũmĩra varieties ĩrĩa resistant."
+  },
+  {
+    "id": 6,
+    "question_en": "What is the best altitude for coffee?",
+    "question_ki": "Nĩ atĩa altitude mũgĩrĩ ya kahua?",
+    "answer_en": "Coffee grows best at 1500-2000m altitude with temperatures between 15-24°C.",
+    "answer_ki": "Kahũa nĩ gĩkũrũka wega mbuga ya 1500-2000m, na temperature 15-24°C."
+  },
+  {
+    "id": 7,
+    "question_en": "What soil type is best for coffee?",
+    "question_ki": "Gĩthaka kĩrĩa kĩega kĩa kahua ni kĩ?",
+    "answer_en": "Coffee prefers well-drained loamy soil with pH 5.5-6.5. Add organic matter for sandy soils.",
+    "answer_ki": "Kahũa nĩ yĩĩtũka irio ĩrĩa drain wega, loam na pH 5.5-6.5. Ongeza organic matter irio ĩrĩa sandy."
+  },
+  {
+    "id": 8,
+    "question_en": "How do I space coffee seedlings?",
+    "question_ki": "Nĩ atĩa spacing ya seedlings ya kahua?",
+    "answer_en": "Space coffee plants 2m x 2m or 2.5m x 2.5m. This gives 1600-2500 plants per hectare.",
+    "answer_ki": "Pangĩra kahũa mita 2x2 kana 2.5x2.5. Ĩrĩo nĩ 1600-2500 plants per hectare."
+  },
+  {
+    "id": 9,
+    "question_en": "When is coffee harvested?",
+    "question_ki": "Kahua irĩa rĩkũra?",
+    "answer_en": "Coffee is harvested 7-9 months after flowering. Pick ripe red cherries selectively.",
+    "answer_ki": "Kahũa nĩ korwa mĩyaka ĩrĩa 7-9 mũgĩrĩ wa bloom. Kũra cherries ĩrĩa red na selective."
+  },
+  {
+    "id": 10,
+    "question_en": "How do I process coffee cherries?",
+    "question_ki": "Nĩ atĩa kũprocessa coffee cherries?",
+    "answer_en": "Processing methods: Wet (wash), Dry (natural), or Honey process. Each affects bean flavor.",
+    "answer_ki": "Mĩthĩka ya processing: Wet (wash), Dry (natural), kana Honey process. Ĩmwe nĩ ĩgĩa flavor ya bean."
+  },
+  {
+    "id": 11,
+    "question_en": "How should coffee be dried?",
+    "question_ki": "Kahua nĩ atĩa gĩtĩra?",
+    "answer_en": "Dry coffee beans on raised beds or mats. Target 10-12% moisture content. Avoid direct sunlight.",
+    "answer_ki": "Omagĩra beans za kahũa mĩgunda mĩrĩ. Goal nĩ 10-12% moisture. Gũtiga sun direct."
+  },
+  {
+    "id": 12,
+    "question_en": "What is coffee market price?",
+    "question_ki": "Bei ya coffee soko ni iyi?",
+    "answer_en": "Coffee prices vary. Quality arabica fetches $1.50-$4.00 per kg at Nairobi Coffee Exchange.",
+    "answer_ki": "Bei ya kahũa nĩ vary. Quality arabica nĩ $1.50-$4.00 per kg Nairobi Coffee Exchange."
+  },
+  {
+    "id": 13,
+    "question_en": "Can I grow coffee organically?",
+    "question_ki": "Nĩ ndaatĩra kahua organic?",
+    "answer_en": "Yes! Use compost, green manure, biological pest control. Organic coffee commands premium prices.",
+    "answer_ki": "Eya! Tũmĩra compost, green manure, pest control ĩrĩa biological. Organic kahũa nĩ yĩĩtũka premium prices."
+  },
+  {
+    "id": 14,
+    "question_en": "What shade trees for coffee?",
+    "question_ki": "Mĩtĩ ya shade ya kahua ni iyi?",
+    "answer_en": "Use shade trees: Grevillea, Albizia, Calliandra, or Leucaena. Provide 30-50% shade.",
+    "answer_ki": "Tũmĩra shade trees: Grevillea, Albizia, Calliandra, kana Leucaena. Pea 30-50% shade."
+  },
+  {
+    "id": 15,
+    "question_en": "Can I intercrop coffee?",
+    "question_ki": "Nĩ ndaatĩra intercrop na kahua?",
+    "answer_en": "Yes! Intercrop with bananas, beans, or maize. Avoid crops that compete for nutrients.",
+    "answer_ki": "Eya! Intercrop na bananas, beans, kana maize. Gũtiga crops ĩrĩa ĩcompete nutrients."
+  },
+  {
+    "id": 16,
+    "question_en": "How to start coffee nursery?",
+    "question_ki": "Nĩ atĩa kũra nursery ya kahua?",
+    "answer_en": "Start with quality seeds or clones. Use polythene bags, well-drained soil. Nursery takes 6-9 months.",
+    "answer_ki": "Raĩra na quality seeds kana clones. Tũmĩra polythene bags, soil ĩrĩa drain wega. Nursery nĩ 6-9 months."
+  },
+  {
+    "id": 17,
+    "question_en": "When to apply fertilizer to coffee?",
+    "question_ki": "Nĩ rĩrĩa gĩtĩra mbolea ya kahua?",
+    "answer_en": "Apply DAP at planting. Top-dress with CAN at flowering and berry development. Split doses are best.",
+    "answer_ki": "Tũmĩra DAP kũrĩa ya kupanda. Top-dress na CAN rĩrĩa flowering na berry development. Split doses nĩ zĩega."
+  },
+  {
+    "id": 18,
+    "question_en": "How to control coffee pests naturally?",
+    "question_ki": "Nĩ atĩa kũcontrola mahatĩ ya kahua naturally?",
+    "answer_en": "Use neem oil, insecticidal soaps, beneficial insects. Keep plantation clean. Prune regularly.",
+    "answer_ki": "Tũmĩra neem oil, insecticidal soaps, beneficial insects. Keep plantation clean. Pangũra regularly."
+  },
+  {
+    "id": 19,
+    "question_en": "What is coffee cherry disease?",
+    "question_ki": "Nĩ kĩrĩa coffee cherry disease?",
+    "answer_en": "Coffee Cherry Disease (CCD) causes berries to rot. Control by pruning, fungicides, and good sanitation.",
+    "answer_ki": "Coffee Cherry Disease (CCD) nĩ ĩgĩa berries rot. Control na pruning, fungicides, na sanitation ĩega."
+  },
+  {
+    "id": 20,
+    "question_en": "How long do coffee trees live?",
+    "question_ki": "Kahua mĩtĩ nĩ gĩkũra mĩrĩa mĩrĩ?",
+    "answer_en": "Coffee trees can produce for 30-50 years with good care. Peak production is years 5-15.",
+    "answer_ki": "Mĩtĩ ya kahũa nĩ yĩĩtũka years 30-50 na care ĩega. Peak production nĩ years 5-15."
+  }
+]

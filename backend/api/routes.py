@@ -1,8 +1,8 @@
-"""
-FastAPI route handlers for Kikuyu Chatbot API
-"""
+"""FastAPI route handlers"""
 
 from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 from typing import Optional
 import time
@@ -40,6 +40,7 @@ from backend.stt.mms_engine import transcribe_kikuyu
 from backend.stt.tts_service import text_to_speech, generate_speech_bytes
 from backend.nlp.chatbot import chat_full_response, process_agriculture_question
 from backend.nlp.translator import translate_text
+from backend.nlp.coffee_semantic_search import search_coffee_question, search_coffee_question_with_context, initialize as init_coffee_search
 import uuid
 import os
 
@@ -89,11 +90,25 @@ async def chat_text(
                 session_id = ConversationCRUD.create_session(db)
                 logger.warning(f"Session not found, created new: {session_id}")
         
+        # Pre-check: If query contains agricultural keywords, bypass intent classifier and go directly to agriculture
+        agriculture_keywords = [
+            'coffee', 'kahua', 'kahūa', 'cafe', 'café',
+            'potato', 'waru', 'irio', 'chips', 'irish',
+            'cabbage', 'kabichi', 'mboga', 'greens',
+            'planting', 'harvest', 'fertilizer', 'soil', 'rain', 'season',
+            'pests', 'diseases', 'yield', 'market', 'price',
+            'ngĩgũra', 'ngũgũra', 'kūhanda', 'kūrīma', 'kūrīma', 
+            'mbegu', 'mbegū', 'mūrīmi', 'mūgūnda', 'tīīri', 'thambi'
+        ]
+        
+        text_lower = request.text.lower()
+        is_agriculture_query = any(kw in text_lower for kw in agriculture_keywords)
+        
         # Process input with intent classifier
         result = classifier.process_input(db, request.text, request.context)
         
-        # If agriculture intent detected, use AI pipeline instead of database response
-        if result.get("intent") == "agriculture_question":
+        # If agriculture intent detected OR query looks like agriculture, use AI pipeline instead
+        if result.get("intent") == "agriculture_question" or is_agriculture_query:
             logger.info(f"Routing agriculture question to AI pipeline: {request.text[:50]}...")
             try:
                 # Use AI pipeline for agriculture questions
@@ -863,4 +878,293 @@ async def translate_text_endpoint(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Translation error: {str(e)}"
         )
+
+
+# ============================================
+# COFFEE SEMANTIC SEARCH ENDPOINT
+# ============================================
+
+class CoffeeChatRequest(BaseModel):
+    """Request schema for coffee semantic search"""
+    message: str = Field(..., min_length=1, description="User's question in Kikuyu")
+    session_id: Optional[str] = Field(None, description="Optional session ID")
+
+
+class CoffeeChatResponse(BaseModel):
+    """Response schema for coffee semantic search"""
+    success: bool
+    question: str
+    answer: str
+    confidence: float
+    matched_question: Optional[str] = None
+
+
+@router.post(
+    "/chat/coffee",
+    response_model=CoffeeChatResponse,
+    summary="Coffee Q&A Semantic Search",
+    description="Search coffee agriculture questions using semantic similarity",
+    tags=["AI Chat"]
+)
+async def coffee_chat(
+    request: CoffeeChatRequest
+):
+    """
+    Search for coffee agriculture questions using semantic embeddings.
+    
+    - **message**: User's question in Kikuyu
+    - **session_id**: Optional session ID
+    
+    Returns the best matching answer from the coffee Q&A dataset.
+    """
+    try:
+        logger.info(f"Coffee semantic search: {request.message[:50]}...")
+        
+        # Search using semantic similarity
+        result = search_coffee_question_with_context(request.message)
+        
+        return CoffeeChatResponse(
+            success=True,
+            question=request.message,
+            answer=result["answer"],
+            confidence=result["confidence"],
+            matched_question=result.get("question")
+        )
+        
+    except Exception as e:
+        logger.error(f"Coffee chat error: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Coffee chat error: {str(e)}"
+        )
+
+
+# ============================================
+# FULL KNOWLEDGE BASE SEMANTIC SEARCH
+# ============================================
+
+class SemanticChatRequest(BaseModel):
+    """Request for full KB semantic search"""
+    message: str = Field(..., min_length=1, max_length=1000)
+    preferred_language: str = Field("auto", description="en, ki, or auto")
+    include_alternatives: bool = Field(False, description="Include alternative matches")
+
+
+class SemanticChatResponse(BaseModel):
+    """Response for full KB semantic search"""
+    success: bool
+    message_type: str  # 'answer', 'greeting', 'clarification', 'no_match'
+    response: str
+    response_language: str
+    matched_question: Optional[str] = None
+    confidence: Optional[str] = None
+    confidence_score: Optional[float] = None
+    topic: Optional[str] = None
+    alternatives: Optional[list] = None
+    detected_language: Optional[str] = None
+
+
+# Global instances (initialized lazily)
+_kb_processor = None
+_semantic_engine = None
+
+
+def _get_kb_processor():
+    """Get or create KB processor"""
+    global _kb_processor
+    if _kb_processor is None:
+        from backend.nlp.kb_processor import KnowledgeBaseProcessor
+        kb_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "knowledge", "comprehensive_qa.json")
+        _kb_processor = KnowledgeBaseProcessor(kb_path)
+    return _kb_processor
+
+
+def _get_semantic_engine():
+    """Get or create semantic engine"""
+    global _semantic_engine
+    if _semantic_engine is None:
+        from backend.nlp.semantic_engine import SemanticSearchEngine
+        kb = _get_kb_processor()
+        _semantic_engine = SemanticSearchEngine(kb)
+    return _semantic_engine
+
+
+@router.post(
+    "/chat/semantic",
+    response_model=SemanticChatResponse,
+    summary="Full Knowledge Base Semantic Search",
+    description="Search the entire knowledge base using semantic embeddings",
+    tags=["AI Chat"]
+)
+async def semantic_chat(request: SemanticChatRequest):
+    """
+    Full semantic search using your comprehensive knowledge base.
+    - Detects language (English/Kikuyu)
+    - Checks for greetings
+    - Searches all topics with semantic matching
+    - Returns answer in user's language
+    """
+    try:
+        from backend.nlp.language_utils import detect_language, is_greeting
+        
+        user_message = request.message.strip()
+        logger.info(f"Semantic chat: {user_message[:50]}...")
+        
+        # Detect language
+        if request.preferred_language == "auto":
+            lang_info = detect_language(user_message)
+            detected_lang = lang_info['language']
+        else:
+            detected_lang = request.preferred_language
+        
+        # Check greeting
+        kb = _get_kb_processor()
+        greeting_match = kb.check_greeting(user_message)
+        if greeting_match:
+            greeting_intent, best_response = greeting_match
+            return SemanticChatResponse(
+                success=True,
+                message_type="greeting",
+                response=best_response.get('text', 'Thayu!'),
+                response_language=detected_lang,
+                greeting_type=greeting_intent.intent_name,
+                detected_language=detected_lang
+            )
+        
+        # Search KB
+        engine = _get_semantic_engine()
+        results = engine.search(user_message, top_k=5 if request.include_alternatives else 1)
+        
+        if not results:
+            return SemanticChatResponse(
+                success=False,
+                message_type="no_match",
+                response="I'm sorry, I couldn't find a good answer. Please try rephrasing.",
+                response_language=detected_lang,
+                detected_language=detected_lang
+            )
+        
+        best = results[0]
+        
+        # Return answer in user's language
+        answer = best['answer_en'] if detected_lang == 'en' else best['answer_ki']
+        matched_q = best['question_en'] if detected_lang == 'en' else best['question_ki']
+        
+        alternatives = None
+        if request.include_alternatives and len(results) > 1:
+            alternatives = []
+            for r in results[1:4]:
+                alternatives.append({
+                    'question': r['question_en'] if detected_lang == 'en' else r['question_ki'],
+                    'score': r['score']
+                })
+        
+        return SemanticChatResponse(
+            success=True,
+            message_type="answer",
+            response=answer,
+            response_language=detected_lang,
+            matched_question=matched_q,
+            confidence=best['confidence'],
+            confidence_score=best['score'],
+            topic=best['topic'],
+            alternatives=alternatives,
+            detected_language=detected_lang
+        )
+        
+    except Exception as e:
+        logger.error(f"Semantic chat error: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Semantic chat error: {str(e)}"
+        )
+
+
+@router.get(
+    "/topics",
+    summary="Get available topics",
+    description="Get list of all topics in the knowledge base",
+    tags=["Knowledge Base"]
+)
+async def get_topics():
+    """Get all available topics in the knowledge base"""
+    try:
+        kb = _get_kb_processor()
+        topics = kb.get_all_topics()
+        return {
+            "topics": topics,
+            "count": len(topics)
+        }
+    except Exception as e:
+        logger.error(f"Error getting topics: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error: {str(e)}"
+        )
+
+
+@router.get(
+    "/questions/{topic}",
+    summary="Get questions by topic",
+    description="Get all questions for a specific topic",
+    tags=["Knowledge Base"]
+)
+async def get_questions_by_topic(topic: str, language: str = "en"):
+    """Get all questions for a specific topic"""
+    try:
+        kb = _get_kb_processor()
+        qa_pairs = kb.get_qa_by_topic(topic)
+        
+        if not qa_pairs:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Topic '{topic}' not found"
+            )
+        
+        questions = [
+            {
+                "id": qa.id,
+                "question_en": qa.question_en,
+                "question_ki": qa.question_ki
+            }
+            for qa in qa_pairs
+        ]
+        
+        return {
+            "topic": topic,
+            "questions": questions,
+            "count": len(questions)
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error getting questions: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error: {str(e)}"
+        )
+
+
+@router.get(
+    "/health",
+    summary="Health check",
+    description="Check API health status",
+    tags=["Health"]
+)
+async def health_check():
+    """Check API health"""
+    try:
+        kb = _get_kb_processor()
+        return {
+            "status": "healthy",
+            "kb_loaded": True,
+            "total_qa_pairs": len(kb.qa_pairs),
+            "total_topics": len(kb.get_all_topics()),
+            "embedding_method": _get_semantic_engine().method
+        }
+    except Exception as e:
+        return {
+            "status": "unhealthy",
+            "error": str(e)
+        }
 

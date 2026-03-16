@@ -1,8 +1,4 @@
-"""
-Speech-to-Text service using Groq Whisper API
-Converts audio to text using Groq's Whisper model
-Optimized for Kikuyu language recognition
-"""
+"""Speech-to-Text using Groq Whisper API."""
 
 import logging
 import os
